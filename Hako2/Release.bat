@@ -10,7 +10,6 @@ C:\Factory\SubTools\makeCluster.exe Etcetera.txt    out\Etcetera.dat    %RAWKEY%
 COPY /B Hako2\Release\Hako2.exe out
 COPY /B AUTHORS out
 C:\Factory\Tools\xcp.exe doc out
-ren out\Manual.txt ƒ}ƒjƒ…ƒAƒ‹.txt
 
 out\Hako2.exe /L
 IF ERRORLEVEL 1 START ?_LOG_ENABLED
