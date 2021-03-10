@@ -8,8 +8,12 @@
 
 ■ゲームの概要
 
-　白い箱を操作して敵を避けながらゴール地点を目指す２Ｄアクションゲームです。
-　ゲームパッド推奨！
+　白い箱のようなものを操作してゴール地点を目指す2Dアクションゲームです。
+
+　全３フロア（ステージ）
+　難易度は高めです。
+
+　ゲームパッド推奨
 
 
 ■注意
@@ -97,48 +101,9 @@
 　ゴール地点は、水色に明滅しているそれっぽいやつです。
 
 
-■制作協力（敬称略）
+■制作協力・素材配布元
 
-　●エンディングイラスト
-
-　　礎 たちつ
-　　http://yuzuriha8110.wixsite.com/tatitu
-
-
-■素材提供（敬称略）
-
-　●画像
-
-　　あるぱか
-　　http://www.pixiv.net/member.php?id=2017235
-
-　　瀝青炭
-　　http://www.pixiv.net/member.php?id=5998574
-
-　　ぱくたそ
-　　https://www.pakutaso.com/
-
-　　ぴぽや
-　　http://piposozai.blog76.fc2.com/
-
-　　First Seed Material
-　　http://www.tekepon.net/fsm
-
-　　臼井の会 ＲＰＧツクール素材支部
-　　http://usui.moo.jp/rpg_tukuru.html
-
-　　Bg-patterns
-　　http://bg-patterns.com/
-
-　●ＢＧＭ
-
-　　フリーBGM・音楽素材MusMus
-　　http://musmus.main.jp/
-
-　●ＳＥ
-
-　　小森平
-　　http://taira-komori.jpn.org/
+　CREDIT.txt を御覧ください。
 
 
 ■このゲームの製作者
