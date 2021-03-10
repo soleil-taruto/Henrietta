@@ -330,9 +330,39 @@
 　プレイ中にキーボードのＴキーを押して変更することもできます。
 
 
-■制作協力・素材配布元
+■制作協力（敬称略）
 
-　CREDIT.txt を御覧ください。
+　●エンディングイラスト
+
+　　礎 たちつ
+　　http://yuzuriha8110.wixsite.com/tatitu
+
+
+■素材配布元（敬称略）
+
+　●画像
+
+　　ぴぽや
+　　https://pipoya.net/
+
+　　First Seed Material
+　　http://www.tekepon.net/fsm
+
+　　臼井の会 ＲＰＧツクール素材支部
+　　http://usui.moo.jp/rpg_tukuru.html
+
+　　Bg-patterns
+　　http://bg-patterns.com/
+
+　●ＢＧＭ・ＳＥ
+
+　　フリーBGM・音楽素材MusMus
+　　http://musmus.main.jp/
+
+　●ＳＥ
+
+　　小森平
+　　http://taira-komori.jpn.org/
 
 
 ■このゲームの製作者

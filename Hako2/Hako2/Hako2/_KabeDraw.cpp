@@ -395,22 +395,26 @@ static void KabeDraw_03(double a)
 	RealY = y;
 //	m_approach(RealY, y, 0.5);
 
+	const double BR_1 = 0.5;
+	const double BR_2 = 0.6;
+	const double BR_3 = 0.8;
+
 	if(r < 12400.0)
 	{
 		r /= 12400.0;
 		r = 1.0 - r;
 
 		DPE_SetBright(
-			0.6,
-			0.6,
-			0.6
+			BR_2,
+			BR_2,
+			BR_2
 			);
 		DrawRect(P_WALL_FLOOR_03B, -x, -RealY, SCREEN_W + 160.0, SCREEN_H + 120.0);
 		DPE_SetAlpha(r);
 		DPE_SetBright(
-			0.5,
-			0.5,
-			0.5
+			BR_1,
+			BR_1,
+			BR_1
 			);
 		DrawRect(P_WALL_FLOOR_03,  -x, -RealY, SCREEN_W + 160.0, SCREEN_H + 120.0);
 	}
@@ -421,16 +425,16 @@ static void KabeDraw_03(double a)
 		r = 1.0 - r;
 
 		DPE_SetBright(
-			0.7,
-			0.7,
-			0.7
+			BR_3,
+			BR_3,
+			BR_3
 			);
 		DrawRect(P_WALL_FLOOR_03C, -x, -RealY, SCREEN_W + 160.0, SCREEN_H + 120.0);
 		DPE_SetAlpha(r);
 		DPE_SetBright(
-			0.6,
-			0.6,
-			0.6
+			BR_2,
+			BR_2,
+			BR_2
 			);
 		DrawRect(P_WALL_FLOOR_03B, -x, -RealY, SCREEN_W + 160.0, SCREEN_H + 120.0);
 	}
@@ -459,11 +463,12 @@ void SetKabe_03(void)
 	if(r < 0.5)
 	{
 		r *= 2.0;
+		r *= r;
 		m_range(r, 0.0, 1.0);
 
-		GDc.KabeBr_R = AToBRate(0.8, 0.1, r);
-		GDc.KabeBr_G = AToBRate(0.4, 0.2, r);
-		GDc.KabeBr_B = AToBRate(0.2, 0.4, r);
+		GDc.KabeBr_R = AToBRate(1.5, 0.1, r);
+		GDc.KabeBr_G = AToBRate(0.6, 0.2, r);
+		GDc.KabeBr_B = AToBRate(0.3, 0.4, r);
 	}
 	else
 	{
@@ -488,5 +493,17 @@ void SetKabe_03(void)
 	if(8401 * IDENOM < GDc.Player.X && GDc.Player.X < 13531 * IDENOM && !(GDc.Player.X < 8800 * IDENOM && GDc.Player.Y < 900 * IDENOM))
 	{
 		GDc.KabeArkanoidBr = 1.99;
+	}
+
+	{
+		static double a;
+		double aTarg =
+			8300 * IDENOM < GDc.Player.X && GDc.Player.X < 13531 * IDENOM ?
+			0.3 :
+			0.0;
+
+		m_approach(a, aTarg, 0.99);
+
+		GDc.KabeBr_B += a;
 	}
 }

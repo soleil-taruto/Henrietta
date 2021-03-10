@@ -101,9 +101,48 @@
 　ゴール地点は、水色に明滅しているそれっぽいやつです。
 
 
-■制作協力・素材配布元
+■制作協力（敬称略）
 
-　CREDIT.txt を御覧ください。
+　●エンディングイラスト
+
+　　礎 たちつ
+　　http://yuzuriha8110.wixsite.com/tatitu
+
+
+■素材配布元（敬称略）
+
+　●画像
+
+　　あるぱか
+　　http://www.pixiv.net/member.php?id=2017235
+
+　　瀝青炭
+　　http://www.pixiv.net/member.php?id=5998574
+
+　　ぱくたそ
+　　https://www.pakutaso.com/
+
+　　ぴぽや
+　　http://piposozai.blog76.fc2.com/
+
+　　First Seed Material
+　　http://www.tekepon.net/fsm
+
+　　臼井の会 ＲＰＧツクール素材支部
+　　http://usui.moo.jp/rpg_tukuru.html
+
+　　Bg-patterns
+　　http://bg-patterns.com/
+
+　●ＢＧＭ
+
+　　フリーBGM・音楽素材MusMus
+　　http://musmus.main.jp/
+
+　●ＳＥ
+
+　　小森平
+　　http://taira-komori.jpn.org/
 
 
 ■このゲームの製作者
