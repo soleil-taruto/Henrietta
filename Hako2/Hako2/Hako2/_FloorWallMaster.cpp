@@ -5,7 +5,7 @@ void FloorWallMasterMain(void)
 #if LOG_ENABLED
 	printfDx("カメラ位置：%d,%d\n", m_d2i(CameraX), m_d2i(CameraY));
 	printfDx("プレイヤー：%d,%d\n", m_d2i(GDc.Player.X), m_d2i(GDc.Player.Y));
-	printfDx("PlayerBr,EnemyBr,ArkanoidBr,CookieBr: %.3f,%.3f,%.3f,%.3f\n", PlayerBr, EnemyBr, ArkanoidBr, CookieBr);
+	printfDx("PlayerBr,EnemyBr,ArkanoidBr,PataBr,CookieBr: %.3f,%.3f,%.3f,%.3f,%.3f\n", PlayerBr, EnemyBr, ArkanoidBr, PataBr, CookieBr);
 #endif
 
 	// デフォルト {
@@ -14,6 +14,7 @@ void FloorWallMasterMain(void)
 	GDc.KabePlayerBr = 1.0;
 	GDc.KabeEnemyBr = 1.0;
 	GDc.KabeArkanoidBr = 1.0;
+	GDc.KabePataBr = 1.0;
 	GDc.KabeCookieBr = 1.0;
 	GDc.KabeBr_A = 1.0;
 	GDc.KabeBr_R = 1.0;

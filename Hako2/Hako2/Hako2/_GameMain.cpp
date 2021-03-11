@@ -2208,6 +2208,7 @@ endPlayer:
 		m_approach(PlayerBr, GDc.KabePlayerBr, 0.98);
 		m_approach(EnemyBr, GDc.KabeEnemyBr, 0.98);
 		m_approach(ArkanoidBr, GDc.KabeArkanoidBr, 0.99);
+		m_approach(PataBr, GDc.KabePataBr, 0.99);
 		m_approach(CookieBr, GDc.KabeCookieBr, 0.99);
 
 		// draw...

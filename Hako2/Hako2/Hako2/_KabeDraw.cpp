@@ -472,7 +472,8 @@ void SetKabe_03(void)
 	}
 	else
 	{
-		if(GDc.Player.X < 20000 * IDENOM)
+		if(GDc.Player.X < 19860 * IDENOM)
+//		if(GDc.Player.X < 20000 * IDENOM)
 		{
 			GDc.KabeBr_R = 0.1;
 			GDc.KabeBr_G = 0.2;
@@ -493,6 +494,7 @@ void SetKabe_03(void)
 	if(8401 * IDENOM < GDc.Player.X && GDc.Player.X < 13531 * IDENOM && !(GDc.Player.X < 8800 * IDENOM && GDc.Player.Y < 900 * IDENOM))
 	{
 		GDc.KabeArkanoidBr = 1.99;
+		GDc.KabePataBr = 1.99;
 	}
 
 	{

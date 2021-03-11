@@ -22,6 +22,7 @@ void GameInit(void)
 	GDc.KabePlayerBr = 1.0;
 	GDc.KabeEnemyBr = 1.0;
 	GDc.KabeArkanoidBr = 1.0;
+	GDc.KabePataBr = 1.0;
 	GDc.KabeCookieBr = 1.0;
 	GDc.KabeBr_A = 1.0;
 	GDc.KabeBr_R = 1.0;
@@ -99,4 +100,5 @@ char *GetGraphicalModeCaption(int grphMd)
 double PlayerBr = 1.0;
 double EnemyBr = 1.0;
 double ArkanoidBr = 1.0;
+double PataBr = 1.0;
 double CookieBr = 1.0; // クッキーと大回転

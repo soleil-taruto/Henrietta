@@ -174,6 +174,7 @@ typedef struct GDc_st
 	double KabePlayerBr;
 	double KabeEnemyBr;
 	double KabeArkanoidBr;
+	double KabePataBr;
 	double KabeCookieBr; // クッキーと大回転
 	double KabeBr_A;
 	double KabeBr_R;
@@ -228,4 +229,5 @@ char *GetGraphicalModeCaption(int grphMd);
 extern double PlayerBr;
 extern double EnemyBr;
 extern double ArkanoidBr;
+extern double PataBr;
 extern double CookieBr;

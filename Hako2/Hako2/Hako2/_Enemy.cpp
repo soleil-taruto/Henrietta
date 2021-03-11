@@ -487,9 +487,14 @@ static void DrawPata(Enemy_t *i)
 	case GM_METEOR_SOFT:
 	case GM_GHOST:
 		DPE_SetBright(
-			EnemyBr * 1.0,
-			EnemyBr * 0.2,
-			EnemyBr * 0.3
+			EnemyBr * 1.0 * PataBr,
+			EnemyBr * 0.2 * PataBr,
+			EnemyBr * 0.3 / PataBr
+			/*
+			PataBr * EnemyBr * 1.0,
+			PataBr * EnemyBr * 0.2,
+			PataBr * EnemyBr * 0.3
+			*/
 			);
 		DrawRect(P_WHITEBOX, pos.X, pos.Y, CELLSIZE, CELLSIZE);
 		DPE_Reset();
