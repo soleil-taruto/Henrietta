@@ -50,4 +50,3 @@ dat\pipo\nagare-boshi-effect-anime\_120\pipo-mapeffect011j.png
 dat\pipo\fog3\640x480\pipo-fog013.png
 dat\ending\hokoED1.png
 dat\ending\hokoED2.png
-dat\BgPattern\p_da0359_m_da03591.png

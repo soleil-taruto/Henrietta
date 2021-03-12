@@ -40,8 +40,6 @@ enum
 	P_ENDING_1,
 	P_ENDING_2,
 
-	P_BG_PATTERN,
-
 	// < app
 
 	P_MAX, // num of member

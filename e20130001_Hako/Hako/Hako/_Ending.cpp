@@ -121,7 +121,9 @@ void Ending(void)
 
 	for(; ; )
 	{
-		if(120 < ActFrame && (GetInput(INP_A) || GetInput(INP_B)))
+		const int REJECT_KEY_SEC = 7;
+
+		if(REJECT_KEY_SEC * 60 < ActFrame && (GetInput(INP_A) || GetInput(INP_B)))
 		{
 			break;
 		}

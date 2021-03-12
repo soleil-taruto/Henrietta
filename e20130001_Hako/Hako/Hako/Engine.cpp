@@ -86,7 +86,6 @@ void EachFrame(void)
 
 		if(Gnd.ScreenDraw_L || Gnd.ScreenDraw_T) // ? スクリーンサイズより描画領域が小さい。
 		{
-#if 1
 			DrawExtendGraph(
 				0,
 				0,
@@ -95,26 +94,6 @@ void EachFrame(void)
 				GetHandle(bgScreen),
 				0
 				);
-#else // Hako2 ver.
-			int bgp_w = Pic_W(P_BG_PATTERN);
-			int bgp_h = Pic_H(P_BG_PATTERN);
-
-			SetDrawBright(30, 30, 30);
-
-			for(int l = 0; l < Gnd.RealScreen_W; l += bgp_w)
-			for(int t = 0; t < Gnd.RealScreen_H; t += bgp_h)
-			{
-				DrawExtendGraph(
-					l,
-					t,
-					l + bgp_w,
-					t + bgp_h,
-					Pic(P_BG_PATTERN),
-					0
-					);
-			}
-			SetDrawBright(255, 255, 255); // restore
-#endif
 		}
 		DrawExtendGraph(
 			Gnd.ScreenDraw_L,
