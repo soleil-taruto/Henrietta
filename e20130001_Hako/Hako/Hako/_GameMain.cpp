@@ -732,6 +732,75 @@ static void DrawGraphicalCell(MCell_t *cell, int dr_x, int dr_y)
 		error();
 	}
 }
+static int DWS_ChooseOne(autoList<int> *arr)
+{
+	return arr->GetElement(rnd(arr->GetCount()));
+}
+static int DWS_Contains(autoList<int> *arr, int value)
+{
+	for(int index = 0; index < arr->GetCount(); index++)
+		if(arr->GetElement(index) == value)
+			return 1;
+
+	return 0;
+}
+static int DWS_CreateNumber(int rightSign)
+{
+	static autoList<int> *knownValues;
+
+	if(!knownValues)
+		knownValues = new autoList<int>();
+
+	int value;
+
+	do
+	{
+		if(rightSign) // ? 正しいルート -> 素数べきではない整数を表示する。
+		{
+			     if(rnd(3)) value = DWS_ChooseOne(Gnd.D6_NotPrimePower_501);
+			else if(rnd(3)) value = DWS_ChooseOne(Gnd.D6_NotPrimePower_401);
+			else if(rnd(3)) value = DWS_ChooseOne(Gnd.D6_NotPrimePower_301);
+			else if(rnd(3)) value = DWS_ChooseOne(Gnd.D6_NotPrimePower_201);
+			else            value = DWS_ChooseOne(Gnd.D6_NotPrimePower_101);
+		}
+		else // ? 間違ったルート -> 素数べきを表示する。
+		{
+			     if(rnd(2)) value = DWS_ChooseOne(Gnd.D6_PrimePower_501);
+			else if(rnd(2)) value = DWS_ChooseOne(Gnd.D6_PrimePower_401);
+			else if(rnd(2)) value = DWS_ChooseOne(Gnd.D6_PrimePower_301);
+			else if(rnd(2)) value = DWS_ChooseOne(Gnd.D6_PrimePower_201);
+			else if(rnd(2)) value = DWS_ChooseOne(Gnd.D6_PrimePower_101);
+			else            value = DWS_ChooseOne(Gnd.D6_Prime);
+		}
+	}
+	while(DWS_Contains(knownValues, value));
+
+	return value;
+}
+static void DrawWallSign(MCell_t *cell, int drawX, int drawY, int rightSign, int editMode)
+{
+	int number;
+
+	if(editMode)
+	{
+		if(rightSign)
+			number = 999999;
+		else
+			number = 100000;
+	}
+	else
+	{
+		if(!cell->Number)
+			cell->Number = DWS_CreateNumber(rightSign);
+
+		number = cell->Number;
+	}
+	PE.Color = GetColor(150, 150, 0);
+	PE_Border(GetColor(50, 50, 0));
+	SetPrint(drawX + 6, drawY + 8);
+	Print_x(xcout("%d", number));
+	PE_Reset();
+}
 static void DrawField(int editMode = 0)
 {
 	int xOrig = GDc.ICameraX / CELLSIZE;
@@ -742,7 +811,8 @@ static void DrawField(int editMode = 0)
 	const int w = SCREEN_W / CELLSIZE + 2;
 	const int h = SCREEN_H / CELLSIZE + 2;
 
-	for(int x = 0; x < w; x++)
+	for(int x = w; -1 <= --x;) // 6ケタ番号表示のため右から描画する。6ケタ番号は左に1マスはみ出すので、左側の画面外1列も描画する。
+//	for(int x = 0; x < w; x++) // old
 	for(int y = 0; y < h; y++)
 	{
 		int cellX = xOrig + x;
@@ -807,6 +877,14 @@ static void DrawField(int editMode = 0)
 						}
 						break;
 					}
+				}
+				if(cell->CellType == CT_WALL_RIGHT_SIGN)
+				{
+					DrawWallSign(cell, drawX, drawY, 1, editMode);
+				}
+				if(cell->CellType == CT_WALL_WRONG_SIGN)
+				{
+					DrawWallSign(cell, drawX, drawY, 0, editMode);
 				}
 			}
 			else if(cell->CellType == CT_DEATH)

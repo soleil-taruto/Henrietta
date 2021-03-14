@@ -57,6 +57,18 @@ typedef struct Gnd_st
 	int BestTimeList[FLOOR_NUM]; // フレーム数, -1 == 未プレイ, 0 ～ IMAX
 
 	int ShowMouseCursorMode;
+
+	autoList<int> *D6_NotPrimePower_101;
+	autoList<int> *D6_NotPrimePower_201;
+	autoList<int> *D6_NotPrimePower_301;
+	autoList<int> *D6_NotPrimePower_401;
+	autoList<int> *D6_NotPrimePower_501;
+	autoList<int> *D6_Prime;
+	autoList<int> *D6_PrimePower_101;
+	autoList<int> *D6_PrimePower_201;
+	autoList<int> *D6_PrimePower_301;
+	autoList<int> *D6_PrimePower_401;
+	autoList<int> *D6_PrimePower_501;
 }
 Gnd_t;
 

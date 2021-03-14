@@ -2,6 +2,25 @@
 
 Gnd_t Gnd;
 
+static autoList<int> *ReadIntLines_D6(int etcId)
+{
+	autoList<uchar> *fileData = GetEtcRes()->GetHandle(etcId);
+	autoList<char *> *lines = readLines(fileData);
+	autoList<int> *values = new autoList<int>();
+
+	for(int index = 0; index < lines->GetCount(); index++)
+	{
+		char *line = lines->GetElement(index);
+		int value = atoi(line);
+
+		errorCase(!m_isRange(value, 100000, 999999)); // ? 6åÖÇ≈ÇÕÇ»Ç¢ÅB
+
+		values->AddElement(value);
+	}
+	delete fileData->Ecdysis(); // ãÛÇ…Ç∑ÇÈÅB
+	releaseList(lines, (void (*)(char *))memFree);
+	return values;
+}
 void Gnd_INIT(void)
 {
 	memset(&Gnd, 0x00, sizeof(Gnd_t));
@@ -41,6 +60,18 @@ void Gnd_INIT(void)
 
 	for(int index = 0; index < FLOOR_NUM; index++)
 		Gnd.BestTimeList[index] = -1;
+
+	Gnd.D6_NotPrimePower_101 = ReadIntLines_D6(ETC_NOT_PRIME_POWER_101);
+	Gnd.D6_NotPrimePower_201 = ReadIntLines_D6(ETC_NOT_PRIME_POWER_201);
+	Gnd.D6_NotPrimePower_301 = ReadIntLines_D6(ETC_NOT_PRIME_POWER_301);
+	Gnd.D6_NotPrimePower_401 = ReadIntLines_D6(ETC_NOT_PRIME_POWER_401);
+	Gnd.D6_NotPrimePower_501 = ReadIntLines_D6(ETC_NOT_PRIME_POWER_501);
+	Gnd.D6_Prime             = ReadIntLines_D6(ETC_PRIME);
+	Gnd.D6_PrimePower_101    = ReadIntLines_D6(ETC_PRIME_POWER_101);
+	Gnd.D6_PrimePower_201    = ReadIntLines_D6(ETC_PRIME_POWER_201);
+	Gnd.D6_PrimePower_301    = ReadIntLines_D6(ETC_PRIME_POWER_301);
+	Gnd.D6_PrimePower_401    = ReadIntLines_D6(ETC_PRIME_POWER_401);
+	Gnd.D6_PrimePower_501    = ReadIntLines_D6(ETC_PRIME_POWER_501);
 }
 void Gnd_FNLZ(void)
 {
@@ -48,6 +79,18 @@ void Gnd_FNLZ(void)
 	ReleaseSubScreen(Gnd.MainScreen);
 
 	// app -->
+
+	delete Gnd.D6_NotPrimePower_101;
+	delete Gnd.D6_NotPrimePower_201;
+	delete Gnd.D6_NotPrimePower_301;
+	delete Gnd.D6_NotPrimePower_401;
+	delete Gnd.D6_NotPrimePower_501;
+	delete Gnd.D6_Prime;
+	delete Gnd.D6_PrimePower_101;
+	delete Gnd.D6_PrimePower_201;
+	delete Gnd.D6_PrimePower_301;
+	delete Gnd.D6_PrimePower_401;
+	delete Gnd.D6_PrimePower_501;
 }
 
 // ---- SaveData ----

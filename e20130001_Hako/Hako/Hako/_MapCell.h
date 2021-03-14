@@ -27,6 +27,7 @@ typedef struct MCell_st
 	uint CellX : 10;
 	uint CellY : 10;
 	uint KusaId : 3;
+	int Number;
 }
 MCell_t;
 

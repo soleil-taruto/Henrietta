@@ -173,6 +173,14 @@ void LoadMap(autoTable<uint> *bmp)
 			cell->CellType = CT_WALL;
 			break;
 
+		case m_bmpColor(255, 100, 100):
+			cell->CellType = CT_WALL_RIGHT_SIGN;
+			break;
+
+		case m_bmpColor(100, 100, 255):
+			cell->CellType = CT_WALL_WRONG_SIGN;
+			break;
+
 		case m_bmpColor(237, 28, 36): // Ô
 			cell->CellType = CT_DEATH;
 			break;
@@ -234,6 +242,14 @@ void SaveMap(autoTable<uint> *bmp)
 
 		case CT_WALL:
 			color = m_bmpColor(255, 242, 0); // ‰©
+			break;
+
+		case CT_WALL_RIGHT_SIGN:
+			color = m_bmpColor(255, 100, 100); // ‰©
+			break;
+
+		case CT_WALL_WRONG_SIGN:
+			color = m_bmpColor(100, 100, 255); // ‰©
 			break;
 
 		case CT_DEATH:

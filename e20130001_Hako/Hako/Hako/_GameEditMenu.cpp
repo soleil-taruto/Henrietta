@@ -152,7 +152,7 @@ static char *GetCaption(int num)
 {
 	const char *capList[] =
 	{
-		NULL, NULL, NULL, NULL, NULL,
+		NULL, NULL, NULL, NULL, NULL, NULL, NULL,
 		"6", "3", "2", "1", "4", "7", "8", "9",
 		"L", "LS", "LF", "R", "RS", "RF",
 		"T6", "T3", "T2", "T1", "T4", "T7", "T8", "T9",
@@ -177,6 +177,16 @@ void DrawEditCell(int cellType, int dr_x, int dr_y, int allFlag)
 	if(cellType == CT_WALL)
 	{
 		DrawCell(dr_x, dr_y, 0.7, 0.7, 0.0, "WL", GetColor(50, 50, 0));
+		return;
+	}
+	if(cellType == CT_WALL_RIGHT_SIGN)
+	{
+		DrawCell(dr_x, dr_y, 0.7, 0.7, 0.0, "W+", GetColor(100, 50, 50));
+		return;
+	}
+	if(cellType == CT_WALL_WRONG_SIGN)
+	{
+		DrawCell(dr_x, dr_y, 0.7, 0.7, 0.0, "W-", GetColor(50, 50, 100));
 		return;
 	}
 	if(cellType == CT_DEATH)

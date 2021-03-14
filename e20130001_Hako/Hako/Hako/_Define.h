@@ -35,6 +35,8 @@ enum // CellType
 
 	CT_EMPTY, // as 0
 	CT_WALL,
+	CT_WALL_RIGHT_SIGN,
+	CT_WALL_WRONG_SIGN,
 	CT_DEATH,
 	CT_START,
 	CT_GOAL,
