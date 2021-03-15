@@ -42,5 +42,11 @@ void LoadConfFile(void)
 	EditModeEnabled               = atoi_x(ReadConfLine());
 	EndingPicIndex                = atoi_x(ReadConfLine());
 
+	{
+		char *yenE = ReadConfLine();
+		errorCase(strcmp(yenE, "\\e"));
+		memFree(yenE);
+	}
+
 	delete FImage;
 }
