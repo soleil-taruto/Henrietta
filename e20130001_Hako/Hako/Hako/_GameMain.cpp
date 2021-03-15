@@ -746,12 +746,14 @@ static int DWS_Contains(autoList<int> *arr, int value)
 }
 static int DWS_CreateNumber(int rightSign)
 {
+	const int TRY_COUNT_MAX = 30;
+
 	int value;
 	int tryCount = 0;
 
 	do
 	{
-		if(rightSign) // ? 正しいルート -> 素数べきではない整数を表示する。
+		if(rightSign == 2) // ? 正しいルート -> 素数べきではない整数を表示する。
 		{
 			     if(rnd(3)) value = DWS_ChooseOne(Gnd.D6_NotPrimePower_501);
 			else if(rnd(3)) value = DWS_ChooseOne(Gnd.D6_NotPrimePower_401);
@@ -759,7 +761,14 @@ static int DWS_CreateNumber(int rightSign)
 			else if(rnd(3)) value = DWS_ChooseOne(Gnd.D6_NotPrimePower_201);
 			else            value = DWS_ChooseOne(Gnd.D6_NotPrimePower_101);
 		}
-		else // ? 間違ったルート -> 素数べきを表示する。
+		else if(rightSign == 1) // ? 間違ったルート(但し、正しいルートを装う) -> (なるべく素数ではない)素数べきを表示する。
+		{
+			if(tryCount < TRY_COUNT_MAX / 2)
+				value = DWS_ChooseOne(Gnd.D6_PrimePower_101);
+			else
+				value = DWS_ChooseOne(Gnd.D6_Prime);
+		}
+		else if(rightSign == 0) // ? 間違ったルート -> 素数べきを表示する。
 		{
 #if 1
 			if(rnd(3))
@@ -775,8 +784,12 @@ static int DWS_CreateNumber(int rightSign)
 			else            value = DWS_ChooseOne(Gnd.D6_PrimePower_101);
 #endif
 		}
+		else
+		{
+			error(); // never
+		}
 	}
-	while(++tryCount < 30 && DWS_Contains(GDc.DWS_KnownValues, value));
+	while(++tryCount < TRY_COUNT_MAX && DWS_Contains(GDc.DWS_KnownValues, value));
 
 	GDc.DWS_KnownValues->AddElement(value);
 
@@ -791,10 +804,14 @@ static void DrawWallSign(MCell_t *cell, int drawX, int drawY, int rightSign, int
 
 	if(editMode)
 	{
-		if(rightSign)
+		if(rightSign == 2) // RIGHT
 			number = 999999;
-		else
+		else if(rightSign == 1) // PSEUDO-RIGHT
+			number = 200000;
+		else if(rightSign == 0) // WRONG
 			number = 100000;
+		else
+			error(); // never
 	}
 	else
 	{
@@ -887,6 +904,10 @@ static void DrawField(int editMode = 0)
 					}
 				}
 				if(cell->CellType == CT_WALL_RIGHT_SIGN)
+				{
+					DrawWallSign(cell, drawX, drawY, 2, editMode);
+				}
+				if(cell->CellType == CT_WALL_PSEUDO_RIGHT_SIGN)
 				{
 					DrawWallSign(cell, drawX, drawY, 1, editMode);
 				}
@@ -1562,6 +1583,19 @@ static void ResetForRestart(void)
 	else
 	{
 		ClearReplayData();
+	}
+
+	LOGPOS();
+	if(30 <= GDc.DWS_KnownValues->GetCount()) // ある程度発行していたら、番号リセット
+	{
+		LOGPOS();
+		GDc.DWS_KnownValues->Clear();
+
+		for(int x = 0; x < GDc.Map->GetWidth(); x++)
+		for(int y = 0; y < GDc.Map->GetHeight(); y++)
+		{
+			GDc.Map->GetCell(x, y)->Number = 0;
+		}
 	}
 
 	MusicPlay(MUS_FLOOR_01);

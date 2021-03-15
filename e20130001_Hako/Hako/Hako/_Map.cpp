@@ -177,6 +177,10 @@ void LoadMap(autoTable<uint> *bmp)
 			cell->CellType = CT_WALL_RIGHT_SIGN;
 			break;
 
+		case m_bmpColor(255, 100, 255):
+			cell->CellType = CT_WALL_PSEUDO_RIGHT_SIGN;
+			break;
+
 		case m_bmpColor(100, 100, 255):
 			cell->CellType = CT_WALL_WRONG_SIGN;
 			break;
@@ -245,11 +249,15 @@ void SaveMap(autoTable<uint> *bmp)
 			break;
 
 		case CT_WALL_RIGHT_SIGN:
-			color = m_bmpColor(255, 100, 100); // 黄
+			color = m_bmpColor(255, 100, 100); // ペイント対応無し
+			break;
+
+		case CT_WALL_PSEUDO_RIGHT_SIGN:
+			color = m_bmpColor(255, 100, 255); // ペイント対応無し
 			break;
 
 		case CT_WALL_WRONG_SIGN:
-			color = m_bmpColor(100, 100, 255); // 黄
+			color = m_bmpColor(100, 100, 255); // ペイント対応無し
 			break;
 
 		case CT_DEATH:

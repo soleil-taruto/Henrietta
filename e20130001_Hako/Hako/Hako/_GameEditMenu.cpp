@@ -1,5 +1,11 @@
 #include "all.h"
 
+static const int BTN_L = 30;
+static const int BTN_T = 70;
+static const int BTN_COLCNT = 4;
+static const int BTN_SPAN_X = 50;
+static const int BTN_SPAN_Y = 45;
+
 static int IsMouseInRect(int l, int t, int w, int h)
 {
 	return
@@ -34,26 +40,19 @@ void EditMenuEachFrame(void)
 		GDc.Edit.MenuClicked = EMC_MENUPOS;
 		goto endLClick;
 	}
-
-	const int BTN_L = 30;
-	const int BTN_T = 70;
-	const int BTN_COLCNT = 4;
-	const int BTN_SPAN = 50;
-
 	for(int cellType = CT_EDITABLE_FIRST; cellType <= CT_EDITABLE_LAST; cellType++)
 	{
 		int index = cellType - CT_EDITABLE_FIRST;
 		int x = index % BTN_COLCNT;
 		int y = index / BTN_COLCNT;
 
-		if(IsMouseInRect(BTN_L + x * BTN_SPAN, BTN_T + y * BTN_SPAN, CELLSIZE, CELLSIZE))
+		if(IsMouseInRect(BTN_L + x * BTN_SPAN_X, BTN_T + y * BTN_SPAN_Y, CELLSIZE, CELLSIZE))
 		{
 			GDc.Edit.MenuClicked = EMC_CELLTYPE;
 			GDc.Edit.ClickedCellType = cellType;
 			goto endLClick;
 		}
 	}
-
 	if(IsMouseInRect(160, 520, 50, 50))
 	{
 		GDc.Edit.MenuClicked = EMC_EXIT;
@@ -98,18 +97,13 @@ void DrawEditMenuEntity(void)
 {
 	DrawButton(20, 20, 200, 30, "MENU POS");
 
-	const int BTN_L = 30;
-	const int BTN_T = 70;
-	const int BTN_COLCNT = 4;
-	const int BTN_SPAN = 50;
-
 	for(int cellType = CT_EDITABLE_FIRST; cellType <= CT_EDITABLE_LAST; cellType++)
 	{
 		int index = cellType - CT_EDITABLE_FIRST;
 		int x = index % BTN_COLCNT;
 		int y = index / BTN_COLCNT;
 
-		DrawEditCell(cellType, GDc.Edit.Win_L + BTN_L + x * BTN_SPAN, GDc.Edit.Win_T + BTN_T + y * BTN_SPAN, 1);
+		DrawEditCell(cellType, GDc.Edit.Win_L + BTN_L + x * BTN_SPAN_X, GDc.Edit.Win_T + BTN_T + y * BTN_SPAN_Y, 1);
 	}
 
 	// select cell
@@ -152,7 +146,7 @@ static char *GetCaption(int num)
 {
 	const char *capList[] =
 	{
-		NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+		NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
 		"6", "3", "2", "1", "4", "7", "8", "9",
 		"L", "LS", "LF", "R", "RS", "RF",
 		"T6", "T3", "T2", "T1", "T4", "T7", "T8", "T9",
@@ -182,6 +176,11 @@ void DrawEditCell(int cellType, int dr_x, int dr_y, int allFlag)
 	if(cellType == CT_WALL_RIGHT_SIGN)
 	{
 		DrawCell(dr_x, dr_y, 0.7, 0.7, 0.0, "W+", GetColor(100, 50, 50));
+		return;
+	}
+	if(cellType == CT_WALL_PSEUDO_RIGHT_SIGN)
+	{
+		DrawCell(dr_x, dr_y, 0.7, 0.7, 0.0, "W?", GetColor(50, 50, 100));
 		return;
 	}
 	if(cellType == CT_WALL_WRONG_SIGN)
