@@ -746,12 +746,8 @@ static int DWS_Contains(autoList<int> *arr, int value)
 }
 static int DWS_CreateNumber(int rightSign)
 {
-	static autoList<int> *knownValues;
-
-	if(!knownValues)
-		knownValues = new autoList<int>();
-
 	int value;
+	int tryCount = 0;
 
 	do
 	{
@@ -765,15 +761,27 @@ static int DWS_CreateNumber(int rightSign)
 		}
 		else // ? 間違ったルート -> 素数べきを表示する。
 		{
-			     if(rnd(2)) value = DWS_ChooseOne(Gnd.D6_PrimePower_501);
+#if 1
+			if(rnd(3))
+				value = DWS_ChooseOne(Gnd.D6_PrimePower_101);
+			else
+				value = DWS_ChooseOne(Gnd.D6_Prime);
+#else // old -- PP_101 ～ 501 は件数が少ないのでカスケードにする意味が無い。そもそも PP_101 ～ 301 は件数が同じ。
+			     if(rnd(2)) value = DWS_ChooseOne(Gnd.D6_Prime);
+			else if(rnd(2)) value = DWS_ChooseOne(Gnd.D6_PrimePower_501);
 			else if(rnd(2)) value = DWS_ChooseOne(Gnd.D6_PrimePower_401);
 			else if(rnd(2)) value = DWS_ChooseOne(Gnd.D6_PrimePower_301);
 			else if(rnd(2)) value = DWS_ChooseOne(Gnd.D6_PrimePower_201);
-			else if(rnd(2)) value = DWS_ChooseOne(Gnd.D6_PrimePower_101);
-			else            value = DWS_ChooseOne(Gnd.D6_Prime);
+			else            value = DWS_ChooseOne(Gnd.D6_PrimePower_101);
+#endif
 		}
 	}
-	while(DWS_Contains(knownValues, value));
+	while(++tryCount < 30 && DWS_Contains(GDc.DWS_KnownValues, value));
+
+	GDc.DWS_KnownValues->AddElement(value);
+
+	LOG("DWS_CreateNumber_tryCount: %d\n", tryCount);
+	LOG("DWS_KnownValues_Count: %d\n", GDc.DWS_KnownValues->GetCount());
 
 	return value;
 }

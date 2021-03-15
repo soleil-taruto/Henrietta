@@ -10,9 +10,11 @@ void GameInit(void)
 	GDc.EnemyList = new autoList<Enemy_t *>();
 
 	GDc.Meteor.EL = new taskList();
-	GDc.Meteor.WallScreen= CreateSubScreen(SCREEN_W, SCREEN_H);
-	GDc.Meteor.ExWallScreen= CreateSubScreen(SCREEN_W, SCREEN_H);
-	GDc.Meteor.FieldScreen= CreateSubScreen(SCREEN_W, SCREEN_H, 1);
+	GDc.Meteor.WallScreen = CreateSubScreen(SCREEN_W, SCREEN_H);
+	GDc.Meteor.ExWallScreen = CreateSubScreen(SCREEN_W, SCREEN_H);
+	GDc.Meteor.FieldScreen = CreateSubScreen(SCREEN_W, SCREEN_H, 1);
+
+	GDc.DWS_KnownValues = new autoList<int>();
 }
 void GameFnlz(void)
 {
@@ -30,6 +32,8 @@ void GameFnlz(void)
 	ReleaseSubScreen(GDc.Meteor.WallScreen);
 	ReleaseSubScreen(GDc.Meteor.ExWallScreen);
 	ReleaseSubScreen(GDc.Meteor.FieldScreen);
+
+	delete GDc.DWS_KnownValues;
 
 	zeroclear(&GDc);
 }
