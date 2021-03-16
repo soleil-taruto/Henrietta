@@ -78,15 +78,15 @@ char *GetGraphicalModeCaption(int grphMd)
 {
 	static char *grphMdTxts[] =
 	{
-		"STANDARD",
+		"ïWèÄ",
 		"LEGACY",
-		"MAP-CHIP STONE",
-		"MAP-CHIP WOOD",
-		"MAP-CHIP WATER",
-		"MAP-CHIP FOREST",
-		"MAP-CHIP FOREST EX",
-		"METEOR SHOWER",
-		"METEOR SHOWER EX",
+		"STONE",
+		"WOOD",
+		"WATER",
+		"FOREST",
+		"FOREST EX",
+		"METEOR",
+		"METEOR EX",
 		"EARTHQUAKER",
 		"GHOST",
 	};

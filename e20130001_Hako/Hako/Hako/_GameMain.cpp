@@ -1260,9 +1260,9 @@ static void PauseGame(void)
 
 		// window
 		{
-			const int WIN_L = 280;
+			const int WIN_L = 264;
 			const int WIN_T = 196;
-			const int WIN_W = 240;
+			const int WIN_W = 272;
 			const int WIN_H = 208;
 
 			DPE_SetAlpha(0.3);
@@ -1320,13 +1320,13 @@ static void PauseGame(void)
 			const int COLOR = GetColor(200, 200, 255);
 			const int BORDER_COLOR = GetColor(100, 100, 200);
 
-			SetPrint(320, 230, 40);
+			SetPrint(305, 230, 40);
 			PE.Color = COLOR;
 			PE_Border(BORDER_COLOR);
 			int c = 0;
-			Print_x(xcout("[%c] CONTINUE", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] ゲームを再開する", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
-			Print_x(xcout("[%c] RESTART", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] リスポーン", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
 
 			if(!GDc.EditableFlag)
@@ -1334,12 +1334,12 @@ static void PauseGame(void)
 				PE.Color = GetColor(100, 100, 100);
 				PE_Border(GetColor(50, 50, 50));
 			}
-			Print_x(xcout("[%c] EDIT FLOOR", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] マップを編集する", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
 			PE.Color = COLOR;
 			PE_Border(BORDER_COLOR);
 
-			Print_x(xcout("[%c] BACK TO TITLE", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] タイトル画面へ戻る", selectIndex == c++ ? '>' : ' '));
 			PE_Reset();
 		}
 

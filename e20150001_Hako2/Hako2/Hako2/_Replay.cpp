@@ -150,14 +150,14 @@ void SaveReplayConfirm(int floorIndex, int playEditMapMode)
 
 			PE_Border(DEF_BORDER_COLOR);
 			SetPrint(x, 236, 40);
-			Print("DO YOU WANT TO SAVE A REPLAY ?");
+			Print("リプレイを保存しますか？");
 			PrintRet();
 			Print_x(xcout("PATH : %s", replayFile));
 			PrintRet();
 			int c = 0;
-			Print_x(xcout("[%c] YES", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] はい", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
-			Print_x(xcout("[%c] NO", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] いいえ", selectIndex == c++ ? '>' : ' '));
 			PE_Reset();
 		}
 
@@ -228,8 +228,8 @@ static void PlayReplay(char *replayFile)
 			DrawWall();
 
 			PE_Border(DEF_BORDER_COLOR);
-			SetPrint(290, 270, 44);
-			Print("MAP DATA FILE NOT FOUND !");
+			SetPrint(180, 270, 44);
+			Print("このリプレイデータは当バージョンでは再生出来ません。");
 			PrintRet();
 			Print("[>] OK");
 
@@ -330,12 +330,12 @@ void ReplayMainMenu(void) // called @ MainMenu
 		{
 			PE_Border(TITLE_BORDER_COLOR);
 			SetPrint(40, 40);
-			Print("**** REPLAY ****");
+			Print("**** リプレイを再生する ****");
 			PE_Reset();
 
 			PE_Border(DEF_BORDER_COLOR);
 			SetPrint(40, 80);
-			Print("SELECT REPLAY DATA FILE");
+			Print("リプレイデータファイルを選択して下さい。");
 
 			SetPrint(640, 80);
 			Print_x(xcout("[ PAGE %02d ]", pageIndex + 1));
@@ -349,7 +349,7 @@ void ReplayMainMenu(void) // called @ MainMenu
 				PrintRet();
 			}
 			PrintRet();
-			Print_x(xcout("[%c] RETURN", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] 戻る", selectIndex == c++ ? '>' : ' '));
 			PE_Reset();
 		}
 

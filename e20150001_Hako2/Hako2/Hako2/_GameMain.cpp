@@ -1294,9 +1294,9 @@ static void PauseGame(void)
 
 		// window
 		{
-			const int WIN_L = 280;
+			const int WIN_L = 232;
 			const int WIN_T = 196;
-			const int WIN_W = 240;
+			const int WIN_W = 336;
 			const int WIN_H = 208;
 
 			DPE_SetAlpha(0.3);
@@ -1354,14 +1354,13 @@ static void PauseGame(void)
 			const int COLOR = GetColor(200, 200, 255);
 			const int BORDER_COLOR = GetColor(100, 100, 200);
 
-			SetPrint(320, 240, 50);
-//			SetPrint(320, 230, 40); // 廃止 @ 2016.10.24
+			SetPrint(280, 240, 50);
 			PE.Color = COLOR;
 			PE_Border(BORDER_COLOR);
 			int c = 0;
-			Print_x(xcout("[%c] CONTINUE", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] ゲームを再開する", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
-			Print_x(xcout("[%c] RESTART", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] スタート地点からやり直す", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
 
 			// 廃止 @ 2016.10.24
@@ -1377,7 +1376,7 @@ static void PauseGame(void)
 			PE_Border(BORDER_COLOR);
 			*/
 
-			Print_x(xcout("[%c] BACK TO TITLE", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] タイトル画面へ戻る", selectIndex == c++ ? '>' : ' '));
 			PE_Reset();
 		}
 

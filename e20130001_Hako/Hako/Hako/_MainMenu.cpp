@@ -293,7 +293,7 @@ static void FloorSelect(int playEditMapMode = 0, int editMode = 0)
 			PE.Color = COLOR;
 			PE_Border(BORDER_COLOR);
 
-			Print_x(xcout("[%c] RETURN", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] 戻る", selectIndex == c++ ? '>' : ' '));
 			PE_Reset();
 		}
 
@@ -384,13 +384,13 @@ static void EditModeMenu(void)
 			SetPrint(240, 230, 40);
 			PE_Border(GetColor(100, 100, 50));
 			int c = 0;
-			Print_x(xcout("[%c] EDIT FLOORS", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] マップ編集モード", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
-			Print_x(xcout("[%c] PLAY EDITED FLOORS", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] 自作マップで遊ぶ", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
-			Print_x(xcout("[%c] PLAY EDITED FLOORS (FLOOR SELECT)", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] 自作マップで遊ぶ (FLOOR SELECT)", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
-			Print_x(xcout("[%c] RETURN", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] 戻る", selectIndex == c++ ? '>' : ' '));
 			PE_Reset();
 		}
 
@@ -403,13 +403,13 @@ endMenu:
 
 // 設定 -->
 
-static void DrawSettingsWall(void)
+static void DrawSettingWall(int w = SCREEN_W / 2)
 {
 	DrawWall();
 
 	DPE_SetAlpha(SUBMENU_WINDOW_A);
 	DPE_SetBright(0.0, 0.0, 0.0);
-	DrawRect(P_WHITEBOX, 0, 0, SCREEN_W / 2, SCREEN_H);
+	DrawRect(P_WHITEBOX, 0, 0, w, SCREEN_H);
 	DPE_Reset();
 
 	CurtainEachFrame();
@@ -449,15 +449,15 @@ static void ButtonConfig(void)
 	};
 	char *btnNames[] =
 	{
-		"UP",
-		"DOWN",
-		"LEFT",
-		"RIGHT",
-		"JUMP / DECIDE",
-		"SLOW / CANCEL",
-		"SCOPE",
-		"QUICK RESTART",
-		"PAUSE",
+		"上",
+		"下",
+		"左",
+		"右",
+		"ジャンプ / 決定",
+		"低速移動 / キャンセル",
+		"視点移動",
+		"リスポーン",
+		"ポーズ",
 	};
 	errorCase(lengthof(pPadBtns) != lengthof(btnNames));
 	int btnMax = lengthof(pPadBtns);
@@ -477,13 +477,15 @@ static void ButtonConfig(void)
 
 	while(btnIndex < btnMax)
 	{
-		if(
-			GetKeyInput(KEY_INPUT_Z) == 1 ||
-			GetKeyInput(KEY_INPUT_X) == 1
-			)
+		if(GetKeyInput(KEY_INPUT_SPACE) == 1) // キャンセル
 		{
 			memcpy(&Gnd.PadBtnId, backup, sizeof(Gnd.PadBtnId)); // 復元
 			break;
+		}
+		if(GetKeyInput(KEY_INPUT_Z) == 1) // 割り当てナシ
+		{
+			*pPadBtns[btnIndex] = -1;
+			btnIndex++;
 		}
 
 		{
@@ -501,40 +503,34 @@ static void ButtonConfig(void)
 endDecideBtnId:;
 		}
 
-		if(GetKeyInput(KEY_INPUT_SPACE) == 1) // 割り当てナシ
-		{
-			*pPadBtns[btnIndex] = -1;
-			btnIndex++;
-		}
-
-		DrawSettingsWall();
+		DrawSettingWall(600);
 
 		PE_Border(GetColor(100, 100, 50));
 		SetPrint(40, 40, 38);
-		Print("**** PAD CONFIG ****");
+		Print("**** ゲームパッドのボタン設定 ****");
 		PrintRet();
 
 		for(int index = 0; index < btnMax; index++)
 		{
-			Print_x(xcout("[%c] %s BUTTON", index == btnIndex ? '>' : ' ', btnNames[index]));
+			Print_x(xcout("[%c] %s ボタン", index == btnIndex ? '>' : ' ', btnNames[index]));
 
 			if(index < btnIndex)
 			{
 				int btnId = *pPadBtns[index];
 
 				if(btnId == -1)
-					Print(" -> NOT ASSIGNED");
+					Print(" -> 割り当てナシ");
 				else
-					Print_x(xcout(" -> %d", *pPadBtns[index]));
+					Print_x(xcout(" -> %02d", *pPadBtns[index]));
 			}
 			PrintRet();
 		}
 		PrintRet();
-		Print("# PRESS A BUTTON INDICATING CURSOR");
+		Print("# カーソルの指す機能に割り当てるボタンを押して下さい。");
 		PrintRet();
-		Print("# PRESS \"X\" OR \"Z\" KEY TO CANCEL");
+		Print("# Ｚキーを押すと割り当てをスキップします。");
 		PrintRet();
-		Print("# PRESS SPACE KEY TO SKIP ASSIGN");
+		Print("# スペースキーを押すとキャンセルします。");
 		PE_Reset();
 
 		EachFrame();
@@ -547,7 +543,7 @@ static void WindowSizeConfig(void)
 {
 	FreezeInput();
 
-	const int selectMax = 12;
+	const int selectMax = 13;
 	int selectIndex = 0;
 
 	for(; ; )
@@ -581,8 +577,9 @@ static void WindowSizeConfig(void)
 			case 7: SetScreenSize(1500, 1125); break;
 			case 8: SetScreenSize(1600, 1200); break;
 			case 9: SetScreenSize(1700, 1275); break;
+			case 10: SetScreenSize(1800, 1350); break;
 
-			case 10:
+			case 11:
 				{
 					int real_w = GetSystemMetrics(SM_CXSCREEN);
 					int real_h = GetSystemMetrics(SM_CYSCREEN);
@@ -607,7 +604,7 @@ static void WindowSizeConfig(void)
 				}
 				break;
 
-			case 11:
+			case 12:
 				goto endMenu;
 
 			default:
@@ -615,14 +612,14 @@ static void WindowSizeConfig(void)
 			}
 		}
 
-		DrawSettingsWall();
+		DrawSettingWall();
 
-		SetPrint(40, 40, 40);
+		SetPrint(40, 40, 38);
 		PE_Border(GetColor(100, 100, 50));
-		Print("**** RESIZE WINDOW ****");
+		Print("**** ウィンドウサイズ設定 ****");
 		PrintRet();
 		int c = 0;
-		Print_x(xcout("[%c] 800 x 600 (DEFAULT)", selectIndex == c++ ? '>' : ' '));
+		Print_x(xcout("[%c] 800 x 600 (デフォルト)", selectIndex == c++ ? '>' : ' '));
 		PrintRet();
 		Print_x(xcout("[%c] 900 x 675", selectIndex == c++ ? '>' : ' '));
 		PrintRet();
@@ -642,9 +639,11 @@ static void WindowSizeConfig(void)
 		PrintRet();
 		Print_x(xcout("[%c] 1700 x 1275", selectIndex == c++ ? '>' : ' '));
 		PrintRet();
-		Print_x(xcout("[%c] FULL SCREEN", selectIndex == c++ ? '>' : ' '));
+		Print_x(xcout("[%c] 1800 x 1350", selectIndex == c++ ? '>' : ' '));
 		PrintRet();
-		Print_x(xcout("[%c] RETURN", selectIndex == c++ ? '>' : ' '));
+		Print_x(xcout("[%c] フルスクリーン", selectIndex == c++ ? '>' : ' '));
+		PrintRet();
+		Print_x(xcout("[%c] 戻る", selectIndex == c++ ? '>' : ' '));
 		PE_Reset();
 
 		EachFrame();
@@ -705,20 +704,30 @@ static void TuneVolume(int seFlag)
 		{
 			SEPlay(Rnd->DRnd() < 0.5 ? SE_PAUSE_IN : SE_PAUSE_OUT);
 		}
-		DrawSettingsWall();
+		DrawSettingWall(500);
 
 		PE_Border(GetColor(100, 100, 50));
-		SetPrint(40, 40, 40);
-		Print_x(xcout("**** %s VOLUME ****", seFlag ? "SE" : "BGM"));
+		SetPrint(40, 40, 38);
+		Print_x(xcout("**** %s音量設定 ****", seFlag ? "ＳＥ" : "ＢＭＧ"));
 		PrintRet();
 		Print_x(xcout("[ %3d ]", volume));
+		PrintRet(); PrintRet(); PrintRet();
+		PrintRet(); PrintRet(); PrintRet();
+		PrintRet(); PrintRet(); PrintRet();
+		Print("# 右 または 上 ＝ 上げる");
+		PrintRet();
+		Print("# 左 または 下 ＝ 下げる");
+		PrintRet();
+		Print("# 調整が終わったら決定ボタンを押して下さい。");
+		PrintRet();
+		Print("# キャンセルボタンを押すと変更をキャンセルします。");
 		PE_Reset();
 
 		EachFrame();
 	}
 	FreezeInput();
 }
-static int SettingsConfirm(char *comment1, char *comment2)
+static int SettingConfirm(char *prompt, char *option1, char *option2, int wall_w = -1) // ret: ? option1 を選択した。
 {
 	int retval = 0;
 
@@ -760,29 +769,19 @@ static int SettingsConfirm(char *comment1, char *comment2)
 			}
 		}
 
-		DrawSettingsWall();
+		if(wall_w == -1)
+			DrawSettingWall();
+		else
+			DrawSettingWall(wall_w);
 
 		SetPrint(40, 40, 40);
 		PE_Border(GetColor(100, 100, 50));
-		Print("**** ARE YOU SURE ? ****");
+		Print_x(xcout("**** %s ****", prompt));
 		PrintRet();
 		int c = 0;
-		Print_x(xcout("[%c] YES", selectIndex == c++ ? '>' : ' '));
+		Print_x(xcout("[%c] %s", selectIndex == c++ ? '>' : ' ', option1));
 		PrintRet();
-		Print_x(xcout("[%c] NO", selectIndex == c++ ? '>' : ' '));
-
-		if(comment1)
-		{
-			PrintRet();
-			PrintRet();
-			Print_x(xcout("# %s", comment1));
-
-			if(comment2)
-			{
-				PrintRet();
-				Print_x(xcout("# %s", comment2));
-			}
-		}
+		Print_x(xcout("[%c] %s", selectIndex == c++ ? '>' : ' ', option2));
 		PE_Reset();
 
 		EachFrame();
@@ -792,7 +791,7 @@ endMenu:
 
 	return retval;
 }
-static void Settings(void)
+static void Setting(void)
 {
 	SetCurtain(60, SUBMENU_WHITE_LV);
 	FreezeInput();
@@ -851,8 +850,8 @@ static void Settings(void)
 				break;
 
 			case 7:
-				if(SettingsConfirm(NULL, NULL)) {
-//				if(SettingsConfirm("ALL CLEAR SHITAKOTO-NI-SHITE", "EDIT MODE WO-KAIHOU-SURU-YO!")) {
+//				if(SettingConfirm(NULL, NULL)) {
+				if(SettingConfirm("ロックされている機能を開放します。", "実行", "キャンセル", 500)) {
 					Gnd.UnclearedFloorIndex = FLOOR_NUM;
 					RestoreOriginalMapsIfNeed();
 					SEPlay(SE_FLOORCLEAR);
@@ -867,31 +866,31 @@ static void Settings(void)
 			}
 		}
 
-		DrawSettingsWall();
+		DrawSettingWall();
 
 		{
 			SetPrint(40, 40, 40);
 			PE_Border(GetColor(100, 100, 50));
-			Print("**** SETTING ****");
+			Print("**** 設定 ****");
 			PrintRet();
 			int c = 0;
-			Print_x(xcout("[%c] PAD CONFIG", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] ゲームパッドのボタン設定", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
-			Print_x(xcout("[%c] RESIZE WINDOW", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] ウィンドウサイズ設定", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
-			Print_x(xcout("[%c] BGM VOLUME", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] ＢＧＭ音量設定", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
-			Print_x(xcout("[%c] SE VOLUME", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] ＳＥ音量設定", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
-			Print_x(xcout("[%c] MOUSE CURSOR MODE : %s", selectIndex == c++ ? '>' : ' ', Gnd.ShowMouseCursorMode ? "SHOW" : "HIDE"));
+			Print_x(xcout("[%c] マウスカーソル : %s", selectIndex == c++ ? '>' : ' ', Gnd.ShowMouseCursorMode ? "表示" : "非表示"));
 			PrintRet();
-			Print_x(xcout("[%c] GRAPHIC MODE : %s", selectIndex == c++ ? '>' : ' ', GetGraphicalModeCaption(Gnd.GraphicalMode)));
+			Print_x(xcout("[%c] グラフィックモード : %s", selectIndex == c++ ? '>' : ' ', GetGraphicalModeCaption(Gnd.GraphicalMode)));
 			PrintRet();
-			Print_x(xcout("[%c] SAVE REPLAY DATA : %s", selectIndex == c++ ? '>' : ' ', Gnd.RecordingMode ? "ON" : "OFF"));
+			Print_x(xcout("[%c] リプレイの保存 : %s", selectIndex == c++ ? '>' : ' ', Gnd.RecordingMode ? "有効" : "無効"));
 			PrintRet();
-			Print_x(xcout("[%c] UNLOCK EXTRA MODE", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] ロックされている機能の開放", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
-			Print_x(xcout("[%c] RETURN", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] 戻る", selectIndex == c++ ? '>' : ' '));
 			PE_Reset();
 		}
 
@@ -1139,7 +1138,7 @@ void MainMenu(void)
 				break;
 
 			case 4:
-				Settings();
+				Setting();
 				break;
 
 			case 5:
