@@ -159,7 +159,7 @@ typedef struct GDc_st
 	int PlayFrameCount;
 	int FloorClearFreezeFlag;
 
-	autoList<int> *DWS_KnownValues;
+	bitList *DWS_KnownValues;
 }
 GDc_t;
 

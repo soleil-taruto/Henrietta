@@ -736,6 +736,12 @@ static int DWS_ChooseOne(autoList<int> *arr)
 {
 	return arr->GetElement(rnd(arr->GetCount()));
 }
+#if 1
+static int DWS_Contains(bitList *arr, int value)
+{
+	return arr->RefBit(value);
+}
+#else // old
 static int DWS_Contains(autoList<int> *arr, int value)
 {
 	for(int index = 0; index < arr->GetCount(); index++)
@@ -744,15 +750,34 @@ static int DWS_Contains(autoList<int> *arr, int value)
 
 	return 0;
 }
+#endif
 static int DWS_CreateNumber(int rightSign)
 {
-	const int TRY_COUNT_MAX = 30;
+	const int TRY_COUNT_MAX = 100;
 
 	int value;
 	int tryCount = 0;
 
 	do
 	{
+#if 1
+		if(rightSign == 2) // ? 正しいルート -> 素数ではない素数べきを表示する。
+		{
+			value = DWS_ChooseOne(Gnd.D6_PrimePower_301);
+		}
+		else if(rightSign == 1) // ? 間違ったルート(但し、正しいルートを装う) -> 素数を表示する。-- ゲーム本編では使用しない。@ 2021.3.16
+		{
+			value = DWS_ChooseOne(Gnd.D6_Prime); // ゲーム本編では使用しない。@ 2021.3.16
+		}
+		else if(rightSign == 0) // ? 間違ったルート -> 素数べきではない整数を表示する。
+		{
+			value = DWS_ChooseOne(Gnd.D6_NotPrimePower_301);
+		}
+		else
+		{
+			error(); // never
+		}
+#else // old
 		if(rightSign == 2) // ? 正しいルート -> 素数べきではない整数を表示する。
 		{
 			     if(rnd(3)) value = DWS_ChooseOne(Gnd.D6_NotPrimePower_501);
@@ -788,13 +813,14 @@ static int DWS_CreateNumber(int rightSign)
 		{
 			error(); // never
 		}
+#endif
 	}
 	while(++tryCount < TRY_COUNT_MAX && DWS_Contains(GDc.DWS_KnownValues, value));
 
-	GDc.DWS_KnownValues->AddElement(value);
+	GDc.DWS_KnownValues->PutBit(value, 1);
 
 	LOG("DWS_CreateNumber_tryCount: %d\n", tryCount);
-	LOG("DWS_KnownValues_Count: %d\n", GDc.DWS_KnownValues->GetCount());
+	LOG("DWS_value: %d\n", value);
 
 	return value;
 }
@@ -807,7 +833,7 @@ static void DrawWallSign(MCell_t *cell, int drawX, int drawY, int rightSign, int
 		if(rightSign == 2) // RIGHT
 			number = 999999;
 		else if(rightSign == 1) // PSEUDO-RIGHT
-			number = 200000;
+			number = 777777;
 		else if(rightSign == 0) // WRONG
 			number = 100000;
 		else
@@ -1182,6 +1208,33 @@ endEdit:
 
 	if(GDc.MapBmpFile)
 		SaveMap(GDc.MapBmpFile); // すぐにセーブする!!
+
+#if LOG_ENABLED
+	{
+		int rightSignCount = 0;
+		int pseudoRightSignCount = 0;
+		int wrongSignCount = 0;
+
+		for(int x = 0; x < GDc.Map->GetWidth(); x++)
+		for(int y = 0; y < GDc.Map->GetHeight(); y++)
+		{
+			MCell_t *cell = GDc.Map->GetCell(x, y);
+
+			switch(cell->CellType)
+			{
+			case CT_WALL_RIGHT_SIGN: rightSignCount++; break;
+			case CT_WALL_PSEUDO_RIGHT_SIGN: pseudoRightSignCount++; break;
+			case CT_WALL_WRONG_SIGN: wrongSignCount++; break;
+
+			default:
+				break;
+			}
+		}
+		LOG("rightSignCount: %d\n", rightSignCount);
+		LOG("pseudoRightSignCount: %d\n", pseudoRightSignCount);
+		LOG("wrongSignCount: %d\n", wrongSignCount);
+	}
+#endif
 }
 static void PauseGame(void)
 {
@@ -1586,7 +1639,9 @@ static void ResetForRestart(void)
 	}
 
 	LOGPOS();
-	if(30 <= GDc.DWS_KnownValues->GetCount()) // ある程度発行していたら、番号リセット
+	/*
+	if(0) // リセットしない。
+//	if(30 <= GDc.DWS_KnownValues->GetCount()) // ある程度発行していたら、番号リセット
 	{
 		LOGPOS();
 		GDc.DWS_KnownValues->Clear();
@@ -1597,6 +1652,7 @@ static void ResetForRestart(void)
 			GDc.Map->GetCell(x, y)->Number = 0;
 		}
 	}
+	*/
 
 	MusicPlay(MUS_FLOOR_01);
 }

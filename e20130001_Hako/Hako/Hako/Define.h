@@ -26,7 +26,7 @@
 #include <DxLib.h>
 
 // [LOG_ENABLED_SWITCH]
-/*
+//*
 #define LOG_ENABLED 0
 /*/
 #define LOG_ENABLED 1

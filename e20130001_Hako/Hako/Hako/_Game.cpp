@@ -14,7 +14,8 @@ void GameInit(void)
 	GDc.Meteor.ExWallScreen = CreateSubScreen(SCREEN_W, SCREEN_H);
 	GDc.Meteor.FieldScreen = CreateSubScreen(SCREEN_W, SCREEN_H, 1);
 
-	GDc.DWS_KnownValues = new autoList<int>();
+	GDc.DWS_KnownValues = new bitList();
+	GDc.DWS_KnownValues->PutBit(999999, 0); // Ž–‘O‚ÉŠg’£‚µ‚Ä‚¨‚­
 }
 void GameFnlz(void)
 {
