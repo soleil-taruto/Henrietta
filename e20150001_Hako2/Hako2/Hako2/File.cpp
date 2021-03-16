@@ -30,7 +30,7 @@ void getFileList(char *dir, autoList<char *> *subDirs, autoList<char *> *files)
 {
 	errorCase(m_isEmpty(dir));
 
-	char *wCard = xcout("%s\\*", dir);
+	char *wCard = xcout("%s\\*.rpy", dir);
 	intptr_t h = _findfirst(wCard, &lastFindData);
 	memFree(wCard);
 
@@ -47,8 +47,8 @@ void getFileList(char *dir, autoList<char *> *subDirs, autoList<char *> *files)
 
 			// app >
 
-			if(_stricmp(refExt(name), "rpy"))
-				continue;
+//			if(_stricmp(refExt(name), "rpy"))
+//				continue;
 
 			/*
 				長時間 ProcessMessage() を呼ばないと BGM がおかしくなるかと思ったけど、ちゃんと途切れずループした。
