@@ -24,7 +24,8 @@ static int IIF_IsChooseH(MCell_t *cell, int x, int y)
 }
 static void InitItaFlag(void)
 {
-	for(int loopcnt = 1; ; loopcnt++)
+	int loopcnt;
+	for(loopcnt = 1; ; loopcnt++)
 	{
 		int chose = 0;
 		autoList<i2D_t> *posList;
@@ -104,6 +105,8 @@ static void InitItaFlag(void)
 		if(!chose)
 			break;
 
+		// del v_20210317
+		/*
 		if(FrameStartTime + 10 < GetCurrTime()) // zantei
 		{
 			DrawCurtain();
@@ -111,8 +114,11 @@ static void InitItaFlag(void)
 			printfDx("Initializing... lc:%d v:%d h:%d\n", loopcnt, vcrlc, hcrlc);
 			EachFrame();
 		}
+		*/
 	}
-	clsDx(); // zantei
+	clsDx(); // zantei // ‰½‚©‚ ‚Á‚½‚çŒ™‚È‚Ì‚ÅŽc‚µ‚Ä‚¨‚­ v_20210317
+
+	LOG("InitItaFlag_loopcnt: %d\n", loopcnt);
 
 	for(int x = 0; x < GDc.Map->GetWidth(); x++)
 	for(int y = 0; y < GDc.Map->GetHeight(); y++)
