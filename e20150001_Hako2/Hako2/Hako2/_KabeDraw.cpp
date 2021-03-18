@@ -452,38 +452,52 @@ void SetKabe_03(void)
 	GDc.KabeDrawFunc = KabeDraw_03;
 //	GDc.KabeBr_A = 1.0; // ‚±‚êƒfƒtƒH..
 
-	double r = CameraX / 24800.0;
+	const double BR_1 = 1.5;
+	const double BG_1 = 0.6;
+	const double BB_1 = 0.3;
 
-	m_rate(r);
+	const double BR_2 = 0.1;
+	const double BG_2 = 0.2;
+	const double BB_2 = 0.4;
 
-	r *= 100.0;
-	r = (double)m_d2i(r);
-	r /= 100.0;
+	const double BR_3 = 1.3;
+	const double BG_3 = 1.3;
+	const double BB_3 = 0.0;
 
-	if(r < 0.5)
+	if(GDc.Player.X < 7200 * IDENOM)
 	{
-		r *= 2.0;
-		r *= r;
-		m_range(r, 0.0, 1.0);
+		GDc.KabeBr_R = BR_1;
+		GDc.KabeBr_G = BG_1;
+		GDc.KabeBr_B = BB_1;
+	}
+	else if(GDc.Player.X < 24800 * IDENOM)
+	{
+		double r = RateAToB(0 * IDENOM, 24800 * IDENOM, GDc.Player.X);
 
-		GDc.KabeBr_R = AToBRate(1.5, 0.1, r);
-		GDc.KabeBr_G = AToBRate(0.6, 0.2, r);
-		GDc.KabeBr_B = AToBRate(0.3, 0.4, r);
+		m_rate(r);
+
+		r *= 100.0;
+		r = (double)m_d2i(r);
+		r /= 100.0;
+
+		GDc.KabeBr_R = AToBRate(BR_1, BR_2, r);
+		GDc.KabeBr_G = AToBRate(BG_1, BG_2, r);
+		GDc.KabeBr_B = AToBRate(BB_1, BB_2, r);
 	}
 	else
 	{
 		if(GDc.Player.X < 19860 * IDENOM)
 //		if(GDc.Player.X < 20000 * IDENOM)
 		{
-			GDc.KabeBr_R = 0.1;
-			GDc.KabeBr_G = 0.2;
-			GDc.KabeBr_B = 0.4;
+			GDc.KabeBr_R = BR_2;
+			GDc.KabeBr_G = BG_2;
+			GDc.KabeBr_B = BB_2;
 		}
 		else
 		{
-			GDc.KabeBr_R = 1.3;
-			GDc.KabeBr_G = 1.3;
-			GDc.KabeBr_B = 0.0;
+			GDc.KabeBr_R = BR_3;
+			GDc.KabeBr_G = BG_3;
+			GDc.KabeBr_B = BB_3;
 		}
 	}
 
