@@ -452,6 +452,14 @@ void SetKabe_03(void)
 	GDc.KabeDrawFunc = KabeDraw_03;
 //	GDc.KabeBr_A = 1.0; // ‚±‚êƒfƒtƒH..
 
+	double r = CameraX / 24800.0;
+
+	m_rate(r);
+
+	r *= 100.0;
+	r = (double)m_d2i(r);
+	r /= 100.0;
+
 	const double BR_1 = 1.5;
 	const double BG_1 = 0.6;
 	const double BB_1 = 0.3;
@@ -464,21 +472,11 @@ void SetKabe_03(void)
 	const double BG_3 = 1.3;
 	const double BB_3 = 0.0;
 
-	if(GDc.Player.X < 7200 * IDENOM)
+	if(r < 0.5)
 	{
-		GDc.KabeBr_R = BR_1;
-		GDc.KabeBr_G = BG_1;
-		GDc.KabeBr_B = BB_1;
-	}
-	else if(GDc.Player.X < 24800 * IDENOM)
-	{
-		double r = RateAToB(0 * IDENOM, 24800 * IDENOM, GDc.Player.X);
-
-		m_rate(r);
-
-		r *= 100.0;
-		r = (double)m_d2i(r);
-		r /= 100.0;
+		r *= 2.0;
+		r *= r;
+		m_range(r, 0.0, 1.0);
 
 		GDc.KabeBr_R = AToBRate(BR_1, BR_2, r);
 		GDc.KabeBr_G = AToBRate(BG_1, BG_2, r);
@@ -521,5 +519,12 @@ void SetKabe_03(void)
 		m_approach(a, aTarg, 0.99);
 
 		GDc.KabeBr_B += a;
+	}
+
+	if(GDc.Player.X < 7200 * IDENOM)
+	{
+		GDc.KabeBr_R = BR_1;
+		GDc.KabeBr_G = BG_1;
+		GDc.KabeBr_B = BB_1;
 	}
 }
