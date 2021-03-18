@@ -927,7 +927,7 @@ static void Setting(void)
 				
 			case 5:
 //				if(SettingConfirm(NULL, NULL)) {
-				if(SettingConfirm("ロックされている機能を開放します。", "実行", "キャンセル", 500)) {
+				if(SettingConfirm("ロックされているフロアを開放します。", "実行", "キャンセル", 500)) {
 					UnlockAllFloor();
 					SEPlay(SE_FLOORCLEAR);
 				}
@@ -968,7 +968,7 @@ static void Setting(void)
 			*/
 			Print_x(xcout("[%c] リプレイの保存 : %s", selectIndex == c++ ? '>' : ' ', Gnd.RecordingMode ? "有効" : "無効"));
 			PrintRet();
-			Print_x(xcout("[%c] ロックされている機能の開放", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] ロックされているフロアの開放", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
 			Print_x(xcout("[%c] リスポーン・コインの数", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
