@@ -164,6 +164,9 @@ void EachFrameEnemyWall(Enemy_t *i)
 }
 void DrawEnemyWall(Enemy_t *i)
 {
+	if(GDc.FloorIndex == 1) // ? Floor 2 -> Œ©‚¦‚È‚¢B
+		return;
+
 	i2D_t pos = GetScreenCellPos(i->X, i->Y);
 
 	DPE_SetBright(
