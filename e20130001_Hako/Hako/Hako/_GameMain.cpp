@@ -732,9 +732,12 @@ static void DrawGraphicalCell(MCell_t *cell, int dr_x, int dr_y)
 		error();
 	}
 }
+
+static Random *DWS_Rand;
+
 static int DWS_ChooseOne(autoList<int> *arr)
 {
-	return arr->GetElement(rnd(arr->GetCount()));
+	return arr->GetElement(DWS_Rand->Rnd(arr->GetCount()));
 }
 #if 1
 static int DWS_Contains(bitList *arr, int value)
@@ -824,6 +827,38 @@ static int DWS_CreateNumber(int rightSign)
 
 	return value;
 }
+void TPCN_INIT(void)
+{
+	int seed = (int)(time(NULL) / (7 * 86400)); // 7“ú(T1)‚Å•Ï‚í‚éB
+//	int seed = (int)(time(NULL) / ((7 * 86400) / 2)); // 3.5“ú(T2)‚Å•Ï‚í‚éB
+
+	LOGPOS();
+	LOG("DWS_seed: %d\n", seed);
+
+	DWS_Rand = new Random(seed);
+}
+void TPCN_FNLZ(void)
+{
+	LOGPOS();
+
+	delete DWS_Rand;
+	DWS_Rand = NULL;
+}
+void TryPutCellNumber(MCell_t *cell)
+{
+	if(cell->CellType == CT_WALL_RIGHT_SIGN)
+	{
+		cell->Number = DWS_CreateNumber(2);
+	}
+	if(cell->CellType == CT_WALL_PSEUDO_RIGHT_SIGN)
+	{
+		cell->Number = DWS_CreateNumber(1);
+	}
+	if(cell->CellType == CT_WALL_WRONG_SIGN)
+	{
+		cell->Number = DWS_CreateNumber(0);
+	}
+}
 static void DrawWallSign(MCell_t *cell, int drawX, int drawY, int rightSign, int editMode)
 {
 	int number;
@@ -833,7 +868,7 @@ static void DrawWallSign(MCell_t *cell, int drawX, int drawY, int rightSign, int
 		if(rightSign == 2) // RIGHT
 			number = 999999;
 		else if(rightSign == 1) // PSEUDO-RIGHT
-			number = 777777;
+			number = 666666;
 		else if(rightSign == 0) // WRONG
 			number = 100000;
 		else
@@ -842,7 +877,8 @@ static void DrawWallSign(MCell_t *cell, int drawX, int drawY, int rightSign, int
 	else
 	{
 		if(!cell->Number)
-			cell->Number = DWS_CreateNumber(rightSign);
+			cell->Number = 333333;
+//			cell->Number = DWS_CreateNumber(rightSign); // old
 
 		number = cell->Number;
 	}

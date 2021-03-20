@@ -8,4 +8,8 @@
 #define EDIT_WIN_W 240
 #define EDIT_WIN_H ((SCREEN_H / 16) * 16)
 
+void TPCN_INIT(void);
+void TPCN_FNLZ(void);
+void TryPutCellNumber(MCell_t *cell);
+
 void GameMain(void);

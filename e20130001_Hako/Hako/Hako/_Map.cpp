@@ -215,6 +215,8 @@ endCellType:
 	}
 	InitItaFlag();
 
+	TPCN_INIT();
+
 	for(int x = 0; x < GDc.Map->GetWidth(); x++)
 	for(int y = 0; y < GDc.Map->GetHeight(); y++)
 	{
@@ -225,7 +227,10 @@ endCellType:
 			cell->DecoFlag = 1;
 		}
 		cell->KusaId = GDc.Rnd->Rnd(8);
+
+		TryPutCellNumber(cell);
 	}
+	TPCN_FNLZ();
 }
 void LoadMap_x(autoTable<uint> *bmp)
 {
