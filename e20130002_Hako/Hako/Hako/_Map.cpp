@@ -184,7 +184,7 @@ void LoadMap(autoTable<uint> *bmp)
 			break;
 
 		case m_bmpColor(255, 100, 255):
-			cell->CellType = CT_WALL_PSEUDO_RIGHT_SIGN;
+			cell->CellType = CT_WALL_THIRD_SIGN;
 			break;
 
 		case m_bmpColor(100, 100, 255):
@@ -263,7 +263,7 @@ void SaveMap(autoTable<uint> *bmp)
 			color = m_bmpColor(255, 100, 100); // ペイント対応無し
 			break;
 
-		case CT_WALL_PSEUDO_RIGHT_SIGN:
+		case CT_WALL_THIRD_SIGN:
 			color = m_bmpColor(255, 100, 255); // ペイント対応無し
 			break;
 

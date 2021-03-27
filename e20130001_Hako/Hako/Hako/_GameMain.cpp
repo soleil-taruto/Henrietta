@@ -754,7 +754,7 @@ static int DWS_Contains(autoList<int> *arr, int value)
 	return 0;
 }
 #endif
-static int DWS_CreateNumber(int rightSign)
+static int DWS_CreateNumber(int routeSign)
 {
 	const int TRY_COUNT_MAX = 100;
 
@@ -764,15 +764,15 @@ static int DWS_CreateNumber(int rightSign)
 	do
 	{
 #if 1
-		if(rightSign == 2) // ? 正しいルート -> 素数ではない素数べきを表示する。
+		if(routeSign == 2) // ? 正しいルート -> ( 平方数 && 素数べき ) を表示する。
 		{
 			value = DWS_ChooseOne(Gnd.D6_PrimePower_301);
 		}
-		else if(rightSign == 1) // ? 間違ったルート(但し、正しいルートを装う) -> 素数を表示する。-- ゲーム本編では使用しない。@ 2021.3.16
+		else if(routeSign == 1) // ? 不使用 -> 素数を表示する。
 		{
-			value = DWS_ChooseOne(Gnd.D6_Prime); // ゲーム本編では使用しない。@ 2021.3.16
+			value = DWS_ChooseOne(Gnd.D6_Prime);
 		}
-		else if(rightSign == 0) // ? 間違ったルート -> 素数べきではない整数を表示する。
+		else if(routeSign == 0) // ? 間違ったルート -> ( 半素数 && not 素数べき ) を表示する。
 		{
 			value = DWS_ChooseOne(Gnd.D6_NotPrimePower_301);
 		}
@@ -850,7 +850,7 @@ void TryPutCellNumber(MCell_t *cell)
 	{
 		cell->Number = DWS_CreateNumber(2);
 	}
-	if(cell->CellType == CT_WALL_PSEUDO_RIGHT_SIGN)
+	if(cell->CellType == CT_WALL_THIRD_SIGN)
 	{
 		cell->Number = DWS_CreateNumber(1);
 	}
@@ -865,11 +865,11 @@ static void DrawWallSign(MCell_t *cell, int drawX, int drawY, int rightSign, int
 
 	if(editMode)
 	{
-		if(rightSign == 2) // RIGHT
+		if(rightSign == 2) // RIGHT-SIGN
 			number = 999999;
-		else if(rightSign == 1) // PSEUDO-RIGHT
-			number = 666666;
-		else if(rightSign == 0) // WRONG
+		else if(rightSign == 1) // THIRD-SIGN
+			number = 606060;
+		else if(rightSign == 0) // WRONG-SIGN
 			number = 100000;
 		else
 			error(); // never
@@ -969,7 +969,7 @@ static void DrawField(int editMode = 0)
 				{
 					DrawWallSign(cell, drawX, drawY, 2, editMode);
 				}
-				if(cell->CellType == CT_WALL_PSEUDO_RIGHT_SIGN)
+				if(cell->CellType == CT_WALL_THIRD_SIGN)
 				{
 					DrawWallSign(cell, drawX, drawY, 1, editMode);
 				}
@@ -1248,7 +1248,7 @@ endEdit:
 #if LOG_ENABLED
 	{
 		int rightSignCount = 0;
-		int pseudoRightSignCount = 0;
+		int thirdSignCount = 0;
 		int wrongSignCount = 0;
 
 		for(int x = 0; x < GDc.Map->GetWidth(); x++)
@@ -1259,7 +1259,7 @@ endEdit:
 			switch(cell->CellType)
 			{
 			case CT_WALL_RIGHT_SIGN: rightSignCount++; break;
-			case CT_WALL_PSEUDO_RIGHT_SIGN: pseudoRightSignCount++; break;
+			case CT_WALL_THIRD_SIGN: thirdSignCount++; break;
 			case CT_WALL_WRONG_SIGN: wrongSignCount++; break;
 
 			default:
@@ -1267,7 +1267,7 @@ endEdit:
 			}
 		}
 		LOG("rightSignCount: %d\n", rightSignCount);
-		LOG("pseudoRightSignCount: %d\n", pseudoRightSignCount);
+		LOG("thirdSignCount: %d\n", thirdSignCount);
 		LOG("wrongSignCount: %d\n", wrongSignCount);
 	}
 #endif

@@ -2,7 +2,7 @@
 	( \
 		(cellType) == CT_WALL || \
 		(cellType) == CT_WALL_RIGHT_SIGN || \
-		(cellType) == CT_WALL_PSEUDO_RIGHT_SIGN || \
+		(cellType) == CT_WALL_THIRD_SIGN || \
 		(cellType) == CT_WALL_WRONG_SIGN || m_isRange((cellType), ET_COOKIE_FIRST, ET_COOKIE_LAST))
 
 #define EDIT_WIN_W 240

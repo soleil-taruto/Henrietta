@@ -178,9 +178,9 @@ void DrawEditCell(int cellType, int dr_x, int dr_y, int allFlag)
 		DrawCell(dr_x, dr_y, 0.7, 0.7, 0.0, "W+", GetColor(100, 50, 50));
 		return;
 	}
-	if(cellType == CT_WALL_PSEUDO_RIGHT_SIGN)
+	if(cellType == CT_WALL_THIRD_SIGN)
 	{
-		DrawCell(dr_x, dr_y, 0.7, 0.7, 0.0, "W?", GetColor(50, 50, 100));
+		DrawCell(dr_x, dr_y, 0.7, 0.7, 0.0, "W3", GetColor(50, 50, 100));
 		return;
 	}
 	if(cellType == CT_WALL_WRONG_SIGN)
