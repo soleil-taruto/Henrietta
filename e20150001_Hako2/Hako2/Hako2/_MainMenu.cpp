@@ -840,7 +840,7 @@ static void RespawnCoinStockMenu(void)
 
 		DrawSettingWall(660);
 
-		SetPrint(40, 40, 36);
+		SetPrint(40, 40, 25);
 		PE_Border(DEF_BORDER_COLOR);
 		Print("**** リスポーン・コイン数の変更 (リスポーン地点設置回数の変更) ****");
 		PrintRet();

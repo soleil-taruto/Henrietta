@@ -142,4 +142,4 @@ Touch_t;
 #define FLOOR_02_WALL_MAX 24
 
 #define RESPAWN_DEF 6
-#define RESPAWN_MAX_MAX 12 // MIN ‚Í 0
+#define RESPAWN_MAX_MAX 18 // MIN ‚Í 0
