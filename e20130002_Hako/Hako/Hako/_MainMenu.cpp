@@ -456,7 +456,7 @@ static void ButtonConfig(void)
 		"ジャンプ / 決定",
 		"低速移動 / キャンセル",
 		"視点移動",
-		"リスポーン",
+		"スタート地点へ戻る",
 		"ポーズ",
 	};
 	errorCase(lengthof(pPadBtns) != lengthof(btnNames));

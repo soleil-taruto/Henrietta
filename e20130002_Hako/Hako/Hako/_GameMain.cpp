@@ -1415,7 +1415,7 @@ static void PauseGame(void)
 			int c = 0;
 			Print_x(xcout("[%c] ゲームを再開する", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
-			Print_x(xcout("[%c] リスポーン", selectIndex == c++ ? '>' : ' '));
+			Print_x(xcout("[%c] スタート地点へ戻る", selectIndex == c++ ? '>' : ' '));
 			PrintRet();
 
 			if(!GDc.EditableFlag)
