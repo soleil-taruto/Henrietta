@@ -1045,8 +1045,8 @@ drawStart:
 			PE.Color = COLOR;
 			PE_Border(BORDER_COLOR);
 
-			Print_x(xcout("[%c] RETURN", selectIndex == c++ ? '>' : ' '));
-			Print("          ---------- TOTAL ----------");
+			Print_x(xcout("[%c] –ß‚é", selectIndex == c++ ? '>' : ' '));
+			Print("            ---------- TOTAL ----------");
 			PrintRet();
 			Print("                    ");
 
