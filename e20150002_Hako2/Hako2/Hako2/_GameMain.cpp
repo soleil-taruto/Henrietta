@@ -2261,9 +2261,16 @@ endPlayer:
 
 		if(!GDc.ReplayMode) // three-coin
 		{
-			const int DRAW_X_STEP = 27;
-			const int DRAW_L = 810 - DRAW_X_STEP * Gnd.RespawnMax;
-			const int DRAW_T = 580;
+			int DRAW_X_STEP = 27;
+			int DRAW_L = 810 - DRAW_X_STEP * Gnd.RespawnMax;
+			int DRAW_T = 580;
+
+			if(Gnd.RespawnMax == RESPAWN_MAX_GORGEOUS_MAX)
+			{
+				DRAW_X_STEP = 26;
+				DRAW_L = 24;
+				DRAW_T = 584;
+			}
 			double a;
 			static double aa = 0.0;
 			int camSliding =

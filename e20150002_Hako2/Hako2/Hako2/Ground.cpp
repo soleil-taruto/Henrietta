@@ -233,7 +233,7 @@ void ImportSaveData(void)
 	Gnd.UnclearedFloorIndex = SD_ReadInt(0, FLOOR_NUM);
 	Gnd.GraphicalMode = SD_ReadInt(0, GM_MAX - 1);
 	Gnd.RecordingMode = SD_ReadBoolean();
-	Gnd.RespawnMax = SD_ReadInt(0, RESPAWN_MAX_MAX);
+	Gnd.RespawnMax = SD_ReadInt(0, RESPAWN_MAX_GORGEOUS_MAX);
 
 	// }
 

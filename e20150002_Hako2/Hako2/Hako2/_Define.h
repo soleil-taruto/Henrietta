@@ -142,4 +142,5 @@ Touch_t;
 #define FLOOR_02_WALL_MAX 24
 
 #define RESPAWN_DEF 6
-#define RESPAWN_MAX_MAX 18 // MIN ÇÕ 0
+#define RESPAWN_MAX_SELECTABLE_MAX 12
+#define RESPAWN_MAX_GORGEOUS_MAX 30 // RespawnMax ÇÃç≈ëÂíl && GORGEOUS ëIëéûÇÃ RespawnMax íl // MIN ÇÕ 0

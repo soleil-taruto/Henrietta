@@ -810,7 +810,7 @@ static void RespawnCoinStockMenu(void)
 {
 	FreezeInput();
 
-	const int selectMax = RESPAWN_MAX_MAX + 2;
+	const int selectMax = RESPAWN_MAX_SELECTABLE_MAX + 3;
 	int selectIndex = Gnd.RespawnMax;
 
 	for(; ; )
@@ -835,18 +835,21 @@ static void RespawnCoinStockMenu(void)
 			if(selectIndex == selectMax - 1)
 				break;
 
-			Gnd.RespawnMax = selectIndex;
+			if(selectIndex == selectMax - 2)
+				Gnd.RespawnMax = RESPAWN_MAX_GORGEOUS_MAX;
+			else
+				Gnd.RespawnMax = selectIndex;
 		}
 
 		DrawSettingWall(660);
 
-		SetPrint(40, 40, 25);
+		SetPrint(40, 40, 33);
 		PE_Border(DEF_BORDER_COLOR);
 		Print("**** リスポーン・コイン数の変更 (リスポーン地点設置回数の変更) ****");
 		PrintRet();
 		int c = 0;
 
-		while(c <= RESPAWN_MAX_MAX)
+		while(c <= RESPAWN_MAX_SELECTABLE_MAX)
 		{
 			Print_x(xcout(
 				"[%c] %c %d COIN%s%s"
@@ -859,6 +862,17 @@ static void RespawnCoinStockMenu(void)
 			PrintRet();
 			c++;
 		}
+
+		{
+			Print_x(xcout(
+				"[%c] %c GORGEOUS"
+				,selectIndex == c ? '>' : ' '
+				,Gnd.RespawnMax == RESPAWN_MAX_GORGEOUS_MAX ? '*' : ' '
+				));
+			PrintRet();
+			c++;
+		}
+
 		Print_x(xcout("[%c] 戻る", selectIndex == c++ ? '>' : ' '));
 		PrintRet();
 
