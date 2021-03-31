@@ -93,3 +93,18 @@ void ExecMyPrint(void);
 
 char *getSelfFile(void);
 char *getSelfDir(void);
+
+void replaceChar(char *str, int fromChr, int toChr);
+void eraseLocal(char *path);
+
+#define isMbc1(c) ( \
+	'\x81' <= (c) && (c) <= '\x9f' || \
+	'\xe0' <= (c) && (c) <= '\xfc')
+
+#define isMbc(p) \
+	(isMbc1((p)[0]) && (p)[1])
+//	(_ismbblead((p)[0]) && (p)[1])
+//	(_ismbblead((p)[0]) && _ismbbtrail((p)[1]))
+
+#define mbsNext(p) \
+	(p + (isMbc(p) ? 2 : 1))

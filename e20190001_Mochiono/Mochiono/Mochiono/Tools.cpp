@@ -444,17 +444,29 @@ char *getSelfFile(void)
 	}
 	return fileBuff;
 }
-static void S_ReplaceChar(char *str, char from, char to)
+char *getSelfDir(void)
 {
-	for(char *p = str; *p; p = _ismbblead(*p) && p[1] ? p + 2 : p + 1)
-		if(*p == from)
-			*p = to;
+	static char *dirBuff;
+
+	if(!dirBuff)
+	{
+		dirBuff = strx(getSelfFile());
+		eraseLocal(dirBuff);
+	}
+	return dirBuff;
 }
-static void S_EraseLocal(char *path) // path: フルパスであること
+
+void replaceChar(char *str, int fromChr, int toChr) // mbs_
 {
-	S_ReplaceChar(path, '\\', '/');
+	for(char *p = str; *p; p = mbsNext(p))
+		if(*p == fromChr)
+			*p = toChr;
+}
+void eraseLocal(char *path) // path: フルパスであること
+{
+	replaceChar(path, '\\', '/');
 	char *p = strrchr(path, '/');
-	S_ReplaceChar(path, '/', '\\');
+	replaceChar(path, '/', '\\');
 
 	if(p)
 	{
@@ -463,15 +475,4 @@ static void S_EraseLocal(char *path) // path: フルパスであること
 
 		*p = '\0';
 	}
-}
-char *getSelfDir(void)
-{
-	static char *dirBuff;
-
-	if(!dirBuff)
-	{
-		dirBuff = strx(getSelfFile());
-		S_EraseLocal(dirBuff);
-	}
-	return dirBuff;
 }
