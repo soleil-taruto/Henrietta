@@ -20,6 +20,8 @@ void error2(char *source, int lineno, char *function)
 	}
 	callcnt++;
 
+	SetDrawScreen(DX_SCREEN_BACK);
+
 //	ClearDrawScreen();
 	DrawBox( 0, 0, 800, 600, GetColor(32, 0, 64), 1);
 
@@ -537,4 +539,44 @@ static void SetScreenPosition_WH(int w, int h)
 void AdjustScreenPosition(int w, int h)
 {
 	SetScreenPosition_WH(w, h);
+}
+
+int DrawScreen_L = 0;
+int DrawScreen_T = 0;
+int DrawScreen_W = 800;
+int DrawScreen_H = 600;
+
+void SetDrawScreen_LTWH(int fullScreenFlag)
+{
+	if(fullScreenFlag)
+	{
+		int screen_w = GetSystemMetrics(SM_CXSCREEN);
+		int screen_h = GetSystemMetrics(SM_CYSCREEN);
+		int game_w = 800;
+		int game_h = 600;
+		int w;
+		int h;
+
+		w = screen_w;
+		h = (game_h * screen_w) / game_w;
+
+		if(screen_h < h)
+		{
+			w = (game_w * screen_h) / game_h;
+			h = screen_h;
+
+			errorCase(screen_w < w);
+		}
+		DrawScreen_L = (screen_w - w) / 2;
+		DrawScreen_T = (screen_h - h) / 2;
+		DrawScreen_W = w;
+		DrawScreen_H = h;
+	}
+	else
+	{
+		DrawScreen_L = 0;
+		DrawScreen_T = 0;
+		DrawScreen_W = 800;
+		DrawScreen_H = 600;
+	}
 }

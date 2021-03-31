@@ -2194,6 +2194,7 @@ void PzMain(void)
 					{
 						GameTermination();
 					}
+					errorCase(SetDrawScreen(DX_SCREEN_BACK)); // ? Ž¸”s
 					// ----
 					clsDx();
 

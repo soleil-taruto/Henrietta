@@ -110,3 +110,10 @@ void eraseLocal(char *path);
 	(p + (isMbc(p) ? 2 : 1))
 
 void AdjustScreenPosition(int w, int h);
+
+extern int DrawScreen_L;
+extern int DrawScreen_T;
+extern int DrawScreen_W;
+extern int DrawScreen_H;
+
+void SetDrawScreen_LTWH(int fullScreenFlag);

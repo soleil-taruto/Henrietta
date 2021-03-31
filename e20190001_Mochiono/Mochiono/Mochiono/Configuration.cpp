@@ -458,6 +458,7 @@ void CfgMain(void)
 					}
 
 					AdjustScreenPosition(w, h);
+					SetDrawScreen_LTWH(SettInfo.FullScreenMode);
 				}
 			}
 			if(on_kidoku) SettInfo.Midokumotobasu = 0;

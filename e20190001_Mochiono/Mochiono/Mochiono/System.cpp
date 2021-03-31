@@ -251,7 +251,7 @@ static void ScreenZoomControl(void)
 #endif
 int ProcFrmCnt;
 int Pub_MainScreen = -1;
-void SwapFrame(void)
+void SwapFrame(void) // EachFrame
 {
 	ProcFrmCnt++;
 
@@ -274,14 +274,32 @@ void SwapFrame(void)
 		{
 			errorCase(SetDrawScreen(DX_SCREEN_BACK)); // ? é∏îs
 
-			DrawExtendGraph(
-				0,
-				0,
-				800,
-				600,
-				mainScreen,
-				0
-				);
+			if(SettInfo.FullScreenMode)
+			{
+				ClearDrawScreen();
+
+				SetAntiAlias(1);
+				DrawExtendGraph(
+					DrawScreen_L,
+					DrawScreen_T,
+					DrawScreen_L + DrawScreen_W,
+					DrawScreen_T + DrawScreen_H,
+					mainScreen,
+					0
+					);
+				SetAntiAlias(0);
+			}
+			else
+			{
+				DrawExtendGraph(
+					0,
+					0,
+					800,
+					600,
+					mainScreen,
+					0
+					);
+			}
 		}
 		ScreenFlip();
 
@@ -312,7 +330,6 @@ void SwapFrame(void)
 
 	IH_PadLastPressed = IH_PadPressed;
 	IH_PadPressed = 0;
-
 
 	// fps --->
 
@@ -383,6 +400,19 @@ int GetHitPad(int padNo) // padNo : 0 - 1
 
 void SetMusPos(int xp, int yp)
 {
+	{
+		const int GAME_W = 800;
+		const int GAME_H = 600;
+
+		xp *= DrawScreen_W;
+		xp /= GAME_W;
+		xp += DrawScreen_L;
+
+		yp *= DrawScreen_H;
+		yp /= GAME_H;
+		yp += DrawScreen_T;
+	}
+
 	if(SetMousePoint(xp, yp) != 0)
 	{
 		error();
@@ -393,6 +423,19 @@ void GetMusPos(int *xp, int *yp)
 	if(GetMousePoint(xp, yp) != 0)
 	{
 		error();
+	}
+
+	{
+		const int GAME_W = 800;
+		const int GAME_H = 600;
+
+		*xp -= DrawScreen_L;
+		*xp *= GAME_W;
+		*xp /= DrawScreen_W;
+
+		*yp -= DrawScreen_T;
+		*yp *= GAME_H;
+		*yp /= DrawScreen_H;
 	}
 }
 int GetMusBtn(void) // ret : (ç∂: 1) | (âE: 2)
