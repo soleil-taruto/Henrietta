@@ -438,9 +438,9 @@ char *getSelfFile(void)
 		errorCase(_stricmp(strchr(fileBuff, '\0') - 4, ".exe"));
 
 //		fileBuff = strr(fileBuff);
-		char *tmp = strx(fileBuff);
+		char *ltmp = strx(fileBuff);
 		memFree(fileBuff);
-		fileBuff = tmp;
+		fileBuff = ltmp;
 	}
 	return fileBuff;
 }

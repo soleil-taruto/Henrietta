@@ -727,7 +727,7 @@ static void TuneVolume(int seFlag)
 	}
 	FreezeInput();
 }
-static int SettingConfirm(char *prompt, char *option1, char *option2, int wall_w = -1) // ret: ? option1 を選択した。
+static int SettingConfirm(char *prompt, char *option1, char *option2, int wall_w = -1, char *comment = NULL) // ret: ? option1 を選択した。
 {
 	int retval = 0;
 
@@ -782,6 +782,15 @@ static int SettingConfirm(char *prompt, char *option1, char *option2, int wall_w
 		Print_x(xcout("[%c] %s", selectIndex == c++ ? '>' : ' ', option1));
 		PrintRet();
 		Print_x(xcout("[%c] %s", selectIndex == c++ ? '>' : ' ', option2));
+
+		if(comment)
+		{
+			PrintRet(); PrintRet(); PrintRet();
+			PrintRet(); PrintRet(); PrintRet();
+			PrintRet(); PrintRet(); PrintRet();
+			PrintRet(); PrintRet();
+			Print_x(xcout("# %s", comment));
+		}
 		PE_Reset();
 
 		EachFrame();
@@ -851,7 +860,7 @@ static void Setting(void)
 
 			case 7:
 //				if(SettingConfirm(NULL, NULL)) {
-				if(SettingConfirm("ロックされている機能を開放します。", "実行", "キャンセル", 500)) {
+				if(SettingConfirm("ロックされている機能を開放します。", "実行", "キャンセル", 500, "エンディングを見るとロックは解除されます。")) {
 					Gnd.UnclearedFloorIndex = FLOOR_NUM;
 					RestoreOriginalMapsIfNeed();
 					SEPlay(SE_FLOORCLEAR);
