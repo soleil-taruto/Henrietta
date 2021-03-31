@@ -181,6 +181,7 @@ void SwapFrameScreen(void)
 	else
 		ScreenFlip();
 }
+#if 0 // îpé~
 static void ScreenZoomControl(void)
 {
 	static int pressCnt;
@@ -247,6 +248,7 @@ static void ScreenZoomControl(void)
 		frmcnt++;
 	}
 }
+#endif
 int ProcFrmCnt;
 void SwapFrame(void)
 {
@@ -259,7 +261,7 @@ void SwapFrame(void)
 	EFCDone = 0;
 
 	SwapFrameScreen();
-	ScreenZoomControl();
+//	ScreenZoomControl();
 
 	if(IsPress(KEY_INPUT_ESCAPE))
 	{

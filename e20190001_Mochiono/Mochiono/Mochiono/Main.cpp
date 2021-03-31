@@ -731,6 +731,8 @@ static void Mochiono(void)
 	SetBGMVolume(Dc->BGMVolume);
 	SetSeVolume(Dc->SeVolume);
 
+	// TODO: モニタサイズ制御
+
 start_logo:
 	DispMusCursor(false);
 	Logo();
@@ -849,7 +851,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		ウィンドウの右下をドラッグで、ウィンドウ伸縮 true: 可, false: 不可
 		可にすると SetWindowSizeExtendRate() の最大サイズに影響する。
 	*/
-//	SetWindowSizeChangeEnableFlag(true);
+	SetWindowSizeChangeEnableFlag(false);
 
 	// -- ロード中 --
 	ClearDrawScreen();
