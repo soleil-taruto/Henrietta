@@ -1966,7 +1966,7 @@ void PzMain(void)
 				m->KaitenDir = 1;
 			}
 
-#ifdef CHEAT_MODE
+#if LOG_ENABLED
 			if(IsHit(KEY_INPUT_1))
 			{
 				Pzdc.GameOver = 1;
@@ -2907,7 +2907,7 @@ endGameLoop:
 			DrawStar(0);
 			SwapFrame();
 
-#ifdef CHEAT_MODE
+#if LOG_ENABLED
 			printfDx(
 				"%I64d (%I64d) %d %d\n"
 				"0:%05d,%f\n"
@@ -2962,7 +2962,7 @@ endGameLoop:
 
 			int ftc = Sys_GetFrameTaskCount();
 
-#ifdef CHEAT_MODE
+#if LOG_ENABLED
 			printfDx("%03d %d ", f, ftc);
 #endif
 

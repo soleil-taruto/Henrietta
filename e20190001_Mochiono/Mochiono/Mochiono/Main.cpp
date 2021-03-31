@@ -258,7 +258,7 @@ static void Title(void)
 	int frmidx;
 	double frmpct;
 
-#ifdef CHEAT_MODE
+#if LOG_ENABLED
 restart:
 #endif
 	PreTitle();
@@ -290,7 +290,7 @@ restart:
 		}
 		int extraInside = nearthan(((double)mx), ((double)my), 703.0, 245.0, 50.0);
 
-#ifdef CHEAT_MODE
+#if LOG_ENABLED
 		if(IsHit(KEY_INPUT_1))
 		{
 			cheat_scnrIndex++;

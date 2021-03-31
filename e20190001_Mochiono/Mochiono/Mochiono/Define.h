@@ -1,6 +1,11 @@
 // -- デバッグ用 --
 
-//#define CHEAT_MODE
+// [LOG_ENABLED_SWITCH]
+/*
+#define LOG_ENABLED 0
+/*/
+#define LOG_ENABLED 1
+//*/
 
 // ----
 

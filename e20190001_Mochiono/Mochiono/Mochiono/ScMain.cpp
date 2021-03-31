@@ -593,7 +593,7 @@ void ScMain(void)
 			}
 			SwapFrame();
 
-#ifdef CHEAT_MODE
+#if LOG_ENABLED
 			printfDx(
 				"R:(%d,%d,%d) E:(%d,%d,%d,%d,%d,%d) P:(%d,%d) "
 				,SettInfo.RouteOpenList[ROL_A]

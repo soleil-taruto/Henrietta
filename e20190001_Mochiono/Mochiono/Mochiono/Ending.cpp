@@ -163,7 +163,7 @@ void Ending(char *endCdLine)
 
 			int nowms = GetNowCount();
 
-#ifdef CHEAT_MODE
+#if LOG_ENABLED
 			if(IsHit(KEY_INPUT_1))
 			{
 				nextms = 0;

@@ -285,7 +285,7 @@ void SwapFrame(void)
 
 	// fps --->
 
-#ifdef CHEAT_MODE
+#if LOG_ENABLED
 	static int fps;
 	{
 		static int lastTime;
@@ -517,7 +517,7 @@ void PlayDouga(char *file)
 	{
 		int chuudan = 0;
 
-#ifdef CHEAT_MODE
+#if LOG_ENABLED
 		if(IsHit(KEY_INPUT_1)) SetDougaVolume(mov, Dc->BGMVolume -= 0.01);
 		if(IsHit(KEY_INPUT_2)) SetDougaVolume(mov, Dc->BGMVolume += 0.01);
 		m_range(Dc->BGMVolume, 0.0, 1.0);
