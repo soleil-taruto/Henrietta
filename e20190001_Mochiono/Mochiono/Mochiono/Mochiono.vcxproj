@@ -128,6 +128,7 @@
     <ClCompile Include="System.cpp" />
     <ClCompile Include="Taisen.cpp" />
     <ClCompile Include="Tools.cpp" />
+    <ClCompile Include="ToolsAndGeneralFunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Configuration.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="System.h" />
     <ClInclude Include="Taisen.h" />
     <ClInclude Include="Tools.h" />
+    <ClInclude Include="ToolsAndGeneralFunctions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
