@@ -115,6 +115,7 @@ void SFS_Reset(void)
 		t->Inited = 0; // ë™íËÇ‚ÇËíºÇµÅI
 	}
 }
+#if 0 // îpé~
 void SwapFrameScreen(void)
 {
 	SokuteiInfo_t *t = &SokuteiInfo;
@@ -181,7 +182,6 @@ void SwapFrameScreen(void)
 	else
 		ScreenFlip();
 }
-#if 0 // îpé~
 static void ScreenZoomControl(void)
 {
 	static int pressCnt;
@@ -250,6 +250,7 @@ static void ScreenZoomControl(void)
 }
 #endif
 int ProcFrmCnt;
+int Pub_MainScreen = -1;
 void SwapFrame(void)
 {
 	ProcFrmCnt++;
@@ -260,8 +261,36 @@ void SwapFrame(void)
 	ExecFrameCurtain();
 	EFCDone = 0;
 
+#if 1
+	{
+		int &mainScreen = Pub_MainScreen;
+
+		if(mainScreen == -1)
+		{
+			mainScreen = MakeScreen(800, 600);
+			errorCase(mainScreen == -1);
+		}
+		else
+		{
+			errorCase(SetDrawScreen(DX_SCREEN_BACK)); // ? é∏îs
+
+			DrawExtendGraph(
+				0,
+				0,
+				800,
+				600,
+				mainScreen,
+				0
+				);
+		}
+		ScreenFlip();
+
+		errorCase(SetDrawScreen(mainScreen)); // ? é∏îs
+	}
+#else // old
 	SwapFrameScreen();
-//	ScreenZoomControl();
+	ScreenZoomControl();
+#endif
 
 	if(IsPress(KEY_INPUT_ESCAPE))
 	{

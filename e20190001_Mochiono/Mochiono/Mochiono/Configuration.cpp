@@ -414,17 +414,34 @@ void CfgMain(void)
 
 				if(on_window && SettInfo.FullScreenMode)
 				{
-					ChangeWindowMode(true); // true: Window, false: Full Screen
+//					ChangeWindowMode(true); // true: Window, false: Full Screen
 					changed = 1;
 				}
 				if(on_fullScreen && !SettInfo.FullScreenMode)
 				{
-					ChangeWindowMode(false); // true: Window, false: Full Screen
+//					ChangeWindowMode(false); // true: Window, false: Full Screen
 					changed = 1;
 				}
 
 				if(changed)
 				{
+					SettInfo.FullScreenMode = !SettInfo.FullScreenMode;
+
+					int w;
+					int h;
+
+					if(SettInfo.FullScreenMode)
+					{
+						w = GetSystemMetrics(SM_CXSCREEN);
+						h = GetSystemMetrics(SM_CYSCREEN);
+					}
+					else
+					{
+						w = 800;
+						h = 600;
+					}
+					SetGraphMode(w, h, 32);
+
 					// スクリーンモード変更に伴う、各種再初期化
 					{
 						DispMusCursor(true);
@@ -436,8 +453,11 @@ void CfgMain(void)
 						SFS_Reset();
 
 						SetDrawScreen(DX_SCREEN_BACK);
+
+						Pub_MainScreen = -1;
 					}
-					SettInfo.FullScreenMode = !SettInfo.FullScreenMode;
+
+					AdjustScreenPosition(w, h);
 				}
 			}
 			if(on_kidoku) SettInfo.Midokumotobasu = 0;

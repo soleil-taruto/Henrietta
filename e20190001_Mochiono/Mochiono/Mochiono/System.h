@@ -13,7 +13,7 @@ extern int Sys_EscapeDisable;
 extern int Sys_EscapePressed;
 
 void SFS_Reset(void);
-void SwapFrameScreen(void);
+//void SwapFrameScreen(void); // îpé~
 void SwapFrame(void);
 
 int IsPress(int key);
@@ -101,3 +101,4 @@ CommonEffect_t *AddCommonEffect(
 	);
 
 extern int ProcFrmCnt;
+extern int Pub_MainScreen;

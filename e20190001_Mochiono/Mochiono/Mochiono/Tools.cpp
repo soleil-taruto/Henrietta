@@ -476,3 +476,65 @@ void eraseLocal(char *path) // path: ƒtƒ‹ƒpƒX‚Å‚ ‚é‚±‚Æ
 		*p = '\0';
 	}
 }
+
+static void GetMonitorLT(int *out_l, int *out_t)
+{
+	int l;
+	int t;
+	int w;
+	int h;
+	int p1;
+	int p2;
+
+	GetDefaultState(&w, &h, &p1, &p2, &l, &t);
+
+	errorCase(
+		w < 1 || IMAX < w ||
+		h < 1 || IMAX < h ||
+		l < -IMAX || IMAX < l ||
+		t < -IMAX || IMAX < t
+		);
+
+	*out_l = l;
+	*out_t = t;
+}
+static void SetScreenPosition(int l, int t)
+{
+	SetWindowPosition(l, t);
+
+	POINT p;
+
+	p.x = 0;
+	p.y = 0;
+
+	ClientToScreen(GetMainWindowHandle(), &p);
+
+	int pToTrgX = l - (int)p.x;
+	int pToTrgY = t - (int)p.y;
+
+	SetWindowPosition(l + pToTrgX, t + pToTrgY);
+}
+static void SetScreenPosition_WH(int w, int h)
+{
+	int real_w = GetSystemMetrics(SM_CXSCREEN);
+	int real_h = GetSystemMetrics(SM_CYSCREEN);
+
+	int l = (real_w - w) / 2;
+	int t = (real_h - h) / 2;
+
+	{
+		int mon_l;
+		int mon_t;
+
+		GetMonitorLT(&mon_l, &mon_t);
+
+		l += mon_l;
+		t += mon_t;
+	}
+
+	SetScreenPosition(l, t);
+}
+void AdjustScreenPosition(int w, int h)
+{
+	SetScreenPosition_WH(w, h);
+}

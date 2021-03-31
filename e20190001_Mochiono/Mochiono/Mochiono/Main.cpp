@@ -731,8 +731,6 @@ static void Mochiono(void)
 	SetBGMVolume(Dc->BGMVolume);
 	SetSeVolume(Dc->SeVolume);
 
-	// TODO: モニタサイズ制御
-
 start_logo:
 	DispMusCursor(false);
 	Logo();
@@ -808,10 +806,27 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	InitSettings();
 	LoadSettings();
 
-	SetGraphMode(800, 600, 32);
+//	SetGraphMode(800, 600, 32);
+	{
+		int w;
+		int h;
+
+		if(SettInfo.FullScreenMode)
+		{
+			w = GetSystemMetrics(SM_CXSCREEN);
+			h = GetSystemMetrics(SM_CYSCREEN);
+		}
+		else
+		{
+			w = 800;
+			h = 600;
+		}
+		SetGraphMode(w, h, 32);
+	}
+
 //	SetWindowSizeExtendRate(1.6); // 拡大
 	SetAlwaysRunFlag(true); // フォーカス外したら、true: 動く, false: 止まる。
-	ChangeWindowMode(SettInfo.FullScreenMode == 0); // true: Window, false: Full Screen
+	ChangeWindowMode(true); // true: Window, false: Full Screen
 
 	SetApplicationLogSaveDirectory(
 #if LOG_ENABLED

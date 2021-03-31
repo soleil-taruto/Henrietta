@@ -108,3 +108,5 @@ void eraseLocal(char *path);
 
 #define mbsNext(p) \
 	(p + (isMbc(p) ? 2 : 1))
+
+void AdjustScreenPosition(int w, int h);
