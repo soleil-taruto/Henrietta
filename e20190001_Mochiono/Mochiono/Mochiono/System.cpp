@@ -424,8 +424,8 @@ void DispMusCursor(int doDisp)
 	}
 }
 
-#define STRFILE_RESRC "Resource.dat"
-#define STRDIR_RESRC_PRO "dat"
+#define STRFILE_RESRC "Resource.dxa"
+#define STRDIR_RESRC_PRO "Resource"
 #define STRDIR_RESRC_DEV "..\\..\\dat"
 
 char *ResourcePath(char *innerPath)

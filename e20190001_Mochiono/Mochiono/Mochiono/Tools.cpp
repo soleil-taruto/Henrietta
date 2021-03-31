@@ -414,3 +414,64 @@ void ExecMyPrint(void)
 		}
 	}
 }
+
+char *getSelfFile(void)
+{
+	static char *fileBuff;
+
+	if(!fileBuff)
+	{
+		const int SELFBUFFSIZE = 1024;
+		const int SELFBUFFMARGIN = 16;
+
+		fileBuff = (char *)memAlloc(SELFBUFFSIZE + SELFBUFFMARGIN);
+
+		if(!GetModuleFileName(NULL, fileBuff, SELFBUFFSIZE))
+			error();
+
+		/*
+			? フルパスの実行可能ファイルではない。
+		*/
+		errorCase(strlen(fileBuff) < 8); // 最短でも "C:\\a.exe"
+//		errorCase(!m_isalpha(fileBuff[0]));
+		errorCase(memcmp(fileBuff + 1, ":\\", 2));
+		errorCase(_stricmp(strchr(fileBuff, '\0') - 4, ".exe"));
+
+//		fileBuff = strr(fileBuff);
+		char *tmp = strx(fileBuff);
+		memFree(fileBuff);
+		fileBuff = tmp;
+	}
+	return fileBuff;
+}
+static void S_ReplaceChar(char *str, char from, char to)
+{
+	for(char *p = str; *p; p = _ismbblead(*p) && p[1] ? p + 2 : p + 1)
+		if(*p == from)
+			*p = to;
+}
+static void S_EraseLocal(char *path) // path: フルパスであること
+{
+	S_ReplaceChar(path, '\\', '/');
+	char *p = strrchr(path, '/');
+	S_ReplaceChar(path, '/', '\\');
+
+	if(p)
+	{
+		if(path + 2 == p) // ? ルートディレクトリ
+			p++;
+
+		*p = '\0';
+	}
+}
+char *getSelfDir(void)
+{
+	static char *dirBuff;
+
+	if(!dirBuff)
+	{
+		dirBuff = strx(getSelfFile());
+		S_EraseLocal(dirBuff);
+	}
+	return dirBuff;
+}

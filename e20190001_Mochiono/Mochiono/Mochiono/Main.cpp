@@ -811,10 +811,28 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetAlwaysRunFlag(true); // フォーカス外したら、true: 動く, false: 止まる。
 	ChangeWindowMode(SettInfo.FullScreenMode == 0); // true: Window, false: Full Screen
 
-	SetMainWindowText(ltmp = xcout("%s blt: %s", "MOCHIONO", GetBuiltStamp()));
+	SetApplicationLogSaveDirectory(
+#if LOG_ENABLED
+		"C:\\tmp"
+#else
+		getSelfDir()
+#endif
+		);
+	SetOutApplicationLogValidFlag(1); // DxLib のログを出力 1: する 0: しない
+
+	SetAlwaysRunFlag(1); // ? 非アクティブ時に 1: 動く 0: 止まる
+
+	SetMainWindowText(ltmp = xcout(
+#if LOG_ENABLED
+		"(LOG_ENABLED) "
+#endif
+		"%s blt: %s"
+		,"MOCHIONO"
+		,GetBuiltStamp()
+		));
 	memFree(ltmp);
 
-	DispMusCursor(true); // これ必要？
+//	DispMusCursor(true);
 
 	if(DxLib_Init())
 	{

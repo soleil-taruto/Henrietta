@@ -1,0 +1,11 @@
+C:\Factory\Petra\EditConfig.exe Mochiono\Mochiono\Define.h "// [LOG_ENABLED_SWITCH]" //*
+
+CALL qq
+cx **
+
+C:\Factory\Petra\EditConfig.exe Mochiono\Mochiono\Define.h "// [LOG_ENABLED_SWITCH]" /*
+
+CALL Release.bat
+
+C:\Factory\Petra\UpdatingCopy.exe out C:\be\Web\DocRoot\Henrietta\*
+C:\Factory\Petra\RunOnBatch.exe C:\be\Web Upload.bat
