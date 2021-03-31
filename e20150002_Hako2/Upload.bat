@@ -1,9 +1,4 @@
-C:\Factory\Petra\EditConfig.exe Hako2\Hako2\Define.h "// [LOG_ENABLED_SWITCH]" //*
-
-CALL qq
-cx **
-
-C:\Factory\Petra\EditConfig.exe Hako2\Hako2\Define.h "// [LOG_ENABLED_SWITCH]" /*
+CALL Build.bat
 
 	CALL Release.bat /B
 rem	CALL Release.bat /V 001
