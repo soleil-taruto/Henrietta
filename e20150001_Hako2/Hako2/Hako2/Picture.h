@@ -68,6 +68,8 @@ enum
 
 	P_BG_PATTERN,
 
+	P_HINT,
+
 	// < app
 
 	P_MAX, // num of member

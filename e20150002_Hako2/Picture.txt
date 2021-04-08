@@ -96,3 +96,4 @@ dat\ending\hako2ED_illust.png
 dat\ending\Ending_B.png
 dat\ending\Ending.png
 dat\BgPattern\p_da0359_m_da03591.png
+dat\Hint.png
