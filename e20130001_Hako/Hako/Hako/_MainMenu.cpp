@@ -200,9 +200,39 @@ static void ReturnToMainMenu(void)
 	SetCurtain();
 	FreezeInput();
 }
+static void ShowHint(void)
+{
+	SetCurtain();
+
+	forscene(5 * 60)
+	{
+		if(60 < sc_numer)
+		if(
+			1 <= GetInput(INP_A) ||
+			1 <= GetInput(INP_B)
+			)
+			break; // スキップ
+
+		DrawSimple(P_HINT, 0, 0);
+		EachFrame();
+	}
+	sceneLeave();
+
+	SetCurtain(30, -1.0);
+
+	forscene(40)
+	{
+		DrawSimple(P_HINT, 0, 0);
+		EachFrame();
+	}
+	sceneLeave();
+
+	FreezeInput();
+}
 static void PlayGame(void)
 {
 	LeaveFromMainMenu();
+	ShowHint();
 	FloorMasterMain(0, 0, 0);
 	ReturnToMainMenu();
 }
