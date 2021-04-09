@@ -334,7 +334,7 @@ void line2domain_len(char *line, int lenmax)
 	line2domain(line);
 }
 
-#define STRFILE_LOG "C:\\etc\\tmp\\Mochiono.log"
+#define STRFILE_LOG "C:\\etc\\tmp\\Hetapuz.log"
 
 void LogWrite(char *line, int value)
 {

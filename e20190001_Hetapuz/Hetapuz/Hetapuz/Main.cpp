@@ -726,7 +726,7 @@ restart:
 		currIndex++;
 	}
 }
-static void Mochiono(void)
+static void Hetapuz(void)
 {
 	SetBGMVolume(Dc->BGMVolume);
 	SetSeVolume(Dc->SeVolume);
@@ -844,7 +844,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		"(LOG_ENABLED) "
 #endif
 		"%s blt: %s"
-		,"MOCHIONO"
+		,"HETAPUZ"
 		,GetBuiltStamp()
 		));
 	memFree(ltmp);
@@ -887,7 +887,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	NtProcInit();
 	Taisen_ProcInit();
 
-	Mochiono();
+	Hetapuz();
 
 	Taisen_ProcFnlz();
 	NtProcFnlz();
