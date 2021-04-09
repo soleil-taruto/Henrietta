@@ -66,7 +66,8 @@ typedef struct NtTomodachiInfo_st
 }
 NtTomodachiInfo_t;
 
-#define NT_TOMODACHI_NUM 30
+#define NT_TOMODACHI_NUM 25
+//#define NT_TOMODACHI_NUM 30 // old
 
 #define NT_DEF_NAME "unknown"
 #define NT_DEF_IP1 127
