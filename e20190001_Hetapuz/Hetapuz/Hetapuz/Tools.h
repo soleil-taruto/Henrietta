@@ -89,7 +89,7 @@ char *GetClipLine(void);
 void MyCls(void);
 void MyPrint(char *line);
 void MyPrint_x(char *line);
-void ExecMyPrint(void);
+void ExecMyPrint(int edgeColor = GetColor(100, 20, 40));
 
 char *getSelfFile(void);
 char *getSelfDir(void);

@@ -227,7 +227,9 @@ static int Menu(int lastSel)
 		int my;
 		GetMusPos(&mx, &my);
 
-		musCurrIndex = my / 16;
+		const int MENU_ITEM_Y_SPAN = 20;
+
+		musCurrIndex = my / MENU_ITEM_Y_SPAN;
 		musCurrIndex -= 3;
 
 		if(!ItemTsumero) musCurrIndex /= 2;

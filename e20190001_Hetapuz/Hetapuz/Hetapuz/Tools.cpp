@@ -368,7 +368,7 @@ char *GetClipLine(void)
 	return line;
 }
 
-#define MYLINE_MAX 40
+#define MYLINE_MAX 30
 
 static char *MyText[MYLINE_MAX];
 
@@ -385,7 +385,8 @@ void MyCls(void)
 	// font
 	{
 		SetFontSize(16);
-		SetFontThickness(5);
+		SetFontThickness(9);
+//		SetFontThickness(5); // old
 		ChangeFont("ÇlÇr ÉSÉVÉbÉN");
 		ChangeFontType(DX_FONTTYPE_NORMAL);
 	}
@@ -406,13 +407,22 @@ void MyPrint_x(char *line)
 	MyPrint(line);
 	memFree(line);
 }
-void ExecMyPrint(void)
+static void PrintString(int x, int y, char *line, int color, int edgeColor)
+{
+	for(int xc = -1; xc <= 1; xc++)
+	for(int yc = -1; yc <= 1; yc++)
+	{
+		DrawString(x + xc, y + yc, line, edgeColor);
+	}
+	DrawString(x, y, line, color);
+}
+void ExecMyPrint(int edgeColor)
 {
 	for(int c = 0; c < MYLINE_MAX; c++)
 	{
 		if(MyText[c])
 		{
-			DrawString(0, c * 16, MyText[c], GetColor(255, 255, 255));
+			PrintString(0, c * 20, MyText[c], GetColor(255, 255, 255), edgeColor);
 		}
 	}
 }
