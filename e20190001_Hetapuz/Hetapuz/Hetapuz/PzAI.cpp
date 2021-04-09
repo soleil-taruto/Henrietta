@@ -452,7 +452,7 @@ void PzAI_MakeCaseTable(PzABST_Case_t *i)
 			errorCase(color < -1 || PUYO_COLOR_NUM <= color);
 
 			/*
-			FILE *fp = fopen("C:\\tmp\\1.txt", "at");
+			FILE *fp = fopen("C:\\temp\\1.txt", "at");
 			if(fp) {
 				fprintf(fp, "%d\n", color);
 				fclose(fp);
