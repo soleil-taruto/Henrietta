@@ -48,7 +48,7 @@ void mutexRelease(uint hdl)
 	}
 }
 
-#define PROC_MUTEX_NAME "{3c6307e7-fc51-4b92-a31c-65fd039d2fe2}"
+#define PROC_MUTEX_NAME "{d78ca286-4eb3-4cbb-83e1-f0521e442142}"
 
 static uint ProcMutex;
 
