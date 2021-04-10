@@ -48,7 +48,7 @@ void mutexRelease(uint hdl)
 	}
 }
 
-#define PROC_MUTEX_NAME "taruto MT Mochiono proc mutex object"
+#define PROC_MUTEX_NAME "{3c6307e7-fc51-4b92-a31c-65fd039d2fe2}"
 
 static uint ProcMutex;
 
