@@ -871,7 +871,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// -- ロード中 --
 	ClearDrawScreen();
 	int loadchuu = LoadGraph(ResourcePath("System\\ロード中.png"));
-	if(loadchuu != -1) SimpleDraw(loadchuu, 0, 0, 1);
+	if(loadchuu != -1) SimpleDraw(loadchuu, 461, 525, 1);
 	ScreenFlip();
 	// ----
 
