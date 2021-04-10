@@ -726,7 +726,7 @@ restart:
 		currIndex++;
 	}
 }
-static void Mochiono(void)
+static void Ochimono(void)
 {
 	SetBGMVolume(Dc->BGMVolume);
 	SetSeVolume(Dc->SeVolume);
@@ -887,7 +887,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	NtProcInit();
 	Taisen_ProcInit();
 
-	Mochiono();
+	Ochimono();
 
 	Taisen_ProcFnlz();
 	NtProcFnlz();

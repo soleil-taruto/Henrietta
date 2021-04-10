@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C++ Express 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mochiono", "Mochiono\Mochiono.vcxproj", "{837C2B57-6B1D-4D2D-BD87-72E282ADA3CD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ochimono", "Ochimono\Ochimono.vcxproj", "{837C2B57-6B1D-4D2D-BD87-72E282ADA3CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
