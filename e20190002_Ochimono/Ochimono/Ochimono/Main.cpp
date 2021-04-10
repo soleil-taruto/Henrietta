@@ -575,7 +575,7 @@ restart:
 			GetMusPos(&mx, &my);
 
 			ribenji = 0;
-			
+
 			suruPic   = Dc->PicContinueSuru;
 			shinaiPic = Dc->PicContinueShinai;
 
@@ -844,7 +844,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		"(LOG_ENABLED) "
 #endif
 		"%s blt: %s"
-		,"MOCHIONO"
+		,"OCHIMONO"
 		,GetBuiltStamp()
 		));
 	memFree(ltmp);
