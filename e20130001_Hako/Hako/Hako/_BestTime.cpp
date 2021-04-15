@@ -9,9 +9,9 @@ static const int SRankFrmCntList[FLOOR_NUM] =
 	60 * 27, // 3
 	60 * 25, // 4
 	60 * 48, // 5
-	60 * 48, // 6
-	60 * 58, // 7
-	60 * 65, // 8
+	60 * 44, // 6
+	60 * 55, // 7
+	60 * 64, // 8
 	60 * 25, // 9
 };
 
@@ -37,27 +37,27 @@ static int FrmCntToRankInt(int frmcnt, int frmcntSRank) // ret: -1 == 未プレイ, 
 	if(frmcnt == -1) // ? 未プレイ
 		return -1;
 
+#if 1
+	__int64 permil = ((__int64)frmcnt * 1000) / frmcntSRank;
+
+	if(4100 < permil) return 6; // F
+	if(2500 < permil) return 5; // E
+	if(1700 < permil) return 4; // D
+	if(1300 < permil) return 3; // C
+	if(1100 < permil) return 2; // B
+	if(1000 < permil) return 1; // A
+	                  return 0; // S
+#else // old
 	int d = frmcnt - frmcntSRank;
 
-	if(60 * 120 < d)
-		return 6; // F
-
-	if(60 * 60 < d)
-		return 5; // E
-
-	if(60 * 30 < d)
-		return 4; // D
-
-	if(60 * 15 < d)
-		return 3; // C
-
-	if(60 * 5 < d)
-		return 2; // B
-
-	if(0 < d)
-		return 1; // A
-
-	return 0; // S
+	if(60 * 120 < d) return 6; // F
+	if(60 *  60 < d) return 5; // E
+	if(60 *  30 < d) return 4; // D
+	if(60 *  15 < d) return 3; // C
+	if(60 *   5 < d) return 2; // B
+	if(60 *   0 < d) return 1; // A
+	                 return 0; // S
+#endif
 }
 static char *FrmCntToRank(int frmcnt, int frmcntSRank) // ret: bind
 {
