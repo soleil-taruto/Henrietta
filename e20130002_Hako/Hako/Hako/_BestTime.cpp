@@ -38,15 +38,15 @@ static int FrmCntToRankInt(int frmcnt, int frmcntSRank) // ret: -1 == –¢ƒvƒŒƒC, 
 		return -1;
 
 #if 1
-	__int64 permil = ((__int64)frmcnt * 1000) / frmcntSRank;
+	__int64 bp = ((__int64)frmcnt * 10000) / frmcntSRank; // permyriad
 
-	if(4100 < permil) return 6; // F
-	if(2500 < permil) return 5; // E
-	if(1700 < permil) return 4; // D
-	if(1300 < permil) return 3; // C
-	if(1100 < permil) return 2; // B
-	if(1000 < permil) return 1; // A
-	                  return 0; // S
+	if(41000 < bp) return 6; // F
+	if(25000 < bp) return 5; // E
+	if(17000 < bp) return 4; // D
+	if(13000 < bp) return 3; // C
+	if(11000 < bp) return 2; // B
+	if(10000 < bp) return 1; // A
+	               return 0; // S
 #else // old
 	int d = frmcnt - frmcntSRank;
 
