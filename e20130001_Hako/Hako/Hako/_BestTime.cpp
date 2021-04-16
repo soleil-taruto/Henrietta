@@ -29,7 +29,7 @@ static int GetSRankTotalFrmCnt(void)
 
 	return total;
 }
-static int FrmCntToRankInt(int frmcnt, int frmcntSRank) // ret: -1 == –¢ƒvƒŒƒC, 0 ` 6 == { S, A ` F }
+static int FrmCntToRankInt(int frmcnt, int frmcntSRank) // ret: -1 == –¢ƒvƒŒƒC, 0 ` 8 == { S, A ` H }
 {
 	m_range(frmcnt, -1, IMAX);
 	m_range(frmcntSRank, 0, IMAX);
@@ -40,16 +40,20 @@ static int FrmCntToRankInt(int frmcnt, int frmcntSRank) // ret: -1 == –¢ƒvƒŒƒC, 
 #if 1
 	__int64 bp = ((__int64)frmcnt * 10000) / frmcntSRank; // permyriad
 
-	if(41000 < bp) return 6; // F
-	if(25000 < bp) return 5; // E
-	if(17000 < bp) return 4; // D
-	if(13000 < bp) return 3; // C
-	if(11000 < bp) return 2; // B
-	if(10000 < bp) return 1; // A
-	               return 0; // S
+	if(137000 < bp) return 8; // H
+	if( 73000 < bp) return 7; // G
+	if( 41000 < bp) return 6; // F
+	if( 25000 < bp) return 5; // E
+	if( 17000 < bp) return 4; // D
+	if( 13000 < bp) return 3; // C
+	if( 11000 < bp) return 2; // B
+	if( 10000 < bp) return 1; // A
+	                return 0; // S
 #else // old
 	int d = frmcnt - frmcntSRank;
 
+	if(60 * 480 < d) return 8; // H
+	if(60 * 240 < d) return 7; // G
 	if(60 * 120 < d) return 6; // F
 	if(60 *  60 < d) return 5; // E
 	if(60 *  30 < d) return 4; // D
@@ -71,9 +75,11 @@ static char *FrmCntToRank(int frmcnt, int frmcntSRank) // ret: bind
 		"‚c", // 4
 		"‚d", // 5
 		"‚e", // 6
+		"‚f", // 7
+		"‚g", // 8
 	};
 	int ret = FrmCntToRankInt(frmcnt, frmcntSRank);
-	errorCase(!m_isRange(ret, -1, 6));
+	errorCase(!m_isRange(ret, -1, 8));
 	return retList[ret + 1];
 }
 
