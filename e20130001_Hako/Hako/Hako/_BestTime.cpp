@@ -11,7 +11,7 @@ static const int SRankFrmCntList[FLOOR_NUM] =
 	60 * 48, // 5
 	60 * 44, // 6
 	60 * 55, // 7
-	60 * 64, // 8
+	60 * 59, // 8
 	60 * 25, // 9
 };
 
