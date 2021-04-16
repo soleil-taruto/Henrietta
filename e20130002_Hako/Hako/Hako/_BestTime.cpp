@@ -118,8 +118,13 @@ char *BT_Parse(int frmcnt) // ret: bind
 		BT_Second = frmcnt % 60;
 		frmcnt /= 60;
 		BT_Minute = frmcnt;
-		m_minim(BT_Minute, 99);
 
+		if(99 < BT_Minute)
+		{
+			BT_Minute = 99;
+			BT_Second = 59;
+			BT_Millis = 999;
+		}
 		sprintf(ret, "[%02d:%02d.%03d]", BT_Minute, BT_Second, BT_Millis);
 	}
 	return ret;
@@ -144,8 +149,13 @@ char *BT_ParseMillis(int millis) // ret: bind
 		int s = millis % 60;
 		millis /= 60;
 		int m = millis;
-		m_minim(m, 99);
 
+		if(99 < m)
+		{
+			m = 99;
+			s = 59;
+			l = 999;
+		}
 		sprintf(ret, "[%02d:%02d.%03d]", m, s, l);
 	}
 	return ret;

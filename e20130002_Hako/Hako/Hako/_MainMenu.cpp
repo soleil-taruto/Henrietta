@@ -1033,6 +1033,14 @@ static void TimeAttackMenu(void)
 		{
 			BT_SetBestFrmCnt(selectIndex, BT_GetBestFrmCnt(selectIndex) + 600);
 		}
+		if(GetKeyPound(KEY_INPUT_F5))
+		{
+			BT_SetBestFrmCnt(selectIndex, BT_GetBestFrmCnt(selectIndex) - 6000);
+		}
+		if(GetKeyPound(KEY_INPUT_F6))
+		{
+			BT_SetBestFrmCnt(selectIndex, BT_GetBestFrmCnt(selectIndex) + 6000);
+		}
 #endif
 
 drawStart:
