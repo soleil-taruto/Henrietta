@@ -12,7 +12,7 @@ static const int SRankFrmCntList[FLOOR_NUM] =
 	60 * 44, // 6
 	60 * 55, // 7
 	60 * 59, // 8
-	60 * 25, // 9
+	60 * 24, // 9
 };
 
 static int GetSRankFrmCnt(int floorIndex)
