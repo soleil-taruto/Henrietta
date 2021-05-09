@@ -7,3 +7,16 @@
 
 ★同じ「ビルド・スタンプ」同士でのみ通信可能です。
 　ビルド・スタンプはウィンドウの上部の blt: 以降の文字列です。
+
+
+----
+■このゲームの製作者
+
+　cerulean.charlotte
+
+　URL:
+　　http://ornithopter.ccsp.mydns.jp/recollections/Ochimono
+　　http://ornithopter.ccsp.mydns.jp/anemoscope
+
+　MAIL: cerulean.charlottes@gmail.com
+
