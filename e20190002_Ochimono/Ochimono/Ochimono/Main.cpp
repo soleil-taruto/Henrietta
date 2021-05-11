@@ -247,6 +247,18 @@ static char *DefaultScenario = "プロローグ";
 
 static void Title(void)
 {
+	// ==== ==== ====
+	// ==== アプリ固有 ====
+	// ==== ==== ====
+
+	TestTaisen();
+	TitleIndex = 3; // ゲーム終了
+	return;
+
+	// ==== ==== ====
+	// ==== ==== ====
+	// ==== ==== ====
+
 	// [][CursorX, CursorY, MusX1, MusY1, MusX2, MuxY2]
 	int locs[TITLE_ITEM_NUM][6] =
 	{
@@ -734,12 +746,12 @@ static void Ochimono(void)
 start_logo:
 	DispMusCursor(false);
 	Logo();
-	PlayDouga(ResourcePath("Flower_PuzzleOP_High.mpg"));
+//	PlayDouga(ResourcePath("Flower_PuzzleOP_High.mpg"));
 //	PlayMovie(ResourcePath("Flower_PuzzleOP_High.mpg"), 1, DX_MOVIEPLAYTYPE_BCANCEL);
 	DispMusCursor(true);
 
 start_title:
-	PlayBGM(Dc->BGM_Title);
+//	PlayBGM(Dc->BGM_Title);
 	Title();
 
 	switch(TitleIndex)

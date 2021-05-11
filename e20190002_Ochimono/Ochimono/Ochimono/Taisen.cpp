@@ -1,6 +1,7 @@
 #include "StdInc.h"
 
-#define STD_CURTAIN 0.9
+#define STD_CURTAIN 0.5
+//#define STD_CURTAIN 0.9
 #define STD_WALL (Dc->PicTitle)
 
 typedef struct TaisenInfo_st
@@ -897,6 +898,7 @@ void TestTaisen(void)
 	int lastSel = 0;
 
 	Dc->BlackCurtain = STD_CURTAIN;
+	Dc->BCPct = Dc->BlackCurtain; // 背景カーテンを一瞬でセットする。
 
 	for(int c = 0; c < 20; c++)
 	{
@@ -906,12 +908,13 @@ void TestTaisen(void)
 	}
 	for(; ; )
 	{
-		MenuSetTitle("おまけ機能");
+		MenuSetTitle("ＯＣＨＩＭＯＮＯ");
 
 		MenuAddItem("１人で対戦");
 		MenuAddItem("２人で対戦");
 		MenuAddItem("ネットワーク対戦");
-		MenuAddItem("戻る");
+		MenuAddItem("設定");
+		MenuAddItem("ゲームを終わる");
 
 		switch(lastSel = Menu(lastSel))
 		{
@@ -928,6 +931,10 @@ void TestTaisen(void)
 			break;
 
 		case 3:
+			// TODO: 設定
+			break;
+
+		case 4:
 			goto end_menu;
 
 		default:
