@@ -157,6 +157,10 @@ static void InitPicKeyList(void)
 
 	errorCase(i != KEY_MAX);
 }
+void Pub_InitPicKeyList(void)
+{
+	InitPicKeyList();
+}
 
 static int GetPressKeyIndex(void) // ret : KEY_MAX == 押してない。
 {
@@ -170,6 +174,19 @@ static int GetPressKeyIndex(void) // ret : KEY_MAX == 押してない。
 		}
 	}
 	return index;
+}
+int Pub_GetPressKeyIndex(void)
+{
+	int keyidx = GetPressKeyIndex();
+
+	if(keyidx == KEY_MAX)
+		keyidx = -1;
+
+	return keyidx;
+}
+int Pub_GetUseKey(int keyidx)
+{
+	return UseKeyList[keyidx];
 }
 static int KI2Index(int keyInput)
 {
@@ -614,18 +631,18 @@ static void PadButtonConfig(int padIndex) // padIndex : 0 or 1
 		"方向 (左)",
 		"方向 (右)",
 		"方向 (上)",
-		"スタート (…っていうか、ポーズ)",
+		"ポーズ", // "スタート (…っていうか、ポーズ)",
 		"", // "決定 (あまり使用しない)",
 		"", // "キャンセル (あまり使用しない)",
 		"左回転 (決定)",
 		"右回転 (キャンセル)",
-		"必殺技",
+		"", // "必殺技", // 廃止
 	};
 	errorCase(lengthof(messages) != lengthof(InputList[0])); // 2bs
 
 	IH_PadLastPressed = 1; // 今押しっぱのボタンを検出しないように、、、
 
-	Dc->BlackCurtain = 0.9;
+//	Dc->BlackCurtain = 0.9;
 
 	for(int keyIndex = 0; keyIndex < lengthof(messages); )
 	{
@@ -634,7 +651,8 @@ static void PadButtonConfig(int padIndex) // padIndex : 0 or 1
 			keyIndex++;
 			continue;
 		}
-		SimpleDraw(Dc->PicCfgWall, 0, 0, 0);
+		SimpleDraw(Dc->PicTitle, 0, 0, 0);
+//		SimpleDraw(Dc->PicCfgWall, 0, 0, 0);
 		ExecFrameCurtain();
 
 		MyCls();
@@ -675,6 +693,10 @@ static void PadButtonConfig(int padIndex) // padIndex : 0 or 1
 	}
 end_loop:
 
-	Dc->BlackCurtain = 0.0;
+//	Dc->BlackCurtain = 0.0;
 	clsDx();
+}
+void Pub_PadButtonConfig(int padIndex)
+{
+	PadButtonConfig(padIndex);
 }

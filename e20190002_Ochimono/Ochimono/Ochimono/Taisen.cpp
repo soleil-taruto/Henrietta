@@ -891,6 +891,210 @@ static void DachiToTaisen(void)
 end_menu:;
 }
 
+// ==== ==== ====
+// ==== 設定 ====
+// ==== ==== ====
+
+static void P_ChangeFullScreenMode(void)
+{
+	SettInfo.FullScreenMode = !SettInfo.FullScreenMode;
+
+	int w;
+	int h;
+
+	if(SettInfo.FullScreenMode)
+	{
+		w = GetSystemMetrics(SM_CXSCREEN);
+		h = GetSystemMetrics(SM_CYSCREEN);
+	}
+	else
+	{
+		w = 800;
+		h = 600;
+	}
+	SetGraphMode(w, h, 32);
+
+	// スクリーンモード変更に伴う、各種再初期化
+	{
+		DispMusCursor(true);
+
+		DcInit_LoadAllPictureSafe();
+//		Pub_InitPicKeyList(); // PicKeyListを使わないので呼び出し不要
+		GC_ProcInitReset();
+		EDEx_ScreenModeChanged();
+		SFS_Reset();
+
+		SetDrawScreen(DX_SCREEN_BACK);
+
+		Pub_MainScreen = -1;
+	}
+
+	AdjustScreenPosition(w, h);
+	SetDrawScreen_LTWH(SettInfo.FullScreenMode);
+}
+static int P_SPK_InputKey(void)
+{
+	int keyidx;
+
+	for(; ; )
+	{
+		keyidx = Pub_GetPressKeyIndex();
+
+		if(keyidx != -1)
+			break;
+
+		SimpleDraw(STD_WALL, 0, 0, 0);
+		ExecFrameCurtain();
+
+		MyCls();
+		MyPrint("");
+		MyPrint("　機能を割り当てるキーを押して下さい...");
+		MyPrint("");
+
+		ExecMyPrint();
+		SwapFrame();
+	}
+	return Pub_GetUseKey(keyidx);
+}
+static void P_SettingPlayerKey(int plIndex)
+{
+	int lastSel = 0;
+
+	for(; ; )
+	{
+		{
+		static char *tmp;
+		memFree(tmp);
+		MenuSetTitle(tmp = xcout("プレイヤー%sのキー割り当て", ZenInt(plIndex + 1)));
+		}
+
+		MenuAddItem("上キー");
+		MenuAddItem("下キー");
+		MenuAddItem("左キー");
+		MenuAddItem("右キー");
+		MenuAddItem("左回転キー(決定キー)");
+		MenuAddItem("右回転キー(キャンセルキー)");
+		MenuAddItem("戻る");
+
+		switch(lastSel = Menu(lastSel))
+		{
+		case 0: SettInfo.KeySettInfos[KSIIDX_P1][KSIIDX_KB].Dir8 = P_SPK_InputKey(); break;
+		case 1: SettInfo.KeySettInfos[KSIIDX_P1][KSIIDX_KB].Dir2 = P_SPK_InputKey(); break;
+		case 2: SettInfo.KeySettInfos[KSIIDX_P1][KSIIDX_KB].Dir4 = P_SPK_InputKey(); break;
+		case 3: SettInfo.KeySettInfos[KSIIDX_P1][KSIIDX_KB].Dir6 = P_SPK_InputKey(); break;
+		case 4: SettInfo.KeySettInfos[KSIIDX_P1][KSIIDX_KB].RotL = P_SPK_InputKey(); break;
+		case 5: SettInfo.KeySettInfos[KSIIDX_P1][KSIIDX_KB].RotR = P_SPK_InputKey(); break;
+
+		case 6:
+			goto end_menu;
+
+		default:
+			error();
+		}
+
+		SettInfo2Input();
+		RefreshInput(); // 今押したキーが入力にならないように。
+	}
+end_menu:
+	;
+}
+static void P_SettingVolume(double &varVolume, int bgmFlag)
+{
+	int lastSel = 0;
+
+	for(; ; )
+	{
+		{
+		static char *tmp;
+		memFree(tmp);
+		MenuSetTitle(tmp = xcout("%s音量 ( %03d )", bgmFlag ? "ＢＧＭ" : "ＳＥ", (int)(varVolume * 100.0 + 0.5)));
+		}
+
+		MenuAddItem("音量を上げる");
+		MenuAddItem("音量を下げる");
+		MenuAddItem("戻る");
+
+		int iVol = (int)(varVolume * 20.0 + 0.5);
+
+		switch(lastSel = Menu(lastSel))
+		{
+		case 0: iVol++; break;
+		case 1: iVol--; break;
+
+		case 2:
+			goto end_menu;
+
+		default:
+			error();
+		}
+		m_range(iVol, 0, 20);
+		varVolume = iVol / 20.0;
+	}
+end_menu:
+	;
+}
+static void P_Setting(void)
+{
+	int lastSel = 0;
+
+	for(; ; )
+	{
+		MenuSetTitle("設定");
+
+		MenuAddItem(SettInfo.FullScreenMode ? "ウィンドウモードに戻す" : "フルスクリーンモードに変更する");
+		MenuAddItem("プレイヤー１のキー割り当て");
+		MenuAddItem("プレイヤー２のキー割り当て");
+		MenuAddItem("ＰＡＤ１のボタンの割り当て");
+		MenuAddItem("ＰＡＤ２のボタンの割り当て");
+		MenuAddItem("ＢＧＭ音量");
+		MenuAddItem("ＳＥ音量");
+		MenuAddItem("戻る");
+
+		switch(lastSel = Menu(lastSel))
+		{
+		case 0:
+			P_ChangeFullScreenMode();
+			break;
+
+		case 1:
+			P_SettingPlayerKey(KSIIDX_P1);
+			break;
+
+		case 2:
+			P_SettingPlayerKey(KSIIDX_P2);
+			break;
+
+		case 3:
+			Pub_PadButtonConfig(0);
+			break;
+
+		case 4:
+			Pub_PadButtonConfig(1);
+			break;
+
+		case 5:
+			P_SettingVolume(Dc->BGMVolume, 1);
+			break;
+
+		case 6:
+			P_SettingVolume(Dc->SeVolume, 0);
+			break;
+
+		case 7:
+			goto end_menu;
+
+		default:
+			error();
+		}
+	}
+end_menu:
+	;
+}
+
+// ==== ==== ====
+// ==== ==== ====
+// ==== ==== ====
+
 void NetworkTaisen(void);
 
 void TestTaisen(void)
@@ -931,7 +1135,7 @@ void TestTaisen(void)
 			break;
 
 		case 3:
-			// TODO: 設定
+			P_Setting();
 			break;
 
 		case 4:
