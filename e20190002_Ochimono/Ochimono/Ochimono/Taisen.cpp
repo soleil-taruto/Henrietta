@@ -908,7 +908,7 @@ void TestTaisen(void)
 	}
 	for(; ; )
 	{
-		MenuSetTitle("‚n‚b‚g‚h‚l‚n‚m‚n");
+		MenuSetTitle("‚x‚s|‚n‚b‚g‚h‚l‚n‚m‚n");
 
 		MenuAddItem("‚Pl‚Å‘Îí");
 		MenuAddItem("‚Ql‚Å‘Îí");
