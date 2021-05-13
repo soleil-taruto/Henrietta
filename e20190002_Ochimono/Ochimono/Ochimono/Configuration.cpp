@@ -636,7 +636,7 @@ static void PadButtonConfig(int padIndex) // padIndex : 0 or 1
 		"", // "ƒLƒƒƒ“ƒZƒ‹ (‚ ‚Ü‚èg—p‚µ‚È‚¢)",
 		"¶‰ñ“] (Œˆ’è)",
 		"‰E‰ñ“] (ƒLƒƒƒ“ƒZƒ‹)",
-		"", // "•KE‹Z", // ”p~
+//		"", // "•KE‹Z", // ”p~
 	};
 	errorCase(lengthof(messages) != lengthof(InputList[0])); // 2bs
 

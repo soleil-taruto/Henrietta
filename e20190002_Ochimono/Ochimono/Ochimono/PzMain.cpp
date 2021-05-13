@@ -1176,7 +1176,11 @@ restart:
 	{
 		int lastGStt = m->GoStatus;
 
-		m->GoStatus = HISS_SCORE <= m->Score ? 1 : 0;
+		/*
+			•KŽE‹Z_”pŽ~
+		*/
+		m->GoStatus = 0;
+//		m->GoStatus = HISS_SCORE <= m->Score ? 1 : 0;
 
 		if(!lastGStt && m->GoStatus) // ? Off -> On
 		{
@@ -2076,10 +2080,12 @@ void PzMain(void)
 			{
 				m->Kousoku = 1;
 			}
+#if 0 // ”pŽ~
 			if(GetPress(INP_BOMB))
 			{
 				m->Hissatsu = 1;
 			}
+#endif
 		}
 
 		if(Pzdc.NetworkMode)
@@ -2307,10 +2313,12 @@ void PzMain(void)
 				{
 					m->Kousoku = 1;
 				}
+#if 0 // ”pŽ~
 				if(GetPressPS(1, INP_BOMB))
 				{
 					m->Hissatsu = 1;
 				}
+#endif
 			}
 
 			errorCase(m->KaitenDir < -1 || 1 < m->KaitenDir);

@@ -9,7 +9,7 @@ enum
 	INP_CANCEL,
 	INP_ROT_L,
 	INP_ROT_R,
-	INP_BOMB,
+//	INP_BOMB, // •KŽE‹Z_”pŽ~
 
 	INP_END,
 };

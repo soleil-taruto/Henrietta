@@ -340,7 +340,7 @@ void Input2SettInfo(void)
 		SettInfo.KeySettInfos[pSide][kp].Dir8  = GetMap(&(InputList[pSide][INP_DIR_8]), kp);
 		SettInfo.KeySettInfos[pSide][kp].RotL  = GetMap(&(InputList[pSide][INP_ROT_L]), kp);
 		SettInfo.KeySettInfos[pSide][kp].RotR  = GetMap(&(InputList[pSide][INP_ROT_R]), kp);
-		SettInfo.KeySettInfos[pSide][kp].Bomb  = GetMap(&(InputList[pSide][INP_BOMB]),  kp);
+//		SettInfo.KeySettInfos[pSide][kp].Bomb  = GetMap(&(InputList[pSide][INP_BOMB]),  kp);
 		SettInfo.KeySettInfos[pSide][kp].Pause = GetMap(&(InputList[pSide][INP_START]), kp);
 	}
 }
@@ -355,7 +355,7 @@ void SettInfo2Input(void)
 		SetMap(&(InputList[pSide][INP_DIR_8]), kp, SettInfo.KeySettInfos[pSide][kp].Dir8);
 		SetMap(&(InputList[pSide][INP_ROT_L]), kp, SettInfo.KeySettInfos[pSide][kp].RotL);
 		SetMap(&(InputList[pSide][INP_ROT_R]), kp, SettInfo.KeySettInfos[pSide][kp].RotR);
-		SetMap(&(InputList[pSide][INP_BOMB]),  kp, SettInfo.KeySettInfos[pSide][kp].Bomb);
+//		SetMap(&(InputList[pSide][INP_BOMB]),  kp, SettInfo.KeySettInfos[pSide][kp].Bomb);
 		SetMap(&(InputList[pSide][INP_START]), kp, SettInfo.KeySettInfos[pSide][kp].Pause);
 	}
 }

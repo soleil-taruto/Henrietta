@@ -775,10 +775,12 @@ void ScMain(void)
 				InitFont();
 				koroSleep = SHITA_KORO_SLEEP;
 			}
+#if 0 // îpé~
 			else if(GetHit(INP_BOMB))
 			{
 				doOnSkip = 1;
 			}
+#endif
 
 			if(doOnSkip)
 			{

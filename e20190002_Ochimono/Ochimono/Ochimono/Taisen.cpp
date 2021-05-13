@@ -292,10 +292,12 @@ static int Menu(int lastSel)
 				}
 				currIndex = cancelidx;
 			}
+#if 0 // ”p~
 			if(GetHitPS(pSide, INP_BOMB)) // ƒ‰ƒ“ƒ_ƒ€‘I‘ğ—p
 			{
 				currIndex = rndbnd(0, ItemCount - 1);
 			}
+#endif
 			if(GetRendaHitPS(pSide, INP_DIR_4) || GetRendaHitPS(pSide, INP_DIR_8)) // ã‚Ö
 			{
 				currIndex--;

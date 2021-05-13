@@ -13,7 +13,7 @@ void InitInput(void)
 	InputList[0][INP_CANCEL].Map_Key = KEY_INPUT_DELETE;
 	InputList[0][INP_ROT_L].Map_Key = KEY_INPUT_Z;
 	InputList[0][INP_ROT_R].Map_Key = KEY_INPUT_X;
-	InputList[0][INP_BOMB].Map_Key = KEY_INPUT_C;
+//	InputList[0][INP_BOMB].Map_Key = KEY_INPUT_C;
 
 	InputList[0][INP_DIR_2].Map_Pad = PAD_INPUT_DOWN;
 	InputList[0][INP_DIR_4].Map_Pad = PAD_INPUT_LEFT;
@@ -24,7 +24,7 @@ void InitInput(void)
 	InputList[0][INP_CANCEL].Map_Pad = 0; // PAD_INPUT_B;
 	InputList[0][INP_ROT_L].Map_Pad = PAD_INPUT_A;
 	InputList[0][INP_ROT_R].Map_Pad = PAD_INPUT_B;
-	InputList[0][INP_BOMB].Map_Pad = PAD_INPUT_C;
+//	InputList[0][INP_BOMB].Map_Pad = PAD_INPUT_C;
 
 	// Map_Pad は 0 でも問題ない。使用しないボタンは 0 のままで、、
 
@@ -43,7 +43,7 @@ void InitInput(void)
 
 	InputList[1][INP_ROT_L].Map_Key = KEY_INPUT_NUMPAD4;
 	InputList[1][INP_ROT_R].Map_Key = KEY_INPUT_NUMPAD6;
-	InputList[1][INP_BOMB].Map_Key  = KEY_INPUT_NUMPAD0;
+//	InputList[1][INP_BOMB].Map_Key  = KEY_INPUT_NUMPAD0;
 }
 int GetMap(Input_t *i, int forPad)
 {
