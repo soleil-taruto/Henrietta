@@ -1,0 +1,26 @@
+﻿----
+生成元・生成日
+
+C:\Dev\wb\t20210313_PrimePower\t0004\Claes20200001
+
+2021.3.15
+
+----
+内容
+
+6桁の自然数について...
+
+notPrimePower.txt
+	素数べきではないもの
+
+notPrimePower_xxx.txt
+	素数べきではないものの内 2 ～ xxx の整数で割り切れないもの (xxx 以下の素因数を持たない)
+
+Prime.txt
+	素数
+
+PrimePower.txt
+	2乗以上の素数べき
+
+PrimePower_xxx.txt
+	2乗以上の素数べきの内 2 ～ xxx の整数で割り切れないもの (xxx より大きな素数の素数べき)

@@ -1,0 +1,14 @@
+dat\General\muon.wav
+dat\Taira\explosion05.mp3
+dat\Taira\jump12.mp3
+dat\Taira\question.mp3
+dat\Taira\Surprise.mp3
+dat\Taira\coin05.mp3
+dat\Taira\coin07.mp3
+dat\Taira\coin04.mp3
+dat\Taira\powerup04.mp3
+dat\Taira\Crrect_answer2.mp3
+dat\Taira\bomb.mp3
+dat\Taira\guitar.mp3
+dat\musmus_image_set\img11.mp3
+dat\musmus_image_set\img11_wv_[270].mp3
