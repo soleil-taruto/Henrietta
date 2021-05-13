@@ -1112,7 +1112,7 @@ void TestTaisen(void)
 	}
 	for(; ; )
 	{
-		MenuSetTitle("‚x‚s|‚n‚b‚g‚h‚l‚n‚m‚n");
+		MenuSetTitle("‚n‚b‚g‚h‚l‚n‚m‚n|‚m‚s");
 
 		MenuAddItem("‚Pl‚Å‘Îí");
 		MenuAddItem("‚Ql‚Å‘Îí");
