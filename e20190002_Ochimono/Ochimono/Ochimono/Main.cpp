@@ -856,7 +856,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		"(LOG_ENABLED) "
 #endif
 		"%s blt: %s"
-		,"YT-OCHIMONO"
+		,"OCHIMONO-NT"
 		,GetBuiltStamp()
 		));
 	memFree(ltmp);
