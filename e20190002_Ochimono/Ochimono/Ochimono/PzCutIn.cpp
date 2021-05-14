@@ -37,6 +37,8 @@ static CutIn_t *TakeCutIn(int mapIndex, int side)
 }
 static void ActCutIn(CutIn_t *i)
 {
+	return; // カットイン_廃止
+
 	i->X += i->Xa;
 	i->Y += i->Ya;
 	i->R += i->Ra;
@@ -205,6 +207,8 @@ static int Rensa7(void *vi)
 
 void CI_AddCutIn(int rensanum, int mapIndex, int side) // side : 0 == 1P, 1 == 2P
 {
+	return; // カットイン_廃止
+
 	errorCase(mapIndex < 0 && 1 < mapIndex);
 	errorCase(side     < 0 && 1 < side);
 
@@ -393,6 +397,8 @@ static int ActDamage(void *vi)
 }
 void CI_AddDamage(int mapIndex, int side)
 {
+	return; // カットイン_廃止
+
 	errorCase(mapIndex < 0 && 1 < mapIndex);
 
 	CutIn_t *ia = TakeCutIn(mapIndex, side);
