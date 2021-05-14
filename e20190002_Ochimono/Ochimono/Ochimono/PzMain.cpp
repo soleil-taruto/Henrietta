@@ -2424,6 +2424,7 @@ draw_top:
 		{
 			Map_t *m = Pzdc.MapList + midx;
 
+#if 0 // ƒLƒƒƒ‰‚ÌŠç‚Ì•\Ž¦_”pŽ~
 			for(int fidx = 0; fidx < 2; fidx++)
 			{
 				if(fidx == 1 && Pzdc.IsSolo[midx]) break; // ƒ\ƒ‚È‚Ì‚Å“ñl–Ú‚Í‚È‚µB
@@ -2482,7 +2483,8 @@ draw_top:
 
 				SimpleDraw(facePic, faceX, faceY, 0);
 			}
-			SimpleDraw(Pzdc.Go[m->GoStatus], m->GoX, m->GoY, 1);
+#endif
+//			SimpleDraw(Pzdc.Go[m->GoStatus], m->GoX, m->GoY, 1); // •KŽE‹Z_”pŽ~
 
 			// jama num
 			{
@@ -2556,13 +2558,23 @@ draw_top:
 
 				if(midx == 0)
 				{
+#if 1
+					sdX = 295;
+					sdY = 569 + 5;
+#else // old
 					sdX = 446;
 					sdY = 521 + 5;
+#endif
 				}
 				else // 1
 				{
+#if 1
+					sdX = 776;
+					sdY = 569 + 5;
+#else // old
 					sdX = 493;
 					sdY = 555 + 5;
+#endif
 				}
 				sdX -= lscorelen * sdXSpn;
 
