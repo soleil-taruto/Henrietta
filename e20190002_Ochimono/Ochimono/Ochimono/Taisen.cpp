@@ -760,7 +760,7 @@ static int CharaSelect(int lastSel)
 }
 static int BashoSelect(int lastSel)
 {
-	MenuSetTitle("場所を選んで下さい");
+	MenuSetTitle("背景を選んで下さい");
 
 	MenuAddItem("ひまわり畑");
 	MenuAddItem("花畑");
@@ -775,9 +775,9 @@ static int BashoSelect(int lastSel)
 }
 static int AITsuyosaSelect(int lastSel)
 {
-	MenuSetTitle("ＡＩの強さを選んで下さい (レベル０が最弱)");
+	MenuSetTitle("ＣＰＵの強さを選んで下さい");
 
-	MenuAddItem("レベル０");
+	MenuAddItem("レベル０(最弱)");
 	MenuAddItem("レベル１");
 	MenuAddItem("レベル２");
 	MenuAddItem("レベル３");
@@ -786,7 +786,7 @@ static int AITsuyosaSelect(int lastSel)
 	MenuAddItem("レベル６");
 	MenuAddItem("レベル７");
 	MenuAddItem("レベル８");
-	MenuAddItem("レベル８±α");
+	MenuAddItem("レベル８.１");
 
 	return Menu(lastSel);
 }
@@ -802,11 +802,11 @@ static void AIToTaisen(void)
 		MenuSetTitle("１人で対戦");
 
 		MenuAddItem("対戦スタート");
-		MenuAddItem("１Ｐ(自分)キャラ変更");
-		MenuAddItem("２Ｐ(ＡＩ)キャラ変更");
-		MenuAddItem("場所変更");
-		MenuAddItem("強さ変更");
-		MenuAddItem("エキストラ");
+//		MenuAddItem("１Ｐ(自分)キャラ変更"); // 廃止
+//		MenuAddItem("２Ｐ(ＡＩ)キャラ変更"); // 廃止
+		MenuAddItem("背景変更");
+		MenuAddItem("ＣＰＵ強さ変更");
+		MenuAddItem("エクストラ対戦モード");
 		MenuAddItem("戻る");
 
 		switch(lastSel = Menu(lastSel))
@@ -815,6 +815,7 @@ static void AIToTaisen(void)
 			Taisen();
 			break;
 
+#if 0 // 廃止
 		case 1:
 			TaisenInfo.Chara[0] = CharaSelect(TaisenInfo.Chara[0]);
 			break;
@@ -822,20 +823,21 @@ static void AIToTaisen(void)
 		case 2:
 			TaisenInfo.Chara[1] = CharaSelect(TaisenInfo.Chara[1]);
 			break;
+#endif
 
-		case 3:
+		case 1:
 			TaisenInfo.Basho = BashoSelect(TaisenInfo.Basho);
 			break;
 
-		case 4:
+		case 2:
 			TaisenInfo.AITsuyosa = AITsuyosaSelect(TaisenInfo.AITsuyosa);
 			break;
 
-		case 5:
+		case 3:
 			SpecialTaisen();
 			break;
 
-		case 6:
+		case 4:
 			goto end_menu;
 
 		default:
@@ -855,10 +857,10 @@ static void DachiToTaisen(void)
 		MenuSetTitle("２人で対戦");
 
 		MenuAddItem("対戦スタート");
-		MenuAddItem("１Ｐ(左側)キャラ変更");
-		MenuAddItem("２Ｐ(右側)キャラ変更");
+//		MenuAddItem("１Ｐ(左側)キャラ変更"); // 廃止
+//		MenuAddItem("２Ｐ(右側)キャラ変更"); // 廃止
 		MenuAddItem("場所変更");
-		MenuAddItem("エキストラ");
+		MenuAddItem("エクストラ対戦モード");
 		MenuAddItem("戻る");
 
 		switch(lastSel = Menu(lastSel))
@@ -867,6 +869,7 @@ static void DachiToTaisen(void)
 			Taisen();
 			break;
 
+#if 0 // 廃止
 		case 1:
 			TaisenInfo.Chara[0] = CharaSelect(TaisenInfo.Chara[0]);
 			break;
@@ -874,16 +877,17 @@ static void DachiToTaisen(void)
 		case 2:
 			TaisenInfo.Chara[1] = CharaSelect(TaisenInfo.Chara[1]);
 			break;
+#endif
 
-		case 3:
+		case 1:
 			TaisenInfo.Basho = BashoSelect(TaisenInfo.Basho);
 			break;
 
-		case 4:
+		case 2:
 			SpecialTaisen();
 			break;
 
-		case 5:
+		case 3:
 			goto end_menu;
 
 		default:
@@ -1683,8 +1687,8 @@ static void NetworkServer_P2(void)
 		MenuSetTitle("サーバーモード");
 
 		MenuAddItem("待ち受け開始");
-		MenuAddItem("キャラ変更");
-		MenuAddItem("場所変更");
+//		MenuAddItem("キャラ変更"); // 廃止
+		MenuAddItem("背景変更");
 		MenuAddItem("戻る");
 
 		switch(lastSel = Menu(lastSel))
@@ -1693,15 +1697,17 @@ static void NetworkServer_P2(void)
 			ServerWaitForClient();
 			break;
 
+#if 0 // 廃止
 		case 1:
 			TaisenInfo.Chara[0] = CharaSelect(TaisenInfo.Chara[0]);
 			break;
+#endif
 
-		case 2:
+		case 1:
 			TaisenInfo.Basho = BashoSelect(TaisenInfo.Basho);
 			break;
 
-		case 3:
+		case 2:
 			goto end_menu;
 
 		default:
@@ -1777,9 +1783,9 @@ static void NetworkClient_P3(NtTomodachiInfo_t *dachi)
 	{
 		MenuSetTitle("クライアントモード");
 
-		MenuAddItem("接続開始");
-		MenuAddItem("接続開始 (エキストラ)");
-		MenuAddItem("キャラ変更");
+		MenuAddItem("接続開始 (通常の対戦)");
+		MenuAddItem("接続開始 (エクストラ対戦モード)");
+//		MenuAddItem("キャラ変更");
 		MenuAddItem("観戦モード");
 		MenuAddItem("戻る");
 
@@ -1801,15 +1807,17 @@ static void NetworkClient_P3(NtTomodachiInfo_t *dachi)
 			}
 			break;
 
+#if 0 // 廃止
 		case 2:
 			TaisenInfo.Chara[1] = CharaSelect(TaisenInfo.Chara[1]);
 			break;
+#endif
 
-		case 3:
+		case 2:
 			ClientKansenWait(dachi);
 			break;
 
-		case 4:
+		case 3:
 			goto end_menu;
 
 		default:

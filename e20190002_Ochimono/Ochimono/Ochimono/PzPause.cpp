@@ -1,7 +1,8 @@
 #include "StdInc.h"
 
 #define PAUSE_CURTAIN 0.666
-#define SELITEMNUM 4
+#define SELITEMNUM 3
+//#define SELITEMNUM 4 // €–ÚuÝ’èv”pŽ~
 
 #define SELRX 120
 #define SELRY 20
@@ -17,8 +18,8 @@ void PauseMain()
 	SelItemY[1] = 270;
 	SelItemX[2] = 400;
 	SelItemY[2] = 330;
-	SelItemX[3] = 400;
-	SelItemY[3] = 390;
+//	SelItemX[3] = 400; // ”pŽ~
+//	SelItemY[3] = 390; // ”pŽ~
 
 	DispMusCursor(true);
 
@@ -90,6 +91,7 @@ void PauseMain()
 				Pzdc.PauseSelExitGame = 1;
 				break;
 			}
+#if 0 // ”pŽ~
 			else if(currsel == 3) // Settings
 			{
 				SwapFrame();
@@ -104,6 +106,7 @@ void PauseMain()
 				Dc->BlackCurtain = PAUSE_CURTAIN;
 				Dc->BCPct = 1.0;
 			}
+#endif
 		}
 		SwapFrame();
 	}
