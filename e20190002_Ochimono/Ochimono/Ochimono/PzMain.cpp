@@ -2898,12 +2898,14 @@ endGameLoop:
 			ca += 0.015;
 			m_range(ca, 0.0, 1.0);
 
+#if 0 // Ÿ—˜E”s–kƒLƒƒƒ‰•\¦_”p~
 			for(int gci = 0; gci < 2; gci++)
 			{
 				SetAlpha(ca);
 				SimpleDraw(Pzdc.GmoCharPic[gci], (int)Pzdc.GmoCharX[gci], (int)Pzdc.GmoCharY[gci], 1);
 				ResetAlpha();
 			}
+#endif
 
 			// -- •¶š‚Ì—  --
 			{
