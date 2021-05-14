@@ -252,6 +252,18 @@ static void Title(void)
 	// ==== ==== ====
 
 	TestTaisen();
+
+	// BGMフェードアウト
+	{
+		FadeOut(Dc->BGMVolume, Dc->BGMVolume / 30);
+
+		for(int c = 0; c < 40; c++)
+		{
+			ClearDrawScreen();
+			SwapFrame();
+		}
+	}
+
 	TitleIndex = 3; // ゲーム終了
 	return;
 
@@ -744,10 +756,10 @@ static void Ochimono(void)
 	SetSeVolume(Dc->SeVolume);
 
 start_logo:
-	DispMusCursor(false);
-	Logo();
-//	PlayDouga(ResourcePath("Flower_PuzzleOP_High.mpg"));
-//	PlayMovie(ResourcePath("Flower_PuzzleOP_High.mpg"), 1, DX_MOVIEPLAYTYPE_BCANCEL);
+//	DispMusCursor(false); // 不要
+//	Logo(); // 廃止
+//	PlayDouga(ResourcePath("Flower_PuzzleOP_High.mpg")); // 廃止
+//	PlayMovie(ResourcePath("Flower_PuzzleOP_High.mpg"), 1, DX_MOVIEPLAYTYPE_BCANCEL); // old
 	DispMusCursor(true);
 
 start_title:

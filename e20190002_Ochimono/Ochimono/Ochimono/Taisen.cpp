@@ -1031,6 +1031,10 @@ static void P_SettingVolume(double &varVolume, int bgmFlag)
 		}
 		m_range(iVol, 0, 20);
 		varVolume = iVol / 20.0;
+
+		// ‰¹—ÊÝ’è_“K—p
+		SetBGMVolume(Dc->BGMVolume);
+		SetSeVolume(Dc->SeVolume);
 	}
 end_menu:
 	;
