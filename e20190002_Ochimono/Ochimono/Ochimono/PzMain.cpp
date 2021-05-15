@@ -2908,6 +2908,7 @@ endGameLoop:
 			}
 #endif
 
+#if 0 // Ÿ—˜E”s–k‚Ì”w–Ê_”pŽ~
 			// -- •¶Žš‚Ì—  --
 			{
 				SimpleDraw(Dc->PicWinWall, (int)hwin_x, (int)hwin_y, 1);
@@ -2922,6 +2923,7 @@ endGameLoop:
 				tslose_a += 0.005;
 				m_range(tslose_a, 0.0, 1.0);
 			}
+#endif
 
 			for(int gci = 0; gci < 2; gci++)
 			{
