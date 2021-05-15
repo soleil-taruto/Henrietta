@@ -2390,8 +2390,9 @@ no_tb_hidden:;
 
 		JamaSousai(); // ‹ŒˆÊ’u
 
-		if( 8 * MAP_X_BOUND <= Pzdc.MapList[0].PuyoSenyuu ||
-			8 * MAP_X_BOUND <= Pzdc.MapList[1].PuyoSenyuu ) PlayBGM(Pzdc.BGMPinch);
+		// ƒsƒ“ƒ`BGM_”pŽ~
+//		if( 8 * MAP_X_BOUND <= Pzdc.MapList[0].PuyoSenyuu ||
+//			8 * MAP_X_BOUND <= Pzdc.MapList[1].PuyoSenyuu ) PlayBGM(Pzdc.BGMPinch);
 		if( Pzdc.MapList[0].PuyoSenyuu <= 6 * MAP_X_BOUND &&
 			Pzdc.MapList[1].PuyoSenyuu <= 6 * MAP_X_BOUND ) PlayBGM(Pzdc.BGMNormal);
 

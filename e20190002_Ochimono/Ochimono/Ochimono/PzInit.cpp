@@ -18,8 +18,8 @@ void PzInit(void)
 
 	Pzdc.UseAI = 1;
 
-	Pzdc.BGMFileNormal = RESRC_BGM_TEIEN;
-	Pzdc.BGMFilePinch  = RESRC_BGM_NIISAN;
+	Pzdc.BGMFileNormal = RESRC_BGM_DESERT;
+	Pzdc.BGMFilePinch  = RESRC_BGM_PINCH01;
 	// ----
 
 	PzAI_Init();

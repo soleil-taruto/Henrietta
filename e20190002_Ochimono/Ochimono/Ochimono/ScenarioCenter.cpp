@@ -55,7 +55,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_U;
 
 		Pzdc.Basho = BASHO_FOREST;
-		Pzdc.BGMFileNormal = RESRC_BGM_CAFE;
+		Pzdc.BGMFileNormal = RESRC_BGM_FLOWER;
 
 		PzAI_SetStdParams(1, PzThink_Lv1, 0.2, 0, 0.5, 0.3, 0, 0.0);
 		goto endbuttle;
@@ -69,7 +69,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_C;
 
 		Pzdc.Basho = BASHO_JINJA;
-		Pzdc.BGMFileNormal = RESRC_BGM_SHIKI;
+		Pzdc.BGMFileNormal = RESRC_BGM_SUNFLOWER;
 
 		PzAI_SetStdParams(2, PzThink_Lv1, 0.2, 0, 0.5, 0.3, 0, 0.0);
 		goto endbuttle;
@@ -101,7 +101,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_F;
 
 		Pzdc.Basho = BASHO_FLOWER;
-		Pzdc.BGMFileNormal = RESRC_BGM_CAFE;
+		Pzdc.BGMFileNormal = RESRC_BGM_FLOWER;
 
 		PzAI_SetStdParams(1, PzThink_Lv1, 0.2, 0, 0.5, 0.3, 0, 0.0);
 		goto endbuttle;
@@ -115,7 +115,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_R;
 
 		Pzdc.Basho = BASHO_LAKE;
-		Pzdc.BGMFileNormal = RESRC_BGM_POLP;
+		Pzdc.BGMFileNormal = RESRC_BGM_LAKE;
 
 		PzAI_SetStdParams(2, PzThink_Lv1, 0.2, 0, 0.5, 0.3, 0, 0.0);
 		goto endbuttle;
@@ -131,7 +131,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_SR;
 
 		Pzdc.Basho = BASHO_LAKE;
-		Pzdc.BGMFileNormal = RESRC_BGM_POLP;
+		Pzdc.BGMFileNormal = RESRC_BGM_LAKE;
 
 		PzAI_SetStdParams(2, PzThink_Lv2, 0.3, 0, 0.5, 0.5, 0, 0.0);
 		goto endbuttle;
@@ -147,7 +147,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_A;
 
 		Pzdc.Basho = BASHO_FOREST;
-		Pzdc.BGMFileNormal = RESRC_BGM_TEIEN;
+		Pzdc.BGMFileNormal = RESRC_BGM_DESERT;
 
 		PzAI_SetStdParams(2, PzThink_Lv2, 0.3, 0, 0.6, 0.5, 0, 0.0);
 		goto endbuttle;
@@ -161,7 +161,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_F;
 
 		Pzdc.Basho = BASHO_DESERT;
-		Pzdc.BGMFileNormal = RESRC_BGM_TEIEN;
+		Pzdc.BGMFileNormal = RESRC_BGM_DESERT;
 
 		PzAI_SetStdParams(3, PzThink_Lv2, 0.3, 0, 0.6, 0.5, 0, 0.0);
 		goto endbuttle;
@@ -175,7 +175,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_U;
 
 		Pzdc.Basho = BASHO_SUNFLOWER;
-		Pzdc.BGMFileNormal = RESRC_BGM_SHIKI;
+		Pzdc.BGMFileNormal = RESRC_BGM_SUNFLOWER;
 
 		PzAI_SetStdParams(3, PzThink_Lv3, 0.4, 0, 0.6, 0.5, 0, 0.0);
 		goto endbuttle;
@@ -189,7 +189,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_S;
 
 		Pzdc.Basho = BASHO_LAKE;
-		Pzdc.BGMFileNormal = RESRC_BGM_3DAYS;
+		Pzdc.BGMFileNormal = RESRC_BGM_SEA;
 
 		PzAI_SetStdParams(4, PzThink_Lv3, 0.4, 0, 0.6, 0.5, 0, 0.0);
 		goto endbuttle;
@@ -205,7 +205,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_FS;
 
 		Pzdc.Basho = BASHO_LAKE;
-		Pzdc.BGMFileNormal = RESRC_BGM_3DAYS;
+		Pzdc.BGMFileNormal = RESRC_BGM_SEA;
 
 		PzAI_SetStdParams(4, PzThink_Lv4, 0.5, 0, 0.6, 0.8, 0, 0.0);
 		goto endbuttle;
@@ -221,7 +221,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_R;
 
 		Pzdc.Basho = BASHO_LAKE;
-		Pzdc.BGMFileNormal = RESRC_BGM_3DAYS;
+		Pzdc.BGMFileNormal = RESRC_BGM_SEA;
 
 		PzAI_SetStdParams(2, PzThink_Lv2, 0.3, 0, 0.6, 0.5, 0, 0.0);
 		goto endbuttle;
@@ -235,7 +235,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_C;
 
 		Pzdc.Basho = BASHO_JINJA;
-		Pzdc.BGMFileNormal = RESRC_BGM_SHIKI;
+		Pzdc.BGMFileNormal = RESRC_BGM_SUNFLOWER;
 
 		PzAI_SetStdParams(3, PzThink_Lv2, 0.3, 0, 0.6, 0.5, 0, 0.0);
 		goto endbuttle;
@@ -249,7 +249,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_E;
 
 		Pzdc.Basho = BASHO_SEA;
-		Pzdc.BGMFileNormal = RESRC_BGM_3DAYS;
+		Pzdc.BGMFileNormal = RESRC_BGM_SEA;
 
 		PzAI_SetStdParams(3, PzThink_Lv3, 0.4, 0, 0.6, 0.5, 0, 0.0);
 		goto endbuttle;
@@ -295,7 +295,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_A;
 
 		Pzdc.Basho = BASHO_JINJA;
-		Pzdc.BGMFileNormal = RESRC_BGM_POLP;
+		Pzdc.BGMFileNormal = RESRC_BGM_LAKE;
 
 		PzAI_SetStdParams(2, PzThink_Lv3, 0.4, 0, 0.6, 0.5, 0, 0.0);
 		goto endbuttle;
@@ -309,7 +309,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_S;
 
 		Pzdc.Basho = BASHO_SEA;
-		Pzdc.BGMFileNormal = RESRC_BGM_CAFE;
+		Pzdc.BGMFileNormal = RESRC_BGM_FLOWER;
 
 		PzAI_SetStdParams(3, PzThink_Lv4, 0.5, 0, 0.6, 0.6, 0, 0.0);
 		goto endbuttle;
@@ -325,8 +325,8 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_FE;
 
 		Pzdc.Basho = BASHO_FLOWER;
-		Pzdc.BGMFileNormal = RESRC_BGM_STORY;
-		Pzdc.BGMFilePinch  = RESRC_BGM_D;
+		Pzdc.BGMFileNormal = RESRC_BGM_NIGHT;
+		Pzdc.BGMFilePinch  = RESRC_BGM_PINCH02;
 
 		PzAI_SetStdParams(4, PzThink_Lv4, 0.5, 0, 0.6, 0.8, 0, 0.0);
 		goto endbuttle;
@@ -342,8 +342,8 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_UP;
 
 		Pzdc.Basho = BASHO_FOREST;
-		Pzdc.BGMFileNormal = RESRC_BGM_DANCE;
-		Pzdc.BGMFilePinch  = RESRC_BGM_D;
+		Pzdc.BGMFileNormal = RESRC_BGM_FOREST;
+		Pzdc.BGMFilePinch  = RESRC_BGM_PINCH02;
 
 		PzAI_SetStdParams(5, PzThink_Lv4, 0.6, 0, 0.6, 1.0, 0, 0.0);
 		goto endbuttle;
@@ -359,8 +359,8 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_EJ;
 
 		Pzdc.Basho = BASHO_NIGHT;
-		Pzdc.BGMFileNormal = RESRC_BGM_STORY;
-		Pzdc.BGMFilePinch  = RESRC_BGM_D;
+		Pzdc.BGMFileNormal = RESRC_BGM_NIGHT;
+		Pzdc.BGMFilePinch  = RESRC_BGM_PINCH02;
 
 		PzAI_SetStdParams(5, PzThink_ClockTower, 0.6, 0, 0.6, 1.0, 0, 0.0);
 		goto endbuttle;
@@ -390,7 +390,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_C;
 
 		Pzdc.Basho = BASHO_LAKE;
-		Pzdc.BGMFileNormal = RESRC_BGM_SHIKI;
+		Pzdc.BGMFileNormal = RESRC_BGM_SUNFLOWER;
 
 		PzAI_SetStdParams(3, PzThink_Lv4, 0.5, 0, 0.6, 0.6, 0, 0.0);
 		goto endbuttle;
@@ -406,7 +406,7 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_IR;
 
 		Pzdc.Basho = BASHO_DESERT;
-		Pzdc.BGMFileNormal = RESRC_BGM_CAFE;
+		Pzdc.BGMFileNormal = RESRC_BGM_FLOWER;
 
 		PzAI_SetStdParams(4, PzThink_Lv4, 0.5, 0, 0.6, 0.8, 0, 0.0);
 		goto endbuttle;
@@ -422,8 +422,8 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_UA;
 
 		Pzdc.Basho = BASHO_SUNFLOWER;
-		Pzdc.BGMFileNormal = RESRC_BGM_DANCE;
-		Pzdc.BGMFilePinch  = RESRC_BGM_D;
+		Pzdc.BGMFileNormal = RESRC_BGM_FOREST;
+		Pzdc.BGMFilePinch  = RESRC_BGM_PINCH02;
 
 		PzAI_SetStdParams(5, PzThink_Lv4, 0.6, 0, 0.6, 1.0, 0, 0.0);
 		goto endbuttle;
@@ -439,8 +439,8 @@ void Scc_SetPuzzleParams(char *puzzTitle)
 		Pzdc.HissatsuType[1] = HWT_AE;
 
 		Pzdc.Basho = BASHO_JINJA;
-		Pzdc.BGMFileNormal = RESRC_BGM_SUI;
-		Pzdc.BGMFilePinch  = RESRC_BGM_D;
+		Pzdc.BGMFileNormal = RESRC_BGM_JINJA;
+		Pzdc.BGMFilePinch  = RESRC_BGM_PINCH02;
 
 		PzAI_SetStdParams(5, PzThink_ClockTower, 0.6, 0, 0.6, 1.0, 0, 0.0);
 		goto endbuttle;

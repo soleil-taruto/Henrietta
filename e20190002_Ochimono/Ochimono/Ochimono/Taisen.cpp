@@ -382,38 +382,38 @@ static void TaisenEx(void)
 	switch(i->Basho)
 	{
 	case BASHO_SUNFLOWER:
-		Pzdc.BGMFileNormal = RESRC_BGM_SHIKI;
+		Pzdc.BGMFileNormal = RESRC_BGM_SUNFLOWER;
 		break;
 
 	case BASHO_FLOWER:
-		Pzdc.BGMFileNormal = RESRC_BGM_CAFE;
+		Pzdc.BGMFileNormal = RESRC_BGM_FLOWER;
 		break;
 
 	case BASHO_SEA:
-		Pzdc.BGMFileNormal = RESRC_BGM_3DAYS;
+		Pzdc.BGMFileNormal = RESRC_BGM_SEA;
 		break;
 
 	case BASHO_LAKE:
-		Pzdc.BGMFileNormal = RESRC_BGM_POLP;
+		Pzdc.BGMFileNormal = RESRC_BGM_LAKE;
 		break;
 
 	case BASHO_DESERT:
-		Pzdc.BGMFileNormal = RESRC_BGM_TEIEN;
+		Pzdc.BGMFileNormal = RESRC_BGM_DESERT;
 		break;
 
 	case BASHO_FOREST:
-		Pzdc.BGMFileNormal = RESRC_BGM_DANCE;
-		Pzdc.BGMFilePinch  = RESRC_BGM_D;
+		Pzdc.BGMFileNormal = RESRC_BGM_FOREST;
+//		Pzdc.BGMFilePinch  = RESRC_BGM_PINCH02; // ƒsƒ“ƒ`BGM_”pŽ~
 		break;
 
 	case BASHO_JINJA:
-		Pzdc.BGMFileNormal = RESRC_BGM_SUI;
-		Pzdc.BGMFilePinch  = RESRC_BGM_D;
+		Pzdc.BGMFileNormal = RESRC_BGM_JINJA;
+//		Pzdc.BGMFilePinch  = RESRC_BGM_PINCH02; // ƒsƒ“ƒ`BGM_”pŽ~
 		break;
 
 	case BASHO_NIGHT:
-		Pzdc.BGMFileNormal = RESRC_BGM_STORY;
-		Pzdc.BGMFilePinch  = RESRC_BGM_D;
+		Pzdc.BGMFileNormal = RESRC_BGM_NIGHT;
+//		Pzdc.BGMFilePinch  = RESRC_BGM_PINCH02; // ƒsƒ“ƒ`BGM_”pŽ~
 		break;
 
 	default:
