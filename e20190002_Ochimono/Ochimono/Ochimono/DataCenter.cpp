@@ -297,10 +297,10 @@ void DcInit(void)
 	Dc->SeEi    = LoadSound(ResourcePath("音\\えい.wav"));
 	Dc->SeSore  = LoadSound(ResourcePath("音\\それっ.wav"));
 	Dc->SeHa    = LoadSound(ResourcePath("音\\はっ.wav"));
-	Dc->SeGo    = LoadSound(ResourcePath("音\\ゴー.wav"));
+//	Dc->SeGo    = LoadSound(ResourcePath("音\\ゴー.wav"));
 //	Dc->SeSpCmd = LoadSound(ResourcePath("音\\スペシャルコマンド.wav")); // 必殺技_廃止
 //	Dc->SeRucca = LoadSound(ResourcePath("音\\ルッカ.wav")); // 不使用
-	Dc->SeJReady= LoadSound(ResourcePath("音\\レディー.wav"));
+//	Dc->SeJReady= LoadSound(ResourcePath("音\\レディー.wav"));
 	Dc->SeRen3  = LoadSound(ResourcePath("音\\三連鎖.wav"));
 	Dc->SeRen5  = LoadSound(ResourcePath("音\\五連鎖.wav"));
 	Dc->SeRen7  = LoadSound(ResourcePath("音\\最終連鎖.wav"));

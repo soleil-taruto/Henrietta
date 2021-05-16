@@ -87,7 +87,7 @@ void PzStartScene(void)
 	StopBGM();
 
 	PlaySe(Dc->SeReady);
-	PlaySe(Dc->SeJReady);
+//	PlaySe(Dc->SeJReady); // îpé~
 
 	frameloop(frmidx, frmpct, 30)
 	{
@@ -107,7 +107,7 @@ void PzStartScene(void)
 	Pzdc.SS_Zoom = 1.0;
 
 	PlaySe(Dc->SeStart);
-	PlaySe(Dc->SeGo);
+//	PlaySe(Dc->SeGo); // îpé~
 
 	AddFrameTask(SS_DrawReadyFar, NULL);
 }

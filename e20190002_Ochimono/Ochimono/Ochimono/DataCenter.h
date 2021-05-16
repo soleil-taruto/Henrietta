@@ -111,10 +111,10 @@ typedef struct Dc_st
 	int SeEi;
 	int SeSore;
 	int SeHa;
-	int SeGo;
+//	int SeGo; // ”p~
 //	int SeSpCmd; // •KE‹Z_”p~
 //	int SeRucca; // •sg—p
-	int SeJReady;
+//	int SeJReady; // ”p~
 	int SeRen3;
 	int SeRen5;
 	int SeRen7;
