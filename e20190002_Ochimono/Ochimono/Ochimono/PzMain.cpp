@@ -2494,7 +2494,8 @@ draw_top:
 				int jny;
 				int jnxs;
 
-				jnx = midx ? 525 : 43;
+				jnx = midx ? 505 : 23;
+//				jnx = midx ? 525 : 43; // old
 				jny = 6;
 				jnxs = 16;
 
@@ -2927,7 +2928,8 @@ endGameLoop:
 
 			for(int gci = 0; gci < 2; gci++)
 			{
-				SimpleDraw(Pzdc.GmoMojiPic[gci], (int)Pzdc.GmoMojiX[gci], (int)Pzdc.GmoMojiY[gci], 1);
+				SimpleDraw(Pzdc.GmoMojiPic[gci], 400 * gci, 0, 1);
+//				SimpleDraw(Pzdc.GmoMojiPic[gci], (int)Pzdc.GmoMojiX[gci], (int)Pzdc.GmoMojiY[gci], 1); // old
 			}
 
 			DrawStar(0);
