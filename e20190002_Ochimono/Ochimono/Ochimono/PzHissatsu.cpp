@@ -494,5 +494,5 @@ void PzHissatsu(int mapIndex, int hissatsuType)
 	default:
 		error();
 	}
-	PlaySe(Dc->SeBellHiss);
+//	PlaySe(Dc->SeBellHiss); // •KE‹Z_”p~
 }

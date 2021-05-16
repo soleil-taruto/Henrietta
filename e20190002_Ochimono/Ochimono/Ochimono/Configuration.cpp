@@ -504,7 +504,7 @@ void CfgMain(void)
 						Dc->SeSore,
 						Dc->SeHa,
 						Dc->SeGo,
-						Dc->SeSpCmd,
+//						Dc->SeSpCmd, // •KŽE‹Z_”pŽ~
 //						Dc->SeRucca,
 						Dc->SeJReady,
 						Dc->SeRen3,

@@ -98,13 +98,13 @@ typedef struct Dc_st
 
 	int SeReady;
 	int SeStart;
-	int SeFlower;
-	int SeFlowerLot;
+//	int SeFlower; // •sŽg—p
+//	int SeFlowerLot; // •sŽg—p
 	int SeMove;
 	int SeRotate;
 	int SeErase;
 	int SeDecide;
-	int SeBomb;
+//	int SeBomb; // •sŽg—p
 
 	int SeIkuyo;
 	int SeUwa;
@@ -112,19 +112,19 @@ typedef struct Dc_st
 	int SeSore;
 	int SeHa;
 	int SeGo;
-	int SeSpCmd;
-	int SeRucca;
+//	int SeSpCmd; // •KŽE‹Z_”pŽ~
+//	int SeRucca; // •sŽg—p
 	int SeJReady;
 	int SeRen3;
 	int SeRen5;
 	int SeRen7;
 	int SeWin;
 	int SeLose;
-	int SeHissOk;
+//	int SeHissOk; // •KŽE‹Z_”pŽ~
 
 	int SeBellWin;
 	int SeBellLose;
-	int SeBellHiss;
+//	int SeBellHiss; // •KŽE‹Z_”pŽ~
 
 	double BGMVolume;
 	double SeVolume;

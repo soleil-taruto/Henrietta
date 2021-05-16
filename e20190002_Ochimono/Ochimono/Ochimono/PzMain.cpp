@@ -1185,7 +1185,7 @@ restart:
 		if(!lastGStt && m->GoStatus) // ? Off -> On
 		{
 			PzefAddStarPon(m->GoX + 34, m->GoY + 15, 100);
-			PlaySe(Dc->SeHissOk);
+//			PlaySe(Dc->SeHissOk); // •KŽE‹Z_”pŽ~
 		}
 	}
 	if(m->Hissatsu && m->HissSleepTimer == 0) // •KŽE‹Z”­“®I
@@ -1198,7 +1198,7 @@ restart:
 
 		CI_AddHiss(mapIndex, (PuzzPair_t)m->PlayerChar);
 		Pzdc.GameFreezeCount = 55;
-		PlaySe(Dc->SeSpCmd);
+//		PlaySe(Dc->SeSpCmd); // •KŽE‹Z_”pŽ~
 
 		m->DoHissatsu = 1;
 		m->HissSleepTimer = 60;

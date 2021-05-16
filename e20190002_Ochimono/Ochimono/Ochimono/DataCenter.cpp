@@ -284,13 +284,13 @@ void DcInit(void)
 
 	Dc->SeReady    = LoadSound(ResourcePath("音\\ready.wav"));
 	Dc->SeStart    = LoadSound(ResourcePath("音\\スタート.wav"));
-	Dc->SeFlower   = LoadSound(ResourcePath("音\\モノクロフラワー_少量.wav"));
-	Dc->SeFlowerLot= LoadSound(ResourcePath("音\\モノクロフラワー_大量.wav"));
+//	Dc->SeFlower   = LoadSound(ResourcePath("音\\モノクロフラワー_少量.wav")); // 不使用
+//	Dc->SeFlowerLot= LoadSound(ResourcePath("音\\モノクロフラワー_大量.wav")); // 不使用
 	Dc->SeMove     = LoadSound(ResourcePath("音\\横移動.wav"));
 	Dc->SeRotate   = LoadSound(ResourcePath("音\\回転.wav"));
 	Dc->SeErase    = LoadSound(ResourcePath("音\\消えるときの音.wav"));
 	Dc->SeDecide   = LoadSound(ResourcePath("音\\着地.wav"));
-	Dc->SeBomb     = LoadSound(ResourcePath("音\\必殺技.wav"));
+//	Dc->SeBomb     = LoadSound(ResourcePath("音\\必殺技.wav")); // 不使用
 
 	Dc->SeIkuyo = LoadSound(ResourcePath("音\\いっくよー.wav"));
 	Dc->SeUwa   = LoadSound(ResourcePath("音\\うわあ.wav"));
@@ -298,19 +298,19 @@ void DcInit(void)
 	Dc->SeSore  = LoadSound(ResourcePath("音\\それっ.wav"));
 	Dc->SeHa    = LoadSound(ResourcePath("音\\はっ.wav"));
 	Dc->SeGo    = LoadSound(ResourcePath("音\\ゴー.wav"));
-	Dc->SeSpCmd = LoadSound(ResourcePath("音\\スペシャルコマンド.wav"));
-	Dc->SeRucca = LoadSound(ResourcePath("音\\ルッカ.wav"));
+//	Dc->SeSpCmd = LoadSound(ResourcePath("音\\スペシャルコマンド.wav")); // 必殺技_廃止
+//	Dc->SeRucca = LoadSound(ResourcePath("音\\ルッカ.wav")); // 不使用
 	Dc->SeJReady= LoadSound(ResourcePath("音\\レディー.wav"));
 	Dc->SeRen3  = LoadSound(ResourcePath("音\\三連鎖.wav"));
 	Dc->SeRen5  = LoadSound(ResourcePath("音\\五連鎖.wav"));
 	Dc->SeRen7  = LoadSound(ResourcePath("音\\最終連鎖.wav"));
 	Dc->SeWin   = LoadSound(ResourcePath("音\\勝利ボイス.wav"));
 	Dc->SeLose  = LoadSound(ResourcePath("音\\敗北ボイス.wav"));
-	Dc->SeHissOk= LoadSound(ResourcePath("音\\go.mp3"));
+//	Dc->SeHissOk= LoadSound(ResourcePath("音\\go.mp3")); // 必殺技_廃止
 
 	Dc->SeBellWin  = LoadSound(ResourcePath("音\\勝利ジングル.mp3"));
 	Dc->SeBellLose = LoadSound(ResourcePath("音\\敗北ジングル.mp3"));
-	Dc->SeBellHiss = LoadSound(ResourcePath("音\\スペシャルコマンドジングル.mp3"));
+//	Dc->SeBellHiss = LoadSound(ResourcePath("音\\スペシャルコマンドジングル.mp3")); // 必殺技_廃止
 
 	// 旧初期値設定位置、現在この初期値は無効 -> InitSettings()
 	Dc->BGMVolume = 0.45;
