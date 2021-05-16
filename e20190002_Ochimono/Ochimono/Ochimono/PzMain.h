@@ -20,13 +20,13 @@ void PzMain(void);
 #define RESRC_BGM_FLOWER    "Puzzle\\音\\cafe.mp3"
 #define RESRC_BGM_NIGHT     "Puzzle\\音\\cover_story.mp3"
 #define RESRC_BGM_FOREST    "Puzzle\\音\\dance_in_the_sky.mp3"
-#define RESRC_BGM_EVE       "Puzzle\\音\\eve.mp3"
 #define RESRC_BGM_SUNFLOWER "Puzzle\\音\\k_sikisai.mp3"
-#define RESRC_BGM_MITSU     "Puzzle\\音\\mitukoi.mp3"
 #define RESRC_BGM_LAKE      "Puzzle\\音\\polp.mp3"
 #define RESRC_BGM_JINJA     "Puzzle\\音\\suikyou.mp3"
-#define RESRC_BGM_PINCH01   "Puzzle\\音\\チョイとソコ行く変な兄さん.mp3"
-#define RESRC_BGM_PINCH02   "Puzzle\\音\\d.mp3"
+#define RESRC_BGM_PINCH01   "Puzzle\\音\\Pinch01.mp3" // 不使用
+#define RESRC_BGM_PINCH02   "Puzzle\\音\\Pinch02.mp3" // 不使用
+#define RESRC_BGM_NOTUSED01 "Puzzle\\音\\NotUsed01.mp3" // 不使用
+#define RESRC_BGM_NOTUSED02 "Puzzle\\音\\NotUsed02.mp3" // 不使用
 // ----
 
 int PzutlGetTakasa(Map_t *m, int x);
