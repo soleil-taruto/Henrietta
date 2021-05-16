@@ -304,8 +304,8 @@ void DcInit(void)
 	Dc->SeRen3  = LoadSound(ResourcePath("音\\三連鎖.wav"));
 	Dc->SeRen5  = LoadSound(ResourcePath("音\\五連鎖.wav"));
 	Dc->SeRen7  = LoadSound(ResourcePath("音\\最終連鎖.wav"));
-	Dc->SeWin   = LoadSound(ResourcePath("音\\勝利ボイス.wav"));
-	Dc->SeLose  = LoadSound(ResourcePath("音\\敗北ボイス.wav"));
+//	Dc->SeWin   = LoadSound(ResourcePath("音\\勝利ボイス.wav")); // 廃止
+//	Dc->SeLose  = LoadSound(ResourcePath("音\\敗北ボイス.wav")); // 廃止
 //	Dc->SeHissOk= LoadSound(ResourcePath("音\\go.mp3")); // 必殺技_廃止
 
 	Dc->SeBellWin  = LoadSound(ResourcePath("音\\勝利ジングル.mp3"));

@@ -118,8 +118,8 @@ typedef struct Dc_st
 	int SeRen3;
 	int SeRen5;
 	int SeRen7;
-	int SeWin;
-	int SeLose;
+//	int SeWin; // ”p~
+//	int SeLose; // ”p~
 //	int SeHissOk; // •KE‹Z_”p~
 
 	int SeBellWin;

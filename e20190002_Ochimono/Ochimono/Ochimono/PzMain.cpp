@@ -2723,12 +2723,12 @@ endGameLoop:
 		if(bellWin)
 		{
 			PlaySe(Dc->SeBellWin);
-			PlaySe(Dc->SeWin);
+//			PlaySe(Dc->SeWin); // îpé~
 		}
 		else
 		{
 			PlaySe(Dc->SeBellLose);
-			PlaySe(Dc->SeLose);
+//			PlaySe(Dc->SeLose); // îpé~
 		}
 
 		switch(Pzdc.Winner)

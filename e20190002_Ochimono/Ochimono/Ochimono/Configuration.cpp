@@ -503,15 +503,15 @@ void CfgMain(void)
 						Dc->SeEi,
 						Dc->SeSore,
 						Dc->SeHa,
-//						Dc->SeGo,
+//						Dc->SeGo, // ”p~
 //						Dc->SeSpCmd, // •KE‹Z_”p~
-//						Dc->SeRucca,
-//						Dc->SeJReady,
+//						Dc->SeRucca, // ”p~
+//						Dc->SeJReady, // ”p~
 						Dc->SeRen3,
 						Dc->SeRen5,
 						Dc->SeRen7,
-						Dc->SeWin,
-						Dc->SeLose,
+//						Dc->SeWin, // ”p~
+//						Dc->SeLose, // ”p~
 					};
 					int testseidx = rndbnd(0, lengthof(testselst) - 1);
 
