@@ -282,34 +282,34 @@ void DcInit(void)
 
 	Dc->BGM_Title = LoadBGM(ResourcePath("Puzzle\\音\\MusMus-CT-NV-END_muon-100-100.mp3"));
 
-	Dc->SeReady    = LoadSound(ResourcePath("音\\和太鼓でドドン.mp3"));
-	Dc->SeStart    = LoadSound(ResourcePath("音\\ピューンと逃げる.mp3"));
+	Dc->SeReady    = LoadSound(ResourcePath("音\\和太鼓でドドン_wv_[300].wav"));
+	Dc->SeStart    = LoadSound(ResourcePath("音\\ピューンと逃げる_wv_[300].wav"));
 //	Dc->SeFlower   = LoadSound(ResourcePath("音\\モノクロフラワー_少量.wav")); // 不使用
 //	Dc->SeFlowerLot= LoadSound(ResourcePath("音\\モノクロフラワー_大量.wav")); // 不使用
-	Dc->SeMove     = LoadSound(ResourcePath("音\\カーソル移動4.mp3"));
-	Dc->SeRotate   = LoadSound(ResourcePath("音\\カーソル移動7.mp3"));
-	Dc->SeErase    = LoadSound(ResourcePath("音\\パッ.mp3"));
-	Dc->SeDecide   = LoadSound(ResourcePath("音\\パパッ.mp3"));
+	Dc->SeMove     = LoadSound(ResourcePath("音\\カーソル移動4_wv_[300].wav"));
+	Dc->SeRotate   = LoadSound(ResourcePath("音\\カーソル移動7_wv_[300].wav"));
+	Dc->SeErase    = LoadSound(ResourcePath("音\\パッ_wv_[300].wav"));
+	Dc->SeDecide   = LoadSound(ResourcePath("音\\パパッ_wv_[300].wav"));
 //	Dc->SeBomb     = LoadSound(ResourcePath("音\\必殺技.wav")); // 不使用
 
-	Dc->SeIkuyo = LoadSound(ResourcePath("音\\小鼓(こつづみ).mp3"));
-	Dc->SeUwa   = LoadSound(ResourcePath("音\\間抜け2.mp3"));
-	Dc->SeEi    = LoadSound(ResourcePath("音\\クイズ正解2.mp3"));
-	Dc->SeSore  = LoadSound(ResourcePath("音\\クイズ正解3.mp3"));
-	Dc->SeHa    = LoadSound(ResourcePath("音\\クイズ正解4.mp3"));
+	Dc->SeIkuyo = LoadSound(ResourcePath("音\\小鼓(こつづみ)_wv_[300].wav"));
+	Dc->SeUwa   = LoadSound(ResourcePath("音\\間抜け2_wv_[300].wav"));
+	Dc->SeEi    = LoadSound(ResourcePath("音\\クイズ正解2_wv_[300].wav"));
+	Dc->SeSore  = LoadSound(ResourcePath("音\\クイズ正解3_wv_[300].wav"));
+	Dc->SeHa    = LoadSound(ResourcePath("音\\クイズ正解4_wv_[300].wav"));
 //	Dc->SeGo    = LoadSound(ResourcePath("音\\ゴー.wav"));
 //	Dc->SeSpCmd = LoadSound(ResourcePath("音\\スペシャルコマンド.wav")); // 必殺技_廃止
 //	Dc->SeRucca = LoadSound(ResourcePath("音\\ルッカ.wav")); // 不使用
 //	Dc->SeJReady= LoadSound(ResourcePath("音\\レディー.wav"));
-	Dc->SeRen3  = LoadSound(ResourcePath("音\\時代劇演出1.mp3"));
-	Dc->SeRen5  = LoadSound(ResourcePath("音\\金額表示.mp3"));
-	Dc->SeRen7  = LoadSound(ResourcePath("音\\鳩時計1.mp3"));
+	Dc->SeRen3  = LoadSound(ResourcePath("音\\時代劇演出1_wv_[300].wav"));
+	Dc->SeRen5  = LoadSound(ResourcePath("音\\金額表示_wv_[300].wav"));
+	Dc->SeRen7  = LoadSound(ResourcePath("音\\鳩時計1_wv_[300].wav"));
 //	Dc->SeWin   = LoadSound(ResourcePath("音\\勝利ボイス.wav")); // 廃止
 //	Dc->SeLose  = LoadSound(ResourcePath("音\\敗北ボイス.wav")); // 廃止
 //	Dc->SeHissOk= LoadSound(ResourcePath("音\\go.mp3")); // 必殺技_廃止
 
-	Dc->SeBellWin  = LoadSound(ResourcePath("音\\ラッパのファンファーレ.mp3"));
-	Dc->SeBellLose = LoadSound(ResourcePath("音\\間抜け4.mp3"));
+	Dc->SeBellWin  = LoadSound(ResourcePath("音\\ラッパのファンファーレ_wv_[300].wav"));
+	Dc->SeBellLose = LoadSound(ResourcePath("音\\間抜け4_wv_[300].wav"));
 //	Dc->SeBellHiss = LoadSound(ResourcePath("音\\スペシャルコマンドジングル.mp3")); // 必殺技_廃止
 
 	// 旧初期値設定位置、現在この初期値は無効 -> InitSettings()
