@@ -499,17 +499,17 @@ static void SpecialTaisen(void)
 		MenuAddItem("‘S•”ƒXƒeƒ‹ƒX");
 		MenuAddItem("ƒXƒeƒ‹ƒX‚Èƒnƒ“ƒfíy‚P‚oã‹‰ŽÒ^‚Q‚o‰SŽÒz");
 		MenuAddItem("ƒXƒeƒ‹ƒX‚Èƒnƒ“ƒfíy‚P‚o‰SŽÒ^‚Q‚oã‹‰ŽÒz");
-		MenuAddItem("ƒGƒ“ƒfƒBƒ“ƒO");
-		MenuAddItem("ƒGƒ“ƒfƒBƒ“ƒO(ƒ{[ƒ_[)");
-		MenuAddItem("ƒrƒbƒOƒtƒ‰ƒ[");
+//		MenuAddItem("ƒGƒ“ƒfƒBƒ“ƒO"); // ”pŽ~
+//		MenuAddItem("ƒGƒ“ƒfƒBƒ“ƒO(ƒ{[ƒ_[)"); // ”pŽ~
+		MenuAddItem("ƒrƒbƒOŽU‚èƒGƒtƒFƒNƒgiƒrƒbƒOƒtƒ‰ƒ[j");
 		MenuAddItem("‚¨Ž×–‚~‚R");
 		MenuAddItem("‚¨Ž×–‚~‚T");
 		MenuAddItem("‚¨Ž×–‚~‚V‚V‚V");
-		MenuAddItem("ƒXƒRƒA~‚R");
-		MenuAddItem("ƒXƒRƒA~‚T");
-		MenuAddItem("ƒXƒRƒA~‚V‚V‚V");
+//		MenuAddItem("ƒXƒRƒA~‚R"); // ”pŽ~
+//		MenuAddItem("ƒXƒRƒA~‚T"); // ”pŽ~
+//		MenuAddItem("ƒXƒRƒA~‚V‚V‚V"); // ”pŽ~
 		MenuAddItem("HŒÂ‚ÅÁ‚¦‚é");
-		MenuAddItem("í‚É‰B‚µ");
+//		MenuAddItem("í‚É‰B‚µ"); // ”pŽ~
 		MenuAddItem("‚‘¬");
 		MenuAddItem("‚à‚Á‚Æ‚‘¬");
 		MenuAddItem("‚à‚Á‚Æ‚à‚Á‚Æ‚‘¬");
@@ -592,6 +592,7 @@ static void SpecialTaisen(void)
 			t->GameOverAndShowStealth = 1;
 			break;
 
+#if 0 // ”pŽ~
 		case 11: // ‰Ô~‚ç‚µ
 			tbTitle = "FlowerRain";
 			t->FlowerRain = 1;
@@ -602,27 +603,29 @@ static void SpecialTaisen(void)
 			t->FlowerRain = 1;
 			t->FlowerRainbow = 1;
 			break;
+#endif
 
-		case 13: // ŽU‚è‰ÔA‘å
+		case 11: // ŽU‚è‰ÔA‘å
 			tbTitle = "BigFlower";
 			t->BigFlower = 1;
 			break;
 
-		case 14: // ‚¨Ž×–‚ * 3
+		case 12: // ‚¨Ž×–‚ * 3
 			tbTitle = "Jx3";
 			t->JamaExpand = 3;
 			break;
 
-		case 15: // ‚¨Ž×–‚ * 5
+		case 13: // ‚¨Ž×–‚ * 5
 			tbTitle = "Jx5";
 			t->JamaExpand = 5;
 			break;
 
-		case 16: // ‚¨Ž×–‚ * 777
+		case 14: // ‚¨Ž×–‚ * 777
 			tbTitle = "Jx777";
 			t->JamaExpand = 777;
 			break;
 
+#if 0 // ”pŽ~
 		case 17: // ƒXƒRƒA * 3
 			tbTitle = "Sx3";
 			t->ScoreExpand = 3;
@@ -637,8 +640,9 @@ static void SpecialTaisen(void)
 			tbTitle = "Sx777";
 			t->ScoreExpand = 777;
 			break;
+#endif
 
-		case 20: // ‚ŽŒÂÁ‚¦
+		case 15: // ‚ŽŒÂÁ‚¦
 			{
 				MenuSetTitle("HŒÂ‚ÅÁ‚¦‚é");
 
@@ -687,27 +691,29 @@ static void SpecialTaisen(void)
 			}
 			break;
 
+#if 0 // ”pŽ~
 		case 21: // í‚É‰B‚µ
 			tbTitle = "Hidden";
 			t->AlwaysHidden = 1;
 			break;
+#endif
 
-		case 22: // ‚‘¬
+		case 16: // ‚‘¬
 			tbTitle = "HiSpeed";
 			t->VeryFast = 1;
 			break;
 
-		case 23: // ‚‘¬x2
+		case 17: // ‚‘¬x2
 			tbTitle = "ExHiSpeed";
 			t->VeryFast = 2;
 			break;
 
-		case 24: // ‚‘¬x3
+		case 18: // ‚‘¬x3
 			tbTitle = "ExExHiSpeed";
 			t->VeryFast = 5;
 			break;
 
-		case 25: // –ß‚é
+		case 19: // –ß‚é
 			goto end_menu;
 
 		default:
