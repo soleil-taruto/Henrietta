@@ -280,7 +280,7 @@ void DcInit(void)
 
 	DcInit_LoadAllPicture();
 
-	Dc->BGM_Title = LoadBGM(ResourcePath("音\\hetaria.mp3"));
+	Dc->BGM_Title = LoadBGM(ResourcePath("Puzzle\\音\\MusMus-CT-NV-END_muon-100-100.mp3"));
 
 	Dc->SeReady    = LoadSound(ResourcePath("音\\ready.wav"));
 	Dc->SeStart    = LoadSound(ResourcePath("音\\スタート.wav"));

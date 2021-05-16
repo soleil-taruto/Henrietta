@@ -15,14 +15,14 @@ void PzEx_DoErase(Map_t *m);
 void PzMain(void);
 
 // -- 音 --
-#define RESRC_BGM_SEA       "Puzzle\\音\\3days.mp3"
-#define RESRC_BGM_DESERT    "Puzzle\\音\\BGM_永遠色五色_庭園.mp3"
-#define RESRC_BGM_FLOWER    "Puzzle\\音\\cafe.mp3"
-#define RESRC_BGM_NIGHT     "Puzzle\\音\\cover_story.mp3"
-#define RESRC_BGM_FOREST    "Puzzle\\音\\dance_in_the_sky.mp3"
-#define RESRC_BGM_SUNFLOWER "Puzzle\\音\\k_sikisai.mp3"
-#define RESRC_BGM_LAKE      "Puzzle\\音\\polp.mp3"
-#define RESRC_BGM_JINJA     "Puzzle\\音\\suikyou.mp3"
+#define RESRC_BGM_SEA       "Puzzle\\音\\MusMus-BGM-109_muon-100-100.mp3"
+#define RESRC_BGM_DESERT    "Puzzle\\音\\MusMus-CT-NAVAO-21_muon-100-100.mp3"
+#define RESRC_BGM_FLOWER    "Puzzle\\音\\MusMus-BGM-087_muon-100-100.mp3"
+#define RESRC_BGM_NIGHT     "Puzzle\\音\\MusMus-BGM-030_muon-100-100.mp3"
+#define RESRC_BGM_FOREST    "Puzzle\\音\\MusMus-BGM-074_muon-100-100.mp3"
+#define RESRC_BGM_SUNFLOWER "Puzzle\\音\\MusMus-BGM-009_muon-100-100.mp3"
+#define RESRC_BGM_LAKE      "Puzzle\\音\\MusMus-BGM-040_muon-100-100.mp3"
+#define RESRC_BGM_JINJA     "Puzzle\\音\\MusMus-BGM-118_muon-100-100.mp3"
 #define RESRC_BGM_PINCH01   "Puzzle\\音\\Pinch01.mp3" // 不使用
 #define RESRC_BGM_PINCH02   "Puzzle\\音\\Pinch02.mp3" // 不使用
 #define RESRC_BGM_NOTUSED01 "Puzzle\\音\\NotUsed01.mp3" // 不使用
