@@ -2,18 +2,19 @@
 
 int main(int argc, char **argv)
 {
-	autoList_t *paths;
-	char *path;
+	autoList_t *dirs;
+	char *dir;
 	uint index;
 
+	LOGPOS();
 	errorCase(!argIs("/Unsafe")); // 安全のため
+	LOGPOS();
+	dirs = lssDirs(nextArg());
 
-	paths = lss(nextArg());
-	reverseElements(paths);
+	foreach(dirs, dir, index)
+		if(getLocal(dir)[0] == '_') // ? "_orig" フォルダ etc.
+			recurRemoveDirIfExist(dir);
 
-	foreach(paths, path, index)
-		if(getLocal(path)[0] == '_')
-			recurRemovePathIfExist(path);
-
-	// g
+	releaseDim(dirs, 1);
+	LOGPOS();
 }
