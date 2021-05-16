@@ -1,7 +1,7 @@
 #include "StdInc.h"
 
 #define STD_CURTAIN 0.5
-//#define STD_CURTAIN 0.9
+//#define STD_CURTAIN 0.9 // old
 #define STD_WALL (Dc->PicTitle)
 
 typedef struct TaisenInfo_st
@@ -20,7 +20,8 @@ void Taisen_ProcInit(void)
 {
 	TaisenInfo.Chara[0] = 16;
 	TaisenInfo.Chara[1] = 20;
-	TaisenInfo.Basho = BASHO_FLOWER;
+	TaisenInfo.Basho = BASHO_SUNFLOWER;
+//	TaisenInfo.Basho = BASHO_FLOWER; // old
 	TaisenInfo.AITsuyosa = 8;
 }
 void Taisen_ProcFnlz(void)
@@ -483,7 +484,7 @@ static void SpecialTaisen(void)
 
 	for(; ; )
 	{
-		MenuSetTitle("エキストラ");
+		MenuSetTitle("エクストラ対戦モード");
 
 		ItemTsumero = 1;
 
@@ -1269,7 +1270,7 @@ restart:
 		char *extraInfo;
 
 		if(i->TBEnable)
-			extraInfo = xcout("(エキストラ:%s)", i->TokushuButtle.Title);
+			extraInfo = xcout("(エクストラ:%s)", i->TokushuButtle.Title);
 		else
 			extraInfo = strx("");
 
