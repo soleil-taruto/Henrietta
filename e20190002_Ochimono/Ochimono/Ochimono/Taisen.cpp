@@ -193,6 +193,8 @@ static char *Items[ITEM_MAX];
 static int ItemCount;
 static int ItemTsumero;
 
+static int LastItemCount;
+
 static void MenuSetTitle(char *title)
 {
 	Title = title;
@@ -314,12 +316,23 @@ end_menu:
 
 	clsDx();
 
+	LastItemCount = ItemCount;
+
 	// init
 	Title = NULL;
 	ItemCount = 0;
 	ItemTsumero = 0;
 
 	return currIndex;
+}
+static int CancellableMenu(int lastSel)
+{
+	int sel = Menu(lastSel);
+
+	if(sel == LastItemCount - 1)
+		sel = lastSel;
+
+	return sel;
 }
 
 // <---
@@ -501,7 +514,7 @@ static void SpecialTaisen(void)
 		MenuAddItem("ステルスなハンデ戦【１Ｐ初心者／２Ｐ上級者】");
 //		MenuAddItem("エンディング"); // 廃止
 //		MenuAddItem("エンディング(ボーダー)"); // 廃止
-		MenuAddItem("ビッグ散りエフェクト（ビッグフラワー）");
+		MenuAddItem("巨大な散りエフェクト（ビッグフラワー）");
 		MenuAddItem("お邪魔×３");
 		MenuAddItem("お邪魔×５");
 		MenuAddItem("お邪魔×７７７");
@@ -657,6 +670,7 @@ static void SpecialTaisen(void)
 				MenuAddItem("１ダースで消える");
 				MenuAddItem("１ダースで消える(２色)");
 				MenuAddItem("１ダースで消える(３色)");
+				MenuAddItem("戻る");
 
 				switch(Menu(2))
 				{
@@ -684,6 +698,9 @@ static void SpecialTaisen(void)
 					t->PuyoEraseNum = 12;
 					t->ColorMax = 3;
 					break;
+
+				case 11: // 戻る
+					goto end_menu;
 
 				default:
 					error();
@@ -777,8 +794,9 @@ static int BashoSelect(int lastSel)
 	MenuAddItem("森");
 	MenuAddItem("神社");
 	MenuAddItem("夜");
+	MenuAddItem("キャンセル");
 
-	return Menu(lastSel);
+	return CancellableMenu(lastSel);
 }
 static int AITsuyosaSelect(int lastSel)
 {
@@ -793,9 +811,10 @@ static int AITsuyosaSelect(int lastSel)
 	MenuAddItem("レベル６");
 	MenuAddItem("レベル７");
 	MenuAddItem("レベル８");
-	MenuAddItem("レベル８.１");
+	MenuAddItem("レベル８.１(最強？)");
+	MenuAddItem("キャンセル");
 
-	return Menu(lastSel);
+	return CancellableMenu(lastSel);
 }
 
 static void AIToTaisen(void)
