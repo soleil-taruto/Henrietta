@@ -6,6 +6,7 @@
 
 #include "StdInc.h"
 
+#if 0 // 廃止
 static void NetworkModeAdjustSRand(void) // ネット対戦で、しばしば乱数のシークの同期を失う問題対策
 {
 	if(Pzdc.NetworkMode)
@@ -17,6 +18,7 @@ static void NetworkModeAdjustSRand(void) // ネット対戦で、しばしば乱数のシークの
 		initcnt++;
 	}
 }
+#endif
 static void GenerateStar(double x, double y, int color, int rensanum)
 {
 	DataCenter_t *dc = &Pzdc;
@@ -988,11 +990,12 @@ restart:
 	{
 		// ボーナス・ワープ
 		{
+			if(!Pzdc.NetworkMode) // ? not ネットワーク対戦
 			if(kousokuAtFirst == 0 || (mapIndex == 1 && Pzdc.UseAI))
 			{
 				int warped = 0;
 
-				NetworkModeAdjustSRand();
+//				NetworkModeAdjustSRand(); // ネットワーク対戦 -> ここへ到達しない。
 
 				warped |= BonusWarp(m, x1, y1, 0);
 				warped |= BonusWarp(m, x2, y2, 1);
@@ -2347,10 +2350,15 @@ nyuuryokuEnd:
 				if(Pzdc.MapList[0].TokushuHidden) goto no_tb_hidden;
 				if(Pzdc.MapList[1].TokushuHidden) goto no_tb_hidden;
 
-				NetworkModeAdjustSRand();
+//				NetworkModeAdjustSRand(); // 廃止
 
+#if 1
+				int tmout = 500;
+				int ipic = ipics[0];
+#else // old
 				int tmout = rndbnd(400, 600);
 				int ipic = ipics[rndbnd(0, lengthof(ipics) - 1)];
+#endif
 
 				Pzdc.TB_Hide_NextFrameCnt = Pzdc.FrameCnt + tmout;
 
