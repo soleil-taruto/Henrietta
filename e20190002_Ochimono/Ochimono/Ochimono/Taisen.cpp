@@ -885,7 +885,7 @@ static void DachiToTaisen(void)
 		MenuAddItem("対戦スタート");
 //		MenuAddItem("１Ｐ(左側)キャラ変更"); // 廃止
 //		MenuAddItem("２Ｐ(右側)キャラ変更"); // 廃止
-		MenuAddItem("場所変更");
+		MenuAddItem("背景変更");
 		MenuAddItem("エクストラ対戦モード");
 		MenuAddItem("戻る");
 
