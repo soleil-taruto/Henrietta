@@ -6,6 +6,7 @@
 
 #include "StdInc.h"
 
+#if 0 // 廃止
 static void NetworkModeAdjustSRand(void) // ネット対戦で、しばしば乱数のシークの同期を失う問題対策
 {
 	if(Pzdc.NetworkMode)
@@ -17,6 +18,7 @@ static void NetworkModeAdjustSRand(void) // ネット対戦で、しばしば乱数のシークの
 		initcnt++;
 	}
 }
+#endif
 static void GenerateStar(double x, double y, int color, int rensanum)
 {
 	DataCenter_t *dc = &Pzdc;
@@ -988,11 +990,12 @@ restart:
 	{
 		// ボーナス・ワープ
 		{
+			if(!Pzdc.NetworkMode) // ? ネットワーク対戦ではない。
 			if(kousokuAtFirst == 0 || (mapIndex == 1 && Pzdc.UseAI))
 			{
 				int warped = 0;
 
-				NetworkModeAdjustSRand();
+//				NetworkModeAdjustSRand(); // ネットワーク対戦でここに到達しない。
 
 				warped |= BonusWarp(m, x1, y1, 0);
 				warped |= BonusWarp(m, x2, y2, 1);
@@ -2336,6 +2339,7 @@ void PzMain(void)
 		}
 nyuuryokuEnd:
 
+#if 0 // 廃止
 		// 常に隠しモード
 		{
 			int ipics[] =
@@ -2374,6 +2378,7 @@ nyuuryokuEnd:
 			}
 no_tb_hidden:;
 		}
+#endif
 
 		ExecFrameMap(0);
 		ExecFrameMap(1);
@@ -2652,7 +2657,7 @@ endGameLoop:
 					}
 					Pzdc.FrameCnt++;
 				}
-				errorCase(1000 < frmidx); // anti endless loop
+				errorCase(2000 < frmidx); // anti endless loop
 
 				Sleep(5);
 			}

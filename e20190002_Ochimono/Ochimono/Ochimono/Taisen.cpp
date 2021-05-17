@@ -484,7 +484,7 @@ static void SpecialTaisen(void)
 
 	for(; ; )
 	{
-		MenuSetTitle("エクストラ対戦モード");
+		MenuSetTitle("エクストラ対戦モード（特殊ルール等ちょっと変わった対戦モード）");
 
 		ItemTsumero = 1;
 
