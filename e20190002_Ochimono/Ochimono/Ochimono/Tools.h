@@ -80,6 +80,9 @@ void line2domain(char *line);
 void line2domain_len(char *line, int lenmax);
 
 void LogWrite(char *line, int value);
+void LogWrite(char *line, void *block, int size);
+void LogWrite(char *line);
+void LogWrite_x(char *line);
 
 #define TOT() \
 	LogWrite(__FILE__, __LINE__)

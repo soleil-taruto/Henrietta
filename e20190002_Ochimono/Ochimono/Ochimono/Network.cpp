@@ -107,10 +107,13 @@ static void PutExtend(uchar *block, int blockSize)
 }
 static int CheckExtend(uchar *block, int blockSize)
 {
+LogWrite("CE"); // test
 	if(CheckCRC(block, blockSize + CRED_SIZE))
 	{
+LogWrite("CE_CRC_OK"); // test
 		if(NtCommonInfo[0].OSCredentials != -1) // ? OSC 有効
 		{
+LogWrite("CE_CRED_ENABLED"); // test
 			return
 				block[blockSize + 0] == (0xff & NtCommonInfo[0].OSCredentials / 0x1000000) &&
 				block[blockSize + 1] == (0xff & NtCommonInfo[0].OSCredentials / 0x10000) &&
@@ -122,6 +125,26 @@ static int CheckExtend(uchar *block, int blockSize)
 	return 0;
 }
 
+static int P_SendUDP(int handle, IPDATA ip, int port, void *block, int size)
+{
+	int retval = NetWorkSendUDP(handle, ip, port, block, size);
+
+	LogWrite_x(xcout("SendUDP: %d [%d.%d.%d.%d] %d %d -> %d", handle, ip.d1, ip.d2, ip.d3, ip.d4, port, size, retval)); // test
+	LogWrite("SendUDP_Block", block, size); // test
+
+	return retval;
+}
+static int P_RecvUDP(int handle, IPDATA &ip, int &port, void *block, int size)
+{
+	int retval = NetWorkRecvUDP(handle, &ip, &port, block, size, 0);
+
+	LogWrite_x(xcout("RecvUDP: %d [%d.%d.%d.%d] %d %d -> %d", handle, ip.d1, ip.d2, ip.d3, ip.d4, port, size, retval)); // test
+
+	if(0 <= retval)
+		LogWrite("RecvUDP_Block", block, retval); // test
+
+	return retval;
+}
 static void UDPSendBlock(void *block, int blockSize)
 {
 	IPDATA ip;
@@ -138,7 +161,7 @@ static void UDPSendBlock(void *block, int blockSize)
 	ip.d3 = NtCommonInfo[0].SendIP[2];
 	ip.d4 = NtCommonInfo[0].SendIP[3];
 
-	int retval = NetWorkSendUDP(NtCommonInfo[0].SockHandle, ip, NtCommonInfo[0].SendPort, UDPBlockTmp, blockSize + UDPEXTEND_SIZE);
+	int retval = P_SendUDP(NtCommonInfo[0].SockHandle, ip, NtCommonInfo[0].SendPort, UDPBlockTmp, blockSize + UDPEXTEND_SIZE);
 
 	ExtraErrorInfo.RetVal = retval;
 	errorCase(retval < 0);
@@ -167,14 +190,17 @@ static int UDPRecvBlock(void *block, int blockSize) // ret : ? 受信した。
 		{
 			break;
 		}
-		retval = NetWorkRecvUDP(NtCommonInfo[0].SockHandle, &ip, &port, UDPBlockTmp, UDPBLOCK_SIZEMAX + UDPEXTEND_SIZE, 0); // Peek == 0 で消去する。マニュアルと逆！
+		retval = P_RecvUDP(NtCommonInfo[0].SockHandle, ip, port, UDPBlockTmp, UDPBLOCK_SIZEMAX + UDPEXTEND_SIZE);
+//		retval = NetWorkRecvUDP(NtCommonInfo[0].SockHandle, &ip, &port, UDPBlockTmp, UDPBLOCK_SIZEMAX + UDPEXTEND_SIZE, 0); // Peek == 0 で消去する。マニュアルと逆！
 //		retval = NetWorkRecvUDP(NtCommonInfo[0].SockHandle, &ip, &port, UDPBlockTmp, UDPBLOCK_SIZEMAX + UDPEXTEND_SIZE, 1); // 直った。-> 3.07aでデグレってやがる。
 
 		ExtraErrorInfo.RetVal = retval;
 //		errorCase(retval < 0); // エラーは時々起こる！？ ... 多分、関係の無い UDP パケットが飛んでくる。
 
+LogWrite("CheckSize"); // test
 		if(retval == blockSize + UDPEXTEND_SIZE && CheckExtend(UDPBlockTmp, blockSize)) // ? 成功
 		{
+LogWrite("CE_CRED_OK"); // test
 			NtUDPRecvIP[0] = ip.d1;
 			NtUDPRecvIP[1] = ip.d2;
 			NtUDPRecvIP[2] = ip.d3;

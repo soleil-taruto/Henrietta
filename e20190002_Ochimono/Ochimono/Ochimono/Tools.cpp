@@ -346,6 +346,36 @@ void LogWrite(char *line, int value)
 		fclose(fp);
 	}
 }
+void LogWrite(char *line, void *block, int size)
+{
+	FILE *fp = fopen(STRFILE_LOG, "at");
+
+	if(fp)
+	{
+		fprintf(fp, "%s: (%04d) ", line, size);
+
+		for(int index = 0; index < size; index++)
+			fprintf(fp, "%02x", ((uchar *)block)[index]);
+
+		fprintf(fp, "\n");
+		fclose(fp);
+	}
+}
+void LogWrite(char *line)
+{
+	FILE *fp = fopen(STRFILE_LOG, "at");
+
+	if(fp)
+	{
+		fprintf(fp, "%s\n", line);
+		fclose(fp);
+	}
+}
+void LogWrite_x(char *line)
+{
+	LogWrite(line);
+	memFree(line);
+}
 char *GetClipLine(void)
 {
 	HANDLE h;
