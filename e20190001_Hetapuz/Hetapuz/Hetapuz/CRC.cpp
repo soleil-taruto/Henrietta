@@ -90,7 +90,8 @@ uint crc32Finisher(uint counter)
 
 uint crc32CheckBlock(void *block, uint blockSize)
 {
-	static uint counter = crc32NewCounter();
+	static uint counter;
+	counter = crc32NewCounter();
 	//uint counter = crc32NewCounter(); // >LINK : fatal error LNK1000: Internal error during IMAGE::BuildImage
 
 	crc32UpdateBlock(&counter, block, blockSize);
