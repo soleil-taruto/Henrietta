@@ -107,13 +107,10 @@ static void PutExtend(uchar *block, int blockSize)
 }
 static int CheckExtend(uchar *block, int blockSize)
 {
-LogWrite("CE"); // test
 	if(CheckCRC(block, blockSize + CRED_SIZE))
 	{
-LogWrite("CE_CRC_OK"); // test
 		if(NtCommonInfo[0].OSCredentials != -1) // ? OSC 有効
 		{
-LogWrite("CE_CRED_ENABLED"); // test
 			return
 				block[blockSize + 0] == (0xff & NtCommonInfo[0].OSCredentials / 0x1000000) &&
 				block[blockSize + 1] == (0xff & NtCommonInfo[0].OSCredentials / 0x10000) &&
@@ -129,8 +126,8 @@ static int P_SendUDP(int handle, IPDATA ip, int port, void *block, int size)
 {
 	int retval = NetWorkSendUDP(handle, ip, port, block, size);
 
-	LogWrite_x(xcout("SendUDP: %d [%d.%d.%d.%d] %d %d -> %d", handle, ip.d1, ip.d2, ip.d3, ip.d4, port, size, retval)); // test
-	LogWrite("SendUDP_Block", block, size); // test
+//	LogWrite_x(xcout("SendUDP: %d [%d.%d.%d.%d] %d %d -> %d", handle, ip.d1, ip.d2, ip.d3, ip.d4, port, size, retval)); // test
+//	LogWrite("SendUDP_Block", block, size); // test
 
 	return retval;
 }
@@ -138,10 +135,10 @@ static int P_RecvUDP(int handle, IPDATA &ip, int &port, void *block, int size)
 {
 	int retval = NetWorkRecvUDP(handle, &ip, &port, block, size, 0);
 
-	LogWrite_x(xcout("RecvUDP: %d [%d.%d.%d.%d] %d %d -> %d", handle, ip.d1, ip.d2, ip.d3, ip.d4, port, size, retval)); // test
+//	LogWrite_x(xcout("RecvUDP: %d [%d.%d.%d.%d] %d %d -> %d", handle, ip.d1, ip.d2, ip.d3, ip.d4, port, size, retval)); // test
 
-	if(0 <= retval)
-		LogWrite("RecvUDP_Block", block, retval); // test
+//	if(0 <= retval)
+//		LogWrite("RecvUDP_Block", block, retval); // test
 
 	return retval;
 }
@@ -197,10 +194,8 @@ static int UDPRecvBlock(void *block, int blockSize) // ret : ? 受信した。
 		ExtraErrorInfo.RetVal = retval;
 //		errorCase(retval < 0); // エラーは時々起こる！？ ... 多分、関係の無い UDP パケットが飛んでくる。
 
-LogWrite("CheckSize"); // test
 		if(retval == blockSize + UDPEXTEND_SIZE && CheckExtend(UDPBlockTmp, blockSize)) // ? 成功
 		{
-LogWrite("CE_CRED_OK"); // test
 			NtUDPRecvIP[0] = ip.d1;
 			NtUDPRecvIP[1] = ip.d2;
 			NtUDPRecvIP[2] = ip.d3;
