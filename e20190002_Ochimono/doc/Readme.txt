@@ -1,7 +1,7 @@
 ﻿===============================================================================
 
 　Ochimono-NT / version $version$
-　　　　　　　　　　　　　　　　　　　　　　　　　　(C) 2021 cerulean.charlotte
+　　　　　　　　　　　　　　　　　　　　　　     　　　　(C) 2021 soleil.taruto
 
 ===============================================================================
 
@@ -116,7 +116,7 @@
 
 　　　ＡさんＢさんが起動するゲームは「同じビルド日時」である必要があります。★重要★
 　　　ビルド日時はウィンドウタイトルに表示されます。
-　　　（ウィンドウタイトル "OCHIMONO-NT blt: Xxx-99-9999-99-99-99" の "Xxx-99-9999-99-99-99" の部分）
+　　　（ウィンドウタイトル "OCHIMONO-NT / Built : Xxx-99-9999-99-99-99" の "Xxx-99-9999-99-99-99" の部分）
 
 　　　ＡさんＢさん共に（待ち受け可能な）任意のＵＤＰポートを解放する必要があります。★重要★
 　　　ここではＡさんはＵＤＰポート 50001 番を、ＢさんはＵＤＰポート 50002 番を解放したとします。
@@ -226,11 +226,11 @@
 
 ■このゲームの製作者
 
-　cerulean.charlotte
+　soleil.taruto
 
 　URL:
 　　http://ornithopter.ccsp.mydns.jp/recollections/Ochimono
-　　http://ornithopter.ccsp.mydns.jp/anemoscope
 
-　MAIL: cerulean.charlottes@gmail.com
+　MAIL:
+　　soleil.taruto@gmail.com
 

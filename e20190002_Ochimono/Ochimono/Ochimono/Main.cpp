@@ -867,7 +867,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 #if LOG_ENABLED
 		"(LOG_ENABLED) "
 #endif
-		"%s blt: %s"
+		"%s / Built : %s"
 		,"OCHIMONO-NT"
 		,GetBuiltStamp()
 		));
