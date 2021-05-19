@@ -1,7 +1,7 @@
 ﻿===============================================================================
 
 　Ochimono-NT / version $version$
-　　　　　　　　　　　　　　　　　　　　　　     　　　　(C) 2021 soleil.taruto
+　　　　　　　　　　　　　　　　　　　　　　　　　　(C) 2021 cerulean.charlotte
 
 ===============================================================================
 
@@ -226,11 +226,11 @@
 
 ■このゲームの製作者
 
-　soleil.taruto
+　cerulean.charlotte
 
 　URL:
 　　http://ornithopter.ccsp.mydns.jp/recollections/Ochimono
 
 　MAIL:
-　　soleil.taruto@gmail.com
+　　cerulean.charlottes@gmail.com
 
