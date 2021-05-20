@@ -657,7 +657,7 @@ static void PadButtonConfig(int padIndex) // padIndex : 0 or 1
 
 		MyCls();
 		MyPrint("");
-		MyPrint_x(xcout("　**** ＰＡＤ%sのボタン設定 ****", ZenInt(padIndex + 1)));
+		MyPrint_x(xcout("　**** ゲームパッド%sのボタン設定 ****", ZenInt(padIndex + 1)));
 		MyPrint("");
 		MyPrint("　ボタンを押しても反応が無い場合は、そのパッドに対応していないか、");
 		MyPrint("　今、手に持っているパッドとは別のパッドの入力待ちをしている可能性があります。");
