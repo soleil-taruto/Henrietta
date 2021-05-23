@@ -203,7 +203,7 @@
 　　　　同期情報（お互いの識別番号）
 
 　　　パズル対戦中：
-　　　　お互いの操作内容
+　　　　お互いの入力（操作）
 　　　　同期情報（お互いの識別番号）
 
 　●取り扱い目的
@@ -232,6 +232,9 @@
 
 　URL:
 　　http://ornithopter.ccsp.mydns.jp/recollections/Ochimono
+
+　src:
+　　https://github.com/soleil-taruto/Henrietta/tree/main/e20190002_Ochimono/Ochimono/Ochimono
 
 　MAIL:
 　　stackprobes@gmail.com
