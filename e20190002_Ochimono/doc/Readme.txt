@@ -1,7 +1,7 @@
 ﻿===============================================================================
 
 　Ochimono-NT / version $version$
-　　　　　　　　　　　　　　　　　　　　　　　　　　　　(C) 2021 soleil.taruto
+　　　　　　　　　　　　　　　　　　　　　　(C) 2021 stackprobe (soleil.taruto)
 
 ===============================================================================
 
@@ -228,11 +228,11 @@
 
 ■このゲームの製作者
 
-　soleil.taruto
+　stackprobe (soleil.taruto)
 
 　URL:
 　　http://ornithopter.ccsp.mydns.jp/recollections/Ochimono
 
 　MAIL:
-　　soleil.taruto@gmail.com
+　　stackprobes@gmail.com
 
