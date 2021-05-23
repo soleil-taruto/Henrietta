@@ -1080,8 +1080,8 @@ static void P_Setting(void)
 		MenuAddItem(SettInfo.FullScreenMode ? "ウィンドウモードに戻す" : "フルスクリーンモードに変更する");
 		MenuAddItem("プレイヤー１のキー割り当て");
 		MenuAddItem("プレイヤー２のキー割り当て");
-		MenuAddItem("ＰＡＤ１のボタンの割り当て");
-		MenuAddItem("ＰＡＤ２のボタンの割り当て");
+		MenuAddItem("ゲームパッド１のボタンの割り当て");
+		MenuAddItem("ゲームパッド２のボタンの割り当て");
 		MenuAddItem("ＢＧＭ音量");
 		MenuAddItem("ＳＥ音量");
 		MenuAddItem("戻る");
