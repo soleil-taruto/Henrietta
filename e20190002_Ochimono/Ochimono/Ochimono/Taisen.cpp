@@ -233,14 +233,30 @@ static int Menu(int lastSel)
 
 		const int MENU_ITEM_Y_SPAN = 20;
 
+		if(!ItemTsumero) my += 10;
+
 		musCurrIndex = my / MENU_ITEM_Y_SPAN;
 		musCurrIndex -= 3;
 
 		if(!ItemTsumero) musCurrIndex /= 2;
 
-		if(musCurrIndex < 0 || ItemCount <= musCurrIndex)
+		if(musCurrIndex < 0 || ItemCount <= musCurrIndex || mx < 0 || 800 <= mx)
 			musCurrIndex = -1;
 
+		if(musCurrIndex != -1)
+		{
+			int y1 = musCurrIndex * 40 + 50;
+			int y2 = y1 + 40;
+
+			if(ItemTsumero)
+			{
+				y1 = musCurrIndex * 20 + 60;
+				y2 = y1 + 20;
+			}
+			SetAlpha(0.5);
+			DrawExtendGraph(0, y1, 800, y2, Dc->PicWhiteWall, 1);
+			ResetAlpha();
+		}
 		for(int index = 0; index < ItemCount; index++)
 		{
 			char *lbox;
@@ -1010,12 +1026,12 @@ static void P_SettingPlayerKey(int plIndex)
 
 		switch(lastSel = Menu(lastSel))
 		{
-		case 0: SettInfo.KeySettInfos[KSIIDX_P1][KSIIDX_KB].Dir8 = P_SPK_InputKey(); break;
-		case 1: SettInfo.KeySettInfos[KSIIDX_P1][KSIIDX_KB].Dir2 = P_SPK_InputKey(); break;
-		case 2: SettInfo.KeySettInfos[KSIIDX_P1][KSIIDX_KB].Dir4 = P_SPK_InputKey(); break;
-		case 3: SettInfo.KeySettInfos[KSIIDX_P1][KSIIDX_KB].Dir6 = P_SPK_InputKey(); break;
-		case 4: SettInfo.KeySettInfos[KSIIDX_P1][KSIIDX_KB].RotL = P_SPK_InputKey(); break;
-		case 5: SettInfo.KeySettInfos[KSIIDX_P1][KSIIDX_KB].RotR = P_SPK_InputKey(); break;
+		case 0: SettInfo.KeySettInfos[plIndex][KSIIDX_KB].Dir8 = P_SPK_InputKey(); break;
+		case 1: SettInfo.KeySettInfos[plIndex][KSIIDX_KB].Dir2 = P_SPK_InputKey(); break;
+		case 2: SettInfo.KeySettInfos[plIndex][KSIIDX_KB].Dir4 = P_SPK_InputKey(); break;
+		case 3: SettInfo.KeySettInfos[plIndex][KSIIDX_KB].Dir6 = P_SPK_InputKey(); break;
+		case 4: SettInfo.KeySettInfos[plIndex][KSIIDX_KB].RotL = P_SPK_InputKey(); break;
+		case 5: SettInfo.KeySettInfos[plIndex][KSIIDX_KB].RotR = P_SPK_InputKey(); break;
 
 		case 6:
 			goto end_menu;
