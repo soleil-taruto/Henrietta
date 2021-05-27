@@ -984,6 +984,21 @@ static int P_SPK_InputKey(void)
 {
 	int keyidx;
 
+	for(; ; ) // ÉLÅ[âï˙ë“Çø
+	{
+		keyidx = Pub_GetPressKeyIndex();
+
+		if(keyidx == -1)
+			break;
+
+		SimpleDraw(STD_WALL, 0, 0, 0);
+		ExecFrameCurtain();
+
+		MyCls();
+
+		ExecMyPrint();
+		SwapFrame();
+	}
 	for(; ; )
 	{
 		keyidx = Pub_GetPressKeyIndex();
