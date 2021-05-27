@@ -179,13 +179,6 @@
 　　　　　いつまで経ってもＡさんの画面が切り替わらない場合、通信に問題が発生していることが考えられます。
 
 
-■開発の経緯
-
-　１０年前にパズルゲームの制作にＰＧとして参加させていただいたことがありまして、
-　その時実装したネットワーク対戦機能だけが諸般の事情で公開に至らずお蔵入りになっていました。
-　今更感を覚えつつも折角作ったんだからという思いが勝って、関連する機能だけ抜き出したものを公開することにしました。
-
-
 ■通信データについて
 
 　●送信される情報内容
@@ -226,16 +219,15 @@
 　https://www.pixiv.net/artworks/14949881
 
 
+■開発の経緯
+
+　１０年前にパズルゲームの制作にＰＧとして参加させていただいたことがありまして、
+　その時実装したネットワーク対戦機能だけが諸般の事情で公開に至らずお蔵入りになっていました。
+　今更感を覚えつつも折角作ったんだからという思いが勝って、関連する機能だけ抜き出したものを公開することにしました。
+
+
 ■このゲームの製作者
 
 　stackprobe (soleil.taruto)
-
-　URL:
-　　http://ornithopter.ccsp.mydns.jp/recollections/Ochimono
-
-　src:
-　　https://github.com/soleil-taruto/Henrietta/tree/main/e20190002_Ochimono/Ochimono/Ochimono
-
-　MAIL:
-　　stackprobes@gmail.com
+　MAIL: stackprobes@gmail.com
 
