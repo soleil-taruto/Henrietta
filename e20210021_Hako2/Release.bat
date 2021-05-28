@@ -15,7 +15,7 @@ out\Hako2.exe /L
 IF ERRORLEVEL 1 START ?_LOG_ENABLED
 
 MD out\Map
-COPY /B Resource\* out\Map
+FOR /L %%C IN (1, 1, 3) DO COPY /B Map\Dummy.bmp out\Map\000%%C.bmp
 
 MD out\Replay
 COPY /B Resource\* out\Replay
