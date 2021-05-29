@@ -1,1 +1,0 @@
-void Ending(void);

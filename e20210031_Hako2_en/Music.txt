@@ -1,4 +1,0 @@
-dat\General\muon.wav
-dat\MusMus\nv_24_wc4g_fo78.mp3
-dat\MusMus\tw003_wc4g_fo271.mp3
-dat\MusMus\tw054.mp3
